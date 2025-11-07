@@ -2,12 +2,17 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import chairImage from "@/assets/chair-executive.jpg";
+import chairMeshImage from "@/assets/chair-mesh.jpg";
 import deskImage from "@/assets/desk-standing.jpg";
+import deskExecutiveImage from "@/assets/desk-executive.jpg";
 import workstationImage from "@/assets/workstation.jpg";
 import storageImage from "@/assets/storage.jpg";
+import bookshelfImage from "@/assets/bookshelf.jpg";
 import loungeImage from "@/assets/lounge.jpg";
-import { Armchair, MonitorUp, LayoutGrid, Archive, Sofa } from "lucide-react";
+import receptionImage from "@/assets/reception-desk.jpg";
+import { Armchair, MonitorUp, LayoutGrid, Archive, Sofa, Star } from "lucide-react";
 
 const Shop = () => {
   const categories = [
@@ -16,6 +21,57 @@ const Shop = () => {
     { icon: LayoutGrid, title: "Workstations", desc: "Complete desk systems", image: workstationImage, count: 28 },
     { icon: Archive, title: "Storage", desc: "Cabinets and filing solutions", image: storageImage, count: 52 },
     { icon: Sofa, title: "Lounge", desc: "Breakout and reception furniture", image: loungeImage, count: 38 },
+  ];
+
+  const featured = [
+    { 
+      name: "ErgoMax Executive Chair", 
+      price: "2,850", 
+      image: chairImage,
+      rating: 4.9,
+      reviews: 156,
+      badge: "Best Seller"
+    },
+    { 
+      name: "FlexiDesk Pro Standing", 
+      price: "3,200", 
+      image: deskImage,
+      rating: 4.8,
+      reviews: 203,
+      badge: "New Arrival"
+    },
+    { 
+      name: "AeroMesh Task Chair", 
+      price: "1,650", 
+      image: chairMeshImage,
+      rating: 4.7,
+      reviews: 89,
+      badge: null
+    },
+    { 
+      name: "Premium L-Shape Desk", 
+      price: "4,500", 
+      image: deskExecutiveImage,
+      rating: 4.9,
+      reviews: 124,
+      badge: "Premium"
+    },
+    { 
+      name: "ModernShelf Storage", 
+      price: "1,890", 
+      image: bookshelfImage,
+      rating: 4.6,
+      reviews: 67,
+      badge: null
+    },
+    { 
+      name: "Welcome Reception Desk", 
+      price: "5,200", 
+      image: receptionImage,
+      rating: 4.8,
+      reviews: 43,
+      badge: "Featured"
+    },
   ];
 
   return (
@@ -30,7 +86,7 @@ const Shop = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {categories.map((category, i) => (
             <Card key={i} className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all">
               <div className="aspect-[4/3] overflow-hidden">
@@ -53,6 +109,43 @@ const Shop = () => {
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        {/* Featured Products */}
+        <div className="mb-16">
+          <h2 className="text-4xl font-bold mb-8">Featured Products</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featured.map((product, i) => (
+              <Card key={i} className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all">
+                <div className="aspect-square overflow-hidden relative">
+                  {product.badge && (
+                    <Badge className="absolute top-4 right-4 z-10 bg-accent text-accent-foreground">
+                      {product.badge}
+                    </Badge>
+                  )}
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="flex items-center gap-1">
+                      <Star className="h-4 w-4 fill-accent text-accent" />
+                      <span className="text-sm font-medium">{product.rating}</span>
+                    </div>
+                    <span className="text-sm text-muted-foreground">({product.reviews} reviews)</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-2xl font-bold">AED {product.price}</span>
+                    <Button size="sm">View Details</Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
 
         <div className="mt-20 bg-muted rounded-lg p-12 text-center">

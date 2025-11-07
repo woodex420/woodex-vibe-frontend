@@ -3,6 +3,8 @@ import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import consultationImage from "@/assets/consultation.jpg";
+import deliveryImage from "@/assets/delivery-service.jpg";
 import { Lightbulb, Box, Truck, CheckCircle2 } from "lucide-react";
 
 const Services = () => {
@@ -11,6 +13,7 @@ const Services = () => {
       icon: Lightbulb,
       title: "Space Planning",
       desc: "Transform your office with expert space planning. Our design consultants analyze your workflow, team size, and growth plans to create optimal workspace layouts.",
+      image: consultationImage,
       features: [
         "On-site consultation",
         "CAD floor plans",
@@ -23,6 +26,7 @@ const Services = () => {
       icon: Box,
       title: "Custom Design",
       desc: "Bring your vision to life with our custom design service. We create bespoke furniture tailored to your exact specifications, brand identity, and space requirements.",
+      image: null,
       features: [
         "Custom dimensions",
         "Material selection",
@@ -35,6 +39,7 @@ const Services = () => {
       icon: Truck,
       title: "Delivery & Installation",
       desc: "Professional delivery and installation services ensure your furniture is set up correctly and ready to use. Our expert team handles everything from transportation to assembly.",
+      image: deliveryImage,
       features: [
         "Nationwide delivery",
         "Professional assembly",
@@ -61,15 +66,22 @@ const Services = () => {
           {services.map((service, i) => (
             <Card key={i} className="overflow-hidden">
               <CardContent className="p-0">
-                <div className="grid md:grid-cols-5 gap-8 p-8">
-                  <div className="md:col-span-2">
+                <div className={`grid ${service.image ? 'md:grid-cols-2' : 'md:grid-cols-1'} gap-0`}>
+                  {service.image && (
+                    <div className="aspect-video md:aspect-auto overflow-hidden">
+                      <img 
+                        src={service.image} 
+                        alt={service.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
+                  <div className={`p-8 ${service.image ? '' : 'md:px-16'}`}>
                     <div className="w-16 h-16 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
                       <service.icon className="h-8 w-8 text-accent" />
                     </div>
                     <h2 className="text-3xl font-bold mb-4">{service.title}</h2>
-                    <p className="text-muted-foreground text-lg">{service.desc}</p>
-                  </div>
-                  <div className="md:col-span-3">
+                    <p className="text-muted-foreground text-lg mb-6">{service.desc}</p>
                     <h3 className="font-semibold text-lg mb-4">What's Included:</h3>
                     <ul className="space-y-3">
                       {service.features.map((feature, j) => (

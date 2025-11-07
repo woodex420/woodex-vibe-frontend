@@ -2,7 +2,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MapPin, Phone, Clock } from "lucide-react";
+import showroomImage from "@/assets/showroom-exterior.jpg";
+import { MapPin, Phone, Clock, Mail } from "lucide-react";
 
 const Showrooms = () => {
   const showrooms = [
@@ -34,6 +35,15 @@ const Showrooms = () => {
       <Navbar />
       
       <div className="container mx-auto px-4 py-12">
+        {/* Hero Image */}
+        <div className="rounded-lg overflow-hidden mb-12 shadow-xl">
+          <img 
+            src={showroomImage} 
+            alt="WOODEX Showroom" 
+            className="w-full h-[400px] object-cover"
+          />
+        </div>
+
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold mb-4">Visit Our Showrooms</h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -43,7 +53,7 @@ const Showrooms = () => {
 
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {showrooms.map((showroom, i) => (
-            <Card key={i}>
+            <Card key={i} className="hover:shadow-xl transition-shadow">
               <CardContent className="p-6">
                 <h3 className="text-2xl font-bold mb-4">{showroom.name}</h3>
                 
@@ -55,18 +65,30 @@ const Showrooms = () => {
                   
                   <div className="flex gap-3">
                     <Phone className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
-                    <p className="text-muted-foreground">{showroom.phone}</p>
+                    <a href={`tel:${showroom.phone}`} className="text-muted-foreground hover:text-accent transition-colors">
+                      {showroom.phone}
+                    </a>
+                  </div>
+                  
+                  <div className="flex gap-3">
+                    <Mail className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                    <a href="mailto:info@woodex.ae" className="text-muted-foreground hover:text-accent transition-colors">
+                      info@woodex.ae
+                    </a>
                   </div>
                   
                   <div className="flex gap-3">
                     <Clock className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
-                    <p className="text-muted-foreground">{showroom.hours}</p>
+                    <div>
+                      <p className="text-muted-foreground">{showroom.hours}</p>
+                      <p className="text-sm text-muted-foreground mt-1">Friday: Closed</p>
+                    </div>
                   </div>
                 </div>
 
                 <div className="border-t pt-4 mb-6">
-                  <p className="font-semibold mb-2">Features:</p>
-                  <ul className="space-y-1">
+                  <p className="font-semibold mb-3">Showroom Features:</p>
+                  <ul className="space-y-2">
                     {showroom.features.map((feature, j) => (
                       <li key={j} className="text-sm text-muted-foreground flex items-center gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-accent" />
@@ -76,7 +98,10 @@ const Showrooms = () => {
                   </ul>
                 </div>
 
-                <Button className="w-full">Get Directions</Button>
+                <div className="space-y-2">
+                  <Button className="w-full">Get Directions</Button>
+                  <Button variant="outline" className="w-full">Schedule Visit</Button>
+                </div>
               </CardContent>
             </Card>
           ))}

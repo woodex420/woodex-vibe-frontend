@@ -36,6 +36,17 @@ const Materials = () => {
     { name: "Beige", hex: "#F5F5DC" },
     { name: "Brown", hex: "#8B4513" },
     { name: "Burgundy", hex: "#800020" },
+    { name: "Forest Green", hex: "#228B22" },
+    { name: "Royal Blue", hex: "#4169E1" },
+    { name: "Cream", hex: "#FFFDD0" },
+    { name: "Taupe", hex: "#483C32" },
+  ];
+
+  const woodFinishes = [
+    { name: "Light Oak", image: "linear-gradient(135deg, #D4A76A 0%, #C19A6B 100%)" },
+    { name: "Walnut", image: "linear-gradient(135deg, #5C4033 0%, #3E2723 100%)" },
+    { name: "White Ash", image: "linear-gradient(135deg, #F5F5DC 0%, #E8E8E8 100%)" },
+    { name: "Dark Cherry", image: "linear-gradient(135deg, #8B4513 0%, #654321 100%)" },
   ];
 
   return (
@@ -70,24 +81,47 @@ const Materials = () => {
           </div>
         </div>
 
-        {/* Colors */}
+        {/* Wood Finishes */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Popular Color Options</h2>
+          <h2 className="text-3xl font-bold mb-8">Premium Wood Finishes</h2>
           <Card>
             <CardContent className="p-6">
-              <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
-                {colors.map((color, i) => (
-                  <div key={i} className="text-center">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
+                {woodFinishes.map((finish, i) => (
+                  <div key={i} className="text-center group cursor-pointer">
                     <div 
-                      className="w-20 h-20 rounded-lg border-2 border-border mx-auto mb-2 shadow-sm"
+                      className="w-full aspect-square rounded-lg border-2 border-border mb-3 shadow-md group-hover:shadow-xl transition-shadow"
+                      style={{ background: finish.image }}
+                    />
+                    <p className="font-medium">{finish.name}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="text-sm text-muted-foreground text-center">
+                All wood finishes are available in matte, satin, or high-gloss options
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Fabric Colors */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold mb-8">Upholstery Color Options</h2>
+          <Card>
+            <CardContent className="p-6">
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-4">
+                {colors.map((color, i) => (
+                  <div key={i} className="text-center group cursor-pointer">
+                    <div 
+                      className="w-16 h-16 rounded-lg border-2 border-border mx-auto mb-2 shadow-sm group-hover:shadow-md transition-shadow"
                       style={{ backgroundColor: color.hex }}
                     />
-                    <p className="text-sm font-medium">{color.name}</p>
+                    <p className="text-xs font-medium">{color.name}</p>
                   </div>
                 ))}
               </div>
               <p className="text-sm text-muted-foreground mt-6 text-center">
-                * Over 200 additional colors available. Request a physical sample book for the complete range.
+                * Over 200 additional fabric colors available. Request a physical sample book for the complete range.
               </p>
             </CardContent>
           </Card>
