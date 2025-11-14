@@ -5,75 +5,55 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import quotingImage from "@/assets/project-quoting.jpg";
 import { FileText, Calculator, Users, ClipboardCheck, TrendingUp, MessageSquare } from "lucide-react";
-
 const ProjectQuoting = () => {
-  const features = [
-    {
-      icon: FileText,
-      title: "Detailed Proposals",
-      desc: "Comprehensive quotes with itemized breakdowns, 3D renderings, and material specifications.",
-    },
-    {
-      icon: Calculator,
-      title: "Transparent Pricing",
-      desc: "Clear pricing structure with no hidden costs. All taxes, delivery, and installation included.",
-    },
-    {
-      icon: Users,
-      title: "Dedicated Project Manager",
-      desc: "Assigned project manager from quote to completion. Single point of contact throughout.",
-    },
-    {
-      icon: ClipboardCheck,
-      title: "Turnkey Solutions",
-      desc: "Complete project management including design, manufacturing, delivery, and installation.",
-    },
-    {
-      icon: TrendingUp,
-      title: "Volume Discounts",
-      desc: "Special pricing for large projects. Bulk ordering discounts up to 25% for qualified projects.",
-    },
-    {
-      icon: MessageSquare,
-      title: "Flexible Terms",
-      desc: "Customized payment plans and leasing options available for large-scale projects.",
-    },
-  ];
-
-  const projectTypes = [
-    {
-      title: "Office Fit-Outs",
-      desc: "Complete office furniture solutions from 10 to 1000+ workstations",
-      minBudget: "AED 50,000+",
-    },
-    {
-      title: "Commercial Spaces",
-      desc: "Hotels, restaurants, retail spaces, and hospitality furniture",
-      minBudget: "AED 100,000+",
-    },
-    {
-      title: "Educational Institutions",
-      desc: "Schools, universities, training centers, and learning spaces",
-      minBudget: "AED 75,000+",
-    },
-    {
-      title: "Healthcare Facilities",
-      desc: "Hospitals, clinics, and medical office furniture solutions",
-      minBudget: "AED 150,000+",
-    },
-  ];
-
-  return (
-    <div className="min-h-screen bg-background">
+  const features = [{
+    icon: FileText,
+    title: "Detailed Proposals",
+    desc: "Comprehensive quotes with itemized breakdowns, 3D renderings, and material specifications."
+  }, {
+    icon: Calculator,
+    title: "Transparent Pricing",
+    desc: "Clear pricing structure with no hidden costs. All taxes, delivery, and installation included."
+  }, {
+    icon: Users,
+    title: "Dedicated Project Manager",
+    desc: "Assigned project manager from quote to completion. Single point of contact throughout."
+  }, {
+    icon: ClipboardCheck,
+    title: "Turnkey Solutions",
+    desc: "Complete project management including design, manufacturing, delivery, and installation."
+  }, {
+    icon: TrendingUp,
+    title: "Volume Discounts",
+    desc: "Special pricing for large projects. Bulk ordering discounts up to 25% for qualified projects."
+  }, {
+    icon: MessageSquare,
+    title: "Flexible Terms",
+    desc: "Customized payment plans and leasing options available for large-scale projects."
+  }];
+  const projectTypes = [{
+    title: "Office Fit-Outs",
+    desc: "Complete office furniture solutions from 10 to 1000+ workstations",
+    minBudget: "AED 50,000+"
+  }, {
+    title: "Commercial Spaces",
+    desc: "Hotels, restaurants, retail spaces, and hospitality furniture",
+    minBudget: "AED 100,000+"
+  }, {
+    title: "Educational Institutions",
+    desc: "Schools, universities, training centers, and learning spaces",
+    minBudget: "AED 75,000+"
+  }, {
+    title: "Healthcare Facilities",
+    desc: "Hospitals, clinics, and medical office furniture solutions",
+    minBudget: "AED 150,000+"
+  }];
+  return <div className="min-h-screen bg-background">
       <Navbar />
       
       {/* Hero Section */}
       <div className="relative h-[400px] overflow-hidden">
-        <img 
-          src={quotingImage} 
-          alt="Project Based Quoting"
-          className="w-full h-full object-cover"
-        />
+        <img src={quotingImage} alt="Project Based Quoting" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 flex items-center">
           <div className="container mx-auto px-4">
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
@@ -94,17 +74,15 @@ const ProjectQuoting = () => {
             Our project-based quotes include everything you need for a successful furniture installation.
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, i) => (
-              <Card key={i}>
+            {features.map((feature, i) => <Card key={i}>
                 <CardContent className="pt-6">
-                  <div className="w-14 h-14 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+                  <div className="w-14 h-14 rounded-lg flex items-center justify-center mb-4 bg-slate-950">
                     <feature.icon className="h-7 w-7 text-accent" />
                   </div>
                   <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
                   <p className="text-muted-foreground">{feature.desc}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
 
@@ -112,17 +90,15 @@ const ProjectQuoting = () => {
         <div className="mb-20">
           <h2 className="text-4xl font-bold text-center mb-12">Project Types We Handle</h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {projectTypes.map((project, i) => (
-              <Card key={i}>
+            {projectTypes.map((project, i) => <Card key={i}>
                 <CardContent className="pt-6">
                   <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
                   <p className="text-muted-foreground mb-4">{project.desc}</p>
-                  <div className="inline-block bg-accent/10 text-accent px-4 py-2 rounded-lg font-semibold">
+                  <div className="inline-block text-accent px-4 py-2 rounded-lg font-semibold bg-slate-950">
                     {project.minBudget}
                   </div>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
 
@@ -130,17 +106,35 @@ const ProjectQuoting = () => {
         <div className="mb-20">
           <h2 className="text-4xl font-bold text-center mb-12">Our Quoting Process</h2>
           <div className="max-w-4xl mx-auto space-y-6">
-            {[
-              { step: "1", title: "Initial Consultation", desc: "Site visit and requirement gathering with your team", timeline: "Day 1-2" },
-              { step: "2", title: "Design & Planning", desc: "Space planning, 3D visualization, and product selection", timeline: "Day 3-7" },
-              { step: "3", title: "Quote Preparation", desc: "Detailed proposal with pricing, timeline, and specifications", timeline: "Day 8-10" },
-              { step: "4", title: "Presentation & Revision", desc: "Present proposal and refine based on your feedback", timeline: "Day 11-14" },
-              { step: "5", title: "Final Approval", desc: "Sign-off on final quote and project schedule", timeline: "Day 15" },
-            ].map((item, i) => (
-              <Card key={i}>
+            {[{
+            step: "1",
+            title: "Initial Consultation",
+            desc: "Site visit and requirement gathering with your team",
+            timeline: "Day 1-2"
+          }, {
+            step: "2",
+            title: "Design & Planning",
+            desc: "Space planning, 3D visualization, and product selection",
+            timeline: "Day 3-7"
+          }, {
+            step: "3",
+            title: "Quote Preparation",
+            desc: "Detailed proposal with pricing, timeline, and specifications",
+            timeline: "Day 8-10"
+          }, {
+            step: "4",
+            title: "Presentation & Revision",
+            desc: "Present proposal and refine based on your feedback",
+            timeline: "Day 11-14"
+          }, {
+            step: "5",
+            title: "Final Approval",
+            desc: "Sign-off on final quote and project schedule",
+            timeline: "Day 15"
+          }].map((item, i) => <Card key={i}>
                 <CardContent className="p-6">
                   <div className="flex items-start gap-6">
-                    <div className="w-12 h-12 rounded-full bg-accent text-accent-foreground font-bold flex items-center justify-center text-xl flex-shrink-0">
+                    <div className="w-12 h-12 rounded-full text-accent-foreground font-bold flex items-center justify-center text-xl flex-shrink-0 bg-neutral-800">
                       {item.step}
                     </div>
                     <div className="flex-1">
@@ -152,8 +146,7 @@ const ProjectQuoting = () => {
                     </div>
                   </div>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
 
@@ -181,8 +174,6 @@ const ProjectQuoting = () => {
       </div>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default ProjectQuoting;
