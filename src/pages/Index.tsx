@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { ChatWidget } from "@/components/ChatWidget";
 import heroImage from "@/assets/hero-office.jpg";
 import chairImage from "@/assets/chair-executive.jpg";
 import deskImage from "@/assets/desk-standing.jpg";
@@ -157,6 +158,7 @@ const Index = () => {
       </section>
 
       <Footer />
+      <ChatWidget />
     </div>
   );
 };

@@ -23,6 +23,7 @@ import Materials from "./pages/Materials";
 import Showrooms from "./pages/Showrooms";
 import Warranty from "./pages/Warranty";
 import NotFound from "./pages/NotFound";
+import AgentDashboard from "./pages/AgentDashboard";
 
 const queryClient = new QueryClient();
 
@@ -52,6 +53,7 @@ const App = () => (
           <Route path="/materials" element={<Materials />} />
           <Route path="/showrooms" element={<Showrooms />} />
           <Route path="/warranty" element={<Warranty />} />
+          <Route path="/agent-dashboard" element={<AgentDashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
