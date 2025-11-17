@@ -24,6 +24,7 @@ import Showrooms from "./pages/Showrooms";
 import Warranty from "./pages/Warranty";
 import NotFound from "./pages/NotFound";
 import AgentDashboard from "./pages/AgentDashboard";
+import KnowledgeBase from "./pages/KnowledgeBase";
 
 const queryClient = new QueryClient();
 
@@ -54,6 +55,7 @@ const App = () => (
           <Route path="/showrooms" element={<Showrooms />} />
           <Route path="/warranty" element={<Warranty />} />
           <Route path="/agent-dashboard" element={<AgentDashboard />} />
+          <Route path="/knowledge-base" element={<KnowledgeBase />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
