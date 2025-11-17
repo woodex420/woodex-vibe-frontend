@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Paperclip, Phone, Video, Clock } from 'lucide-react';
+import { MessageCircle, X, Send, Paperclip, Phone, Video, Clock, Bot } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
@@ -136,7 +136,12 @@ export const ChatWidget = () => {
                     : 'bg-accent text-accent-foreground'
                 )}
               >
-                {message.message_text}
+                <div className="flex items-start gap-2">
+                  {message.sender_type === 'agent' && (
+                    <Bot className="h-4 w-4 mt-0.5 flex-shrink-0 opacity-70" />
+                  )}
+                  <div>{message.message_text}</div>
+                </div>
               </div>
             </div>
           ))}

@@ -6,10 +6,11 @@ import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Send, MessageCircle, User } from 'lucide-react';
+import { Send, MessageCircle, User, Bot } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { KnowledgeUpload } from '@/components/KnowledgeUpload';
 
 interface Conversation {
   id: string;
@@ -204,9 +205,16 @@ const AgentDashboard = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-1 container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8">Agent Dashboard</h1>
+        <h1 className="text-3xl font-bold mb-8 flex items-center gap-2">
+          <Bot className="h-8 w-8" />
+          AI-Powered Agent Dashboard
+        </h1>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[calc(100vh-250px)]">
+        <div className="mb-6">
+          <KnowledgeUpload />
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[calc(100vh-450px)]">
           {/* Conversations List */}
           <Card className="lg:col-span-1">
             <CardHeader>

@@ -611,6 +611,39 @@ export type Database = {
         }
         Relationships: []
       }
+      business_knowledge: {
+        Row: {
+          category: string | null
+          content: string
+          created_at: string | null
+          file_url: string | null
+          id: string
+          is_active: boolean | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          category?: string | null
+          content: string
+          created_at?: string | null
+          file_url?: string | null
+          id?: string
+          is_active?: boolean | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          category?: string | null
+          content?: string
+          created_at?: string | null
+          file_url?: string | null
+          id?: string
+          is_active?: boolean | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       cart: {
         Row: {
           created_at: string | null
@@ -753,6 +786,7 @@ export type Database = {
       }
       chat_conversations: {
         Row: {
+          ai_assisted: boolean | null
           assigned_agent_id: string | null
           created_at: string | null
           id: string
@@ -764,6 +798,7 @@ export type Database = {
           visitor_phone: string | null
         }
         Insert: {
+          ai_assisted?: boolean | null
           assigned_agent_id?: string | null
           created_at?: string | null
           id?: string
@@ -775,6 +810,7 @@ export type Database = {
           visitor_phone?: string | null
         }
         Update: {
+          ai_assisted?: boolean | null
           assigned_agent_id?: string | null
           created_at?: string | null
           id?: string
