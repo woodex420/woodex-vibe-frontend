@@ -70,6 +70,9 @@ export const useChatWidget = () => {
     if (!conversation || !text.trim()) return;
 
     try {
+      setIsLoading(true);
+      
+      // Send visitor message
       const { data, error } = await supabase
         .from('chat_messages')
         .insert({
@@ -89,6 +92,24 @@ export const useChatWidget = () => {
         .eq('id', conversation.id);
 
       setInputMessage('');
+
+      // Get AI response
+      try {
+        const response = await supabase.functions.invoke('ai-chat', {
+          body: {
+            conversationId: conversation.id,
+            message: text.trim(),
+          }
+        });
+
+        if (response.error) {
+          console.error('AI response error:', response.error);
+        }
+      } catch (aiError) {
+        console.error('AI invocation error:', aiError);
+        // AI error doesn't stop the conversation
+      }
+      
     } catch (error) {
       console.error('Error sending message:', error);
       toast({
@@ -96,6 +117,8 @@ export const useChatWidget = () => {
         description: 'Failed to send message. Please try again.',
         variant: 'destructive',
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
