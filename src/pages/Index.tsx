@@ -25,13 +25,13 @@ const Index = () => {
         </div>
         <div className="relative z-10 container mx-auto px-4 text-center text-white">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            Work Your Way
+            Pakistan's Premier B2B Office Furniture
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed">
-            Modern office furniture designed for productivity and comfort
+            360-Degree Office Solutions from Manufacturing to Installation
           </p>
           <p className="text-lg mb-10 max-w-3xl mx-auto opacity-90">
-            Discover our comprehensive range of premium office furniture including ergonomic chairs, executive desks, workstations, and complete workspace solutions.
+            1,200+ Satisfied Clients | 56 Premium Products | 5-7 Year Warranty | Nationwide Delivery
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/shop">
@@ -53,10 +53,10 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: Box, title: "Premium Quality", desc: "Crafted with finest materials" },
-              { icon: Truck, title: "Free Delivery", desc: "On orders above AED 5,000" },
-              { icon: Shield, title: "5-Year Warranty", desc: "Comprehensive coverage" },
-              { icon: Lightbulb, title: "Design Support", desc: "Expert space planning" },
+              { icon: Box, title: "Factory Direct", desc: "Lahore-based manufacturing hub" },
+              { icon: Truck, title: "Nationwide Delivery", desc: "Covering all major cities" },
+              { icon: Shield, title: "5-7 Year Warranty", desc: "Industry-leading coverage" },
+              { icon: Lightbulb, title: "Free 3D Design", desc: "Floor plans & visualization" },
             ].map((feature, i) => (
               <Card key={i} className="border-none shadow-sm">
                 <CardContent className="pt-6 text-center">
@@ -74,16 +74,16 @@ const Index = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Featured Collections</h2>
+            <h2 className="text-4xl font-bold mb-4">56 Premium Products Across 11 Categories</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Browse our carefully curated selection of office furniture designed for modern workspaces
+              From executive suites to complete office fitouts - we handle projects of all sizes
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { image: chairImage, title: "Executive Chairs", desc: "Ergonomic designs for all-day comfort" },
-              { image: deskImage, title: "Standing Desks", desc: "Height-adjustable workspace solutions" },
+              { image: chairImage, title: "Office Chairs", desc: "Executive, mesh & ergonomic seating" },
+              { image: deskImage, title: "Office Desks", desc: "Executive, standing & modular desks" },
               { image: workstationImage, title: "Workstations", desc: "Complete office desk systems" },
             ].map((product, i) => (
               <Card key={i} className="group cursor-pointer overflow-hidden hover:shadow-lg transition-all">
@@ -107,35 +107,54 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Statistics Section */}
+      <section className="py-16 bg-primary text-primary-foreground">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {[
+              { number: "1,200+", label: "Satisfied Clients" },
+              { number: "56", label: "Premium Products" },
+              { number: "11", label: "Product Categories" },
+              { number: "5-7 Years", label: "Warranty Coverage" },
+            ].map((stat, i) => (
+              <div key={i}>
+                <div className="text-4xl md:text-5xl font-bold mb-2 text-accent">{stat.number}</div>
+                <div className="text-sm md:text-base opacity-90">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
+      <section className="py-20 bg-accent text-accent-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Workspace?</h2>
+          <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Office?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            Get a personalized quote for your office furniture needs. Our experts are ready to help you create the perfect workspace.
+            From consultation to installation - we handle everything
           </p>
           <Link to="/e-quotation">
-            <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
-              Request Free Quotation
+            <Button size="lg" variant="secondary" className="gap-2">
+              Request Free Quotation <ArrowRight className="h-5 w-5" />
             </Button>
           </Link>
         </div>
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20">
+      <section className="py-20 bg-muted">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold mb-6">Why Choose WOODEX?</h2>
+              <h2 className="text-4xl font-bold mb-6">Why Choose WoodEx?</h2>
               <div className="space-y-4">
                 {[
-                  "Over 20 years of furniture expertise",
-                  "1000+ successful office installations",
-                  "Premium materials with 5-year warranty",
-                  "Expert space planning consultation",
-                  "Professional delivery and installation",
-                  "Customization options available",
+                  "Pakistan's first digital B2B furniture platform",
+                  "1,200+ satisfied clients nationwide",
+                  "Factory-direct manufacturing in Lahore",
+                  "5-7 year warranty on all products",
+                  "Free 3D design & floor planning",
+                  "Nationwide delivery & installation",
                 ].map((point, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <CheckCircle2 className="h-6 w-6 text-accent flex-shrink-0 mt-0.5" />
