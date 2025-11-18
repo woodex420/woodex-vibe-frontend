@@ -9,36 +9,36 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 9%;
+    --foreground: 25 20% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 9%;
+    --card-foreground: 25 20% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 9%;
+    --popover-foreground: 25 20% 15%;
 
-    --primary: 0 0% 9%;
+    --primary: 25 45% 30%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 9%;
+    --secondary: 30 35% 92%;
+    --secondary-foreground: 25 45% 30%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 30 30% 95%;
+    --muted-foreground: 25 15% 45%;
 
-    --accent: 25 70% 55%;
+    --accent: 25 70% 50%;
     --accent-foreground: 0 0% 98%;
 
     --wood: 25 45% 45%;
     --wood-light: 30 40% 70%;
-    --wood-dark: 20 35% 30%;
+    --wood-dark: 20 50% 25%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 0 0% 9%;
+    --border: 30 20% 85%;
+    --input: 30 20% 90%;
+    --ring: 25 45% 30%;
 
     --radius: 0.5rem;
 
@@ -46,37 +46,37 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 0 0% 9%;
-    --foreground: 0 0% 98%;
+    --background: 25 15% 10%;
+    --foreground: 30 20% 95%;
 
-    --card: 0 0% 9%;
-    --card-foreground: 0 0% 98%;
+    --card: 25 15% 12%;
+    --card-foreground: 30 20% 95%;
 
-    --popover: 0 0% 9%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 25 15% 10%;
+    --popover-foreground: 30 20% 95%;
 
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
+    --primary: 25 70% 55%;
+    --primary-foreground: 25 20% 10%;
 
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 25 25% 20%;
+    --secondary-foreground: 30 20% 95%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 25 20% 18%;
+    --muted-foreground: 30 15% 65%;
 
-    --accent: 25 70% 55%;
-    --accent-foreground: 0 0% 9%;
+    --accent: 25 70% 50%;
+    --accent-foreground: 0 0% 98%;
 
     --wood: 25 45% 45%;
     --wood-light: 30 40% 70%;
-    --wood-dark: 20 35% 30%;
+    --wood-dark: 20 50% 25%;
 
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 0 0% 83%;
+    --border: 25 20% 25%;
+    --input: 25 20% 22%;
+    --ring: 25 70% 55%;
   }
 }
 

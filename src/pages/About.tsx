@@ -7,18 +7,18 @@ import { Target, Eye, Award, Users } from "lucide-react";
 
 const About = () => {
   const values = [
-    { icon: Target, title: "Quality First", desc: "We never compromise on materials, craftsmanship, or design excellence" },
-    { icon: Users, title: "Customer Focus", desc: "Your success is our priority. We listen, adapt, and deliver beyond expectations" },
-    { icon: Award, title: "Innovation", desc: "Continuously evolving our designs to meet modern workspace needs" },
-    { icon: Eye, title: "Transparency", desc: "Honest pricing, clear communication, and reliable service every time" },
+    { icon: Target, title: "Quality Craftsmanship", desc: "Every piece reflects superior Pakistani manufacturing with finest materials" },
+    { icon: Users, title: "Customer-Centric Innovation", desc: "Technology serving business needs with 3D visualization and automated quotations" },
+    { icon: Eye, title: "Transparency & Trust", desc: "Clear pricing and honest communication with our quote-first approach" },
+    { icon: Award, title: "Continuous Improvement", desc: "Evolving with market demands and setting new industry standards" },
   ];
 
   const milestones = [
-    { year: "2003", event: "WOODEX Founded", desc: "Started with a vision to transform office spaces" },
-    { year: "2010", event: "Regional Expansion", desc: "Opened showrooms across the UAE" },
-    { year: "2015", event: "1000+ Projects", desc: "Completed our thousandth office installation" },
-    { year: "2020", event: "Sustainable Initiative", desc: "Launched eco-friendly furniture line" },
-    { year: "2025", event: "Industry Leader", desc: "Recognized as top office furniture provider" },
+    { year: "Founded", event: "Manufacturing Excellence", desc: "Established Lahore-based manufacturing hub" },
+    { year: "2020", event: "Digital Transformation", desc: "Launched Pakistan's first B2B furniture e-commerce platform" },
+    { year: "2023", event: "1,000+ Clients", desc: "Served over 1,000 businesses across Pakistan" },
+    { year: "2024", event: "Technology Leadership", desc: "Introduced 3D visualization and automated quotations" },
+    { year: "2025", event: "Market Leader", desc: "1,200+ clients, 56 products, nationwide delivery network" },
   ];
 
   return (
@@ -28,23 +28,56 @@ const About = () => {
       {/* Hero */}
       <div className="bg-primary text-primary-foreground py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6">About WOODEX</h1>
+          <h1 className="text-5xl font-bold mb-6">About WoodEx Furniture</h1>
           <p className="text-xl max-w-3xl mx-auto opacity-90">
-            For over 20 years, we've been transforming workspaces across the region with premium office furniture that combines functionality, comfort, and style.
+            Pakistan's Premier B2B Office Furniture E-commerce Platform - Empowering businesses with world-class furniture solutions through innovation, quality craftsmanship, and exceptional customer service.
           </p>
         </div>
       </div>
 
       <div className="container mx-auto px-4 py-16">
-        {/* Story */}
-        <div className="max-w-3xl mx-auto mb-20 text-center">
-          <h2 className="text-4xl font-bold mb-6">Our Story</h2>
-          <p className="text-lg text-muted-foreground mb-6">
-            Founded in 2003, WOODEX began with a simple mission: to create office environments that inspire productivity and well-being. What started as a small showroom in Dubai has grown into a comprehensive furniture solution provider serving businesses across the UAE and beyond.
-          </p>
-          <p className="text-lg text-muted-foreground">
-            Today, we're proud to have furnished over 1,000 offices, from startups to Fortune 500 companies, always maintaining our commitment to quality, service, and innovation.
-          </p>
+        {/* Mission & Vision */}
+        <div className="max-w-4xl mx-auto mb-20">
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <Card className="border-2 border-accent">
+              <CardContent className="pt-6">
+                <Target className="h-12 w-12 text-accent mb-4" />
+                <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  "Empowering Pakistani businesses with world-class office furniture solutions through innovation, quality craftsmanship, and exceptional customer service."
+                </p>
+              </CardContent>
+            </Card>
+            <Card className="border-2 border-accent">
+              <CardContent className="pt-6">
+                <Eye className="h-12 w-12 text-accent mb-4" />
+                <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  "To be Pakistan's most trusted and technologically advanced office furniture manufacturer, setting the standard for B2B furniture excellence across South Asia."
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+          
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-6">Our Achievements</h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              WoodEx has established itself as the nation's leading provider of custom office furniture through an innovative quote-first business model, combining traditional craftsmanship with cutting-edge e-commerce technology.
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
+              {[
+                { number: "1,200+", label: "Satisfied Clients" },
+                { number: "56", label: "Premium Products" },
+                { number: "11", label: "Categories" },
+                { number: "95%", label: "Platform Ready" },
+              ].map((stat, i) => (
+                <div key={i} className="text-center">
+                  <div className="text-4xl font-bold text-accent mb-2">{stat.number}</div>
+                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Values */}
@@ -88,39 +121,51 @@ const About = () => {
         </div>
 
         {/* Stats */}
-        <div className="grid md:grid-cols-4 gap-8 mb-20">
-          {[
-            { number: "20+", label: "Years Experience" },
-            { number: "1,000+", label: "Projects Completed" },
-            { number: "500+", label: "Corporate Clients" },
-            { number: "50,000+", label: "Furniture Pieces Delivered" },
-          ].map((stat, i) => (
-            <Card key={i} className="text-center">
-              <CardContent className="pt-6">
-                <div className="text-4xl font-bold text-accent mb-2">{stat.number}</div>
-                <div className="text-muted-foreground">{stat.label}</div>
-              </CardContent>
-            </Card>
-          ))}
+        <div className="mb-20">
+          <h2 className="text-4xl font-bold text-center mb-12">Our Impact</h2>
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              { number: "1,200+", label: "Satisfied Clients" },
+              { number: "56", label: "Premium Products" },
+              { number: "11", label: "Product Categories" },
+              { number: "5-7 Years", label: "Warranty Coverage" },
+            ].map((stat, i) => (
+              <Card key={i} className="text-center">
+                <CardContent className="pt-6">
+                  <div className="text-4xl font-bold text-accent mb-2">{stat.number}</div>
+                  <p className="text-muted-foreground">{stat.label}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+        {/* Business Philosophy */}
+        <div className="max-w-3xl mx-auto mb-20 text-center">
+          <h2 className="text-4xl font-bold mb-6">Our Business Philosophy</h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            WoodEx operates on a <span className="font-semibold text-foreground">quote-first strategy</span> that prioritizes relationship building over immediate sales. This approach allows for deep understanding of client needs, customization beyond standard offerings, premium pricing justified by personalized service, and long-term client relationships with repeat business.
+          </p>
         </div>
 
         {/* CTA */}
-        <Card className="bg-muted">
-          <CardContent className="p-12 text-center">
-            <h2 className="text-3xl font-bold mb-4">Let's Create Your Perfect Workspace</h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Experience the WOODEX difference. Contact us today to start your office transformation.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/e-quotation">
-                <Button size="lg">Get Free Quote</Button>
-              </Link>
-              <Link to="/showrooms">
-                <Button size="lg" variant="outline">Visit Our Showrooms</Button>
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
+        <div className="text-center">
+          <Card className="max-w-2xl mx-auto bg-accent text-accent-foreground">
+            <CardContent className="pt-8 pb-8">
+              <h2 className="text-3xl font-bold mb-4">Transform Your Office Space</h2>
+              <p className="opacity-90 mb-6">
+                Join 1,200+ satisfied businesses that trust WoodEx for premium office furniture solutions
+              </p>
+              <div className="flex gap-4 justify-center flex-wrap">
+                <Link to="/e-quotation">
+                  <Button size="lg" variant="secondary">Get Free Quote</Button>
+                </Link>
+                <Link to="/contact">
+                  <Button size="lg" variant="outline" className="bg-transparent border-2">Contact Us</Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </div>
 
       <Footer />
