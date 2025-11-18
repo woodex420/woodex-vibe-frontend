@@ -786,11 +786,16 @@ export type Database = {
       }
       chat_conversations: {
         Row: {
+          agent_response_time_seconds: number | null
           ai_assisted: boolean | null
           assigned_agent_id: string | null
           created_at: string | null
+          customer_satisfaction_score: number | null
+          has_recording: boolean | null
+          has_transcription: boolean | null
           id: string
           last_message_at: string | null
+          resolution_time_minutes: number | null
           status: string | null
           updated_at: string | null
           visitor_email: string | null
@@ -798,11 +803,16 @@ export type Database = {
           visitor_phone: string | null
         }
         Insert: {
+          agent_response_time_seconds?: number | null
           ai_assisted?: boolean | null
           assigned_agent_id?: string | null
           created_at?: string | null
+          customer_satisfaction_score?: number | null
+          has_recording?: boolean | null
+          has_transcription?: boolean | null
           id?: string
           last_message_at?: string | null
+          resolution_time_minutes?: number | null
           status?: string | null
           updated_at?: string | null
           visitor_email?: string | null
@@ -810,11 +820,16 @@ export type Database = {
           visitor_phone?: string | null
         }
         Update: {
+          agent_response_time_seconds?: number | null
           ai_assisted?: boolean | null
           assigned_agent_id?: string | null
           created_at?: string | null
+          customer_satisfaction_score?: number | null
+          has_recording?: boolean | null
+          has_transcription?: boolean | null
           id?: string
           last_message_at?: string | null
+          resolution_time_minutes?: number | null
           status?: string | null
           updated_at?: string | null
           visitor_email?: string | null
@@ -1163,6 +1178,95 @@ export type Database = {
           updated_at?: string | null
         }
         Relationships: []
+      }
+      conversation_recordings: {
+        Row: {
+          conversation_id: string
+          created_at: string | null
+          duration_seconds: number | null
+          id: string
+          recorded_at: string | null
+          recording_url: string | null
+        }
+        Insert: {
+          conversation_id: string
+          created_at?: string | null
+          duration_seconds?: number | null
+          id?: string
+          recorded_at?: string | null
+          recording_url?: string | null
+        }
+        Update: {
+          conversation_id?: string
+          created_at?: string | null
+          duration_seconds?: number | null
+          id?: string
+          recorded_at?: string | null
+          recording_url?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "conversation_recordings_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "chat_conversations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      conversation_transcriptions: {
+        Row: {
+          confidence_score: number | null
+          conversation_id: string
+          created_at: string | null
+          id: string
+          language: string | null
+          recording_id: string | null
+          speaker_labels: Json | null
+          timestamps: Json | null
+          transcription_text: string
+          updated_at: string | null
+        }
+        Insert: {
+          confidence_score?: number | null
+          conversation_id: string
+          created_at?: string | null
+          id?: string
+          language?: string | null
+          recording_id?: string | null
+          speaker_labels?: Json | null
+          timestamps?: Json | null
+          transcription_text: string
+          updated_at?: string | null
+        }
+        Update: {
+          confidence_score?: number | null
+          conversation_id?: string
+          created_at?: string | null
+          id?: string
+          language?: string | null
+          recording_id?: string | null
+          speaker_labels?: Json | null
+          timestamps?: Json | null
+          transcription_text?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "conversation_transcriptions_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "chat_conversations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "conversation_transcriptions_recording_id_fkey"
+            columns: ["recording_id"]
+            isOneToOne: false
+            referencedRelation: "conversation_recordings"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       custom_app_activities: {
         Row: {
