@@ -30,6 +30,63 @@ const KnowledgeBase = () => {
     },
   });
 
+  const seedInitialKnowledge = useMutation({
+    mutationFn: async () => {
+      const initialKnowledge = [
+        {
+          title: 'WoodEx Company Overview',
+          content: 'WoodEx is Pakistan\'s premier B2B office furniture platform, serving 1,200+ satisfied clients nationwide. We are a Lahore-based manufacturer offering 56 premium products across 11 categories. Our unique value proposition includes factory-direct pricing, 5-7 year warranty coverage, free 3D design services, and nationwide delivery with professional installation. We operate Pakistan\'s first digital B2B furniture platform, revolutionizing how businesses purchase office furniture.',
+          category: 'company',
+        },
+        {
+          title: 'Product Portfolio',
+          content: 'WoodEx offers 56 premium products across 11 categories: 1) Office Chairs (executive, mesh, ergonomic) 2) Office Desks (executive, standing, modular) 3) Workstations (complete desk systems) 4) Conference Tables 5) Meeting Room Furniture 6) Reception Desks 7) Storage Solutions (cabinets, filing, shelving) 8) Executive Furniture 9) Lounge Furniture 10) Bookshelf Systems 11) Office Accessories. All products come with 5-7 year warranty and are manufactured in our Lahore facility.',
+          category: 'products',
+        },
+        {
+          title: 'Services and Solutions',
+          content: 'WoodEx provides 360-degree office solutions: 1) FREE Space Planning and 3D Design - professional consultants create optimal layouts 2) Custom Design Studio - bespoke furniture with 200+ material/color options, 6-8 week production 3) Project Quoting - instant online quotations with transparent pricing 4) Factory Direct Manufacturing - Lahore-based production ensuring quality control 5) Nationwide Delivery and Installation - covering all major Pakistani cities with professional assembly teams 6) Post-Installation Support - warranty activation and ongoing customer service.',
+          category: 'services',
+        },
+        {
+          title: 'Warranty and Quality',
+          content: 'Industry-leading 5-7 year comprehensive warranty on all products. Our quality assurance includes: expert craftsmanship with 25+ years experience, rigorous quality inspections before delivery, durable materials and construction, compliance with international standards, and post-installation support. We stand behind our products with one of the longest warranties in Pakistan\'s furniture industry.',
+          category: 'warranty',
+        },
+        {
+          title: 'Pricing and Business Model',
+          content: 'Factory-direct pricing eliminates middlemen, offering 20-30% cost savings. Quote-first strategy ensures transparency - customers receive detailed quotations before commitment. We serve B2B clients including corporate offices, government institutions, educational facilities, healthcare centers, and co-working spaces. Flexible payment terms available for bulk orders and long-term partnerships. Volume discounts for large projects.',
+          category: 'pricing',
+        },
+        {
+          title: 'Delivery Coverage',
+          content: 'Nationwide delivery across Pakistan covering: Lahore, Karachi, Islamabad, Rawalpindi, Faisalabad, Multan, Gujranwala, Peshawar, Quetta, Sialkot, and all major cities. Professional installation teams ensure proper assembly. Typical delivery timeline: 2-4 weeks for standard products, 6-8 weeks for custom designs. Express delivery available for urgent projects.',
+          category: 'delivery',
+        },
+        {
+          title: 'Customer Success Stories',
+          content: 'Serving 1,200+ satisfied clients across Pakistan including leading corporations, government offices, educational institutions, and growing startups. Our clients choose WoodEx for reliability, quality craftsmanship, transparent pricing, comprehensive warranties, and end-to-end project management. We handle projects from single items to complete office fitouts of 500+ workstations.',
+          category: 'clients',
+        },
+        {
+          title: 'Quote Process',
+          content: 'Easy 3-step quotation process: 1) Submit requirements via online form or consultation 2) Receive detailed quotation within 24-48 hours with itemized pricing, specifications, delivery timeline 3) Approve and proceed with order. No hidden costs. What you see is what you pay. Free consultations and site visits for large projects. Dedicated account managers for B2B clients.',
+          category: 'process',
+        },
+      ];
+
+      const { error } = await supabase.from('business_knowledge').insert(initialKnowledge);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['business-knowledge'] });
+      toast({ title: 'Success', description: 'Initial knowledge base populated successfully' });
+    },
+    onError: () => {
+      toast({ title: 'Error', description: 'Failed to seed knowledge base', variant: 'destructive' });
+    },
+  });
+
   const addKnowledge = useMutation({
     mutationFn: async () => {
       const { error } = await supabase.from('business_knowledge').insert({
@@ -89,7 +146,14 @@ const KnowledgeBase = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-1 container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8">AI Training - Knowledge Base</h1>
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-3xl font-bold">AI Training - Knowledge Base</h1>
+          {(!knowledge || knowledge.length === 0) && (
+            <Button onClick={() => seedInitialKnowledge.mutate()} disabled={seedInitialKnowledge.isPending}>
+              {seedInitialKnowledge.isPending ? 'Loading...' : 'Load WoodEx Business Knowledge'}
+            </Button>
+          )}
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Add Knowledge Form */}
