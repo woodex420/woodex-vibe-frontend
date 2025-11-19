@@ -11,41 +11,44 @@ const Services = () => {
   const services = [
     {
       icon: Lightbulb,
-      title: "Space Planning",
-      desc: "Transform your office with expert space planning. Our design consultants analyze your workflow, team size, and growth plans to create optimal workspace layouts.",
+      title: "Space Planning & Design",
+      desc: "Free 3D design and floor planning services. Our expert consultants analyze your space, workflow, and team needs to create optimal office layouts that maximize productivity and efficiency.",
       image: consultationImage,
       features: [
-        "On-site consultation",
-        "CAD floor plans",
+        "Free on-site consultation",
+        "Professional 3D floor plans",
+        "CAD design services",
         "Ergonomic assessments",
-        "3D visualization",
-        "Space optimization",
+        "Space optimization strategies",
+        "Future growth planning",
       ],
     },
     {
       icon: Box,
-      title: "Custom Design",
-      desc: "Bring your vision to life with our custom design service. We create bespoke furniture tailored to your exact specifications, brand identity, and space requirements.",
+      title: "Custom Design Studio",
+      desc: "Bespoke furniture manufacturing tailored to your exact specifications. From corporate branding integration to unique space requirements, we bring your vision to life with precision craftsmanship.",
       image: null,
       features: [
-        "Custom dimensions",
-        "Material selection",
-        "Color matching",
-        "Logo integration",
-        "Brand consistency",
+        "Custom dimensions & designs",
+        "200+ material & color options",
+        "Brand identity integration",
+        "Prototype development",
+        "6-8 week production timeline",
+        "Quality craftsmanship guarantee",
       ],
     },
     {
       icon: Truck,
-      title: "Delivery & Installation",
-      desc: "Professional delivery and installation services ensure your furniture is set up correctly and ready to use. Our expert team handles everything from transportation to assembly.",
+      title: "Nationwide Delivery & Installation",
+      desc: "Professional delivery across Pakistan with expert installation services. Our trained teams ensure your furniture is assembled correctly, ready to use, and meets quality standards.",
       image: deliveryImage,
       features: [
-        "Nationwide delivery",
-        "Professional assembly",
-        "Debris removal",
-        "Quality inspection",
-        "Warranty activation",
+        "Coverage across all major cities",
+        "Professional assembly team",
+        "Debris removal & cleanup",
+        "Final quality inspection",
+        "Warranty activation on-site",
+        "Post-installation support",
       ],
     },
   ];
@@ -56,9 +59,9 @@ const Services = () => {
       
       <div className="container mx-auto px-4 py-12">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold mb-4">Our Services</h1>
+          <h1 className="text-5xl font-bold mb-4">360-Degree Office Solutions</h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Complete solutions for your office furniture needs, from design to installation
+            From consultation to installation - complete turnkey solutions for your office furniture needs. Factory-direct manufacturing with nationwide service coverage.
           </p>
         </div>
 

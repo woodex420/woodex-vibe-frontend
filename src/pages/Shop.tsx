@@ -16,11 +16,17 @@ import { Armchair, MonitorUp, LayoutGrid, Archive, Sofa, Star } from "lucide-rea
 
 const Shop = () => {
   const categories = [
-    { icon: Armchair, title: "Executive Chairs", desc: "Premium ergonomic seating", image: chairImage, count: 45 },
-    { icon: MonitorUp, title: "Standing Desks", desc: "Height-adjustable workspaces", image: deskImage, count: 32 },
-    { icon: LayoutGrid, title: "Workstations", desc: "Complete desk systems", image: workstationImage, count: 28 },
-    { icon: Archive, title: "Storage", desc: "Cabinets and filing solutions", image: storageImage, count: 52 },
-    { icon: Sofa, title: "Lounge", desc: "Breakout and reception furniture", image: loungeImage, count: 38 },
+    { icon: Armchair, title: "Office Chairs", desc: "Executive, mesh & ergonomic seating", image: chairImage, count: 8 },
+    { icon: MonitorUp, title: "Office Desks", desc: "Executive, standing & modular desks", image: deskImage, count: 6 },
+    { icon: LayoutGrid, title: "Workstations", desc: "Complete office desk systems", image: workstationImage, count: 5 },
+    { icon: Archive, title: "Storage Solutions", desc: "Cabinets, filing & shelving", image: storageImage, count: 7 },
+    { icon: Sofa, title: "Lounge Furniture", desc: "Reception & breakout seating", image: loungeImage, count: 4 },
+    { icon: Star, title: "Conference Tables", desc: "Meeting & boardroom tables", image: receptionImage, count: 5 },
+    { icon: Armchair, title: "Meeting Room Furniture", desc: "Complete meeting solutions", image: chairImage, count: 4 },
+    { icon: Star, title: "Reception Desks", desc: "Welcome & front desk solutions", image: receptionImage, count: 3 },
+    { icon: Armchair, title: "Executive Furniture", desc: "Premium office suites", image: chairMeshImage, count: 6 },
+    { icon: Archive, title: "Bookshelf Systems", desc: "Library & display shelving", image: bookshelfImage, count: 4 },
+    { icon: Star, title: "Office Accessories", desc: "Monitors, lamps & organizers", image: storageImage, count: 4 },
   ];
 
   const featured = [
@@ -80,9 +86,9 @@ const Shop = () => {
       
       <div className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold mb-4">Shop Our Collection</h1>
+          <h1 className="text-5xl font-bold mb-4">56 Premium Products Across 11 Categories</h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Explore our complete range of office furniture designed to enhance productivity and comfort
+            Pakistan's most comprehensive B2B office furniture collection. Factory-direct pricing with 5-7 year warranty on all products.
           </p>
         </div>
 
