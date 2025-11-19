@@ -48,16 +48,16 @@ const Navbar = () => {
               <Link to="/showrooms" className="hover:text-foreground transition-colors">
                 Showrooms
               </Link>
-              <Link to="/materials" className="hover:text-foreground transition-colors">
-                Material and Colors
-              </Link>
               <Link to="/warranty" className="hover:text-foreground transition-colors">
                 Warranty
+              </Link>
+              <Link to="/services/custom-design" className="hover:text-foreground transition-colors">
+                Designing
               </Link>
             </div>
             <div className="flex items-center gap-4">
               <span>English</span>
-              <span>AED</span>
+              <span>PKR</span>
             </div>
           </div>
         </div>

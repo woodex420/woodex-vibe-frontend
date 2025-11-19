@@ -4,124 +4,267 @@ import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ChatWidget } from "@/components/ChatWidget";
-import heroImage from "@/assets/hero-office.jpg";
-import chairImage from "@/assets/chair-executive.jpg";
-import deskImage from "@/assets/desk-standing.jpg";
-import workstationImage from "@/assets/workstation.jpg";
-import { ArrowRight, CheckCircle2, Box, Truck, Shield, Lightbulb } from "lucide-react";
+import {
+  ArrowRight,
+  Ruler,
+  Palette,
+  FileText,
+  Factory,
+  Truck,
+  Building2,
+  Users,
+  Shield,
+  Package,
+  Briefcase,
+  ChevronRight,
+} from "lucide-react";
+
+// Import product images
+import workstationImg from "@/assets/workstation.jpg";
+import storageImg from "@/assets/storage.jpg";
+import chairExecutiveImg from "@/assets/chair-executive.jpg";
+import deskExecutiveImg from "@/assets/desk-executive.jpg";
+import loungeImg from "@/assets/lounge.jpg";
+import meetingRoomImg from "@/assets/meeting-room.jpg";
+import receptionDeskImg from "@/assets/reception-desk.jpg";
+import heroOfficeImg from "@/assets/hero-office.jpg";
 
 const Index = () => {
+  const services = [
+    {
+      title: "Space Planning",
+      icon: Ruler,
+      link: "/services/space-planning",
+    },
+    {
+      title: "Custom Design",
+      icon: Palette,
+      link: "/services/custom-design",
+    },
+    {
+      title: "Project Based Quoting",
+      icon: FileText,
+      link: "/services/project-quoting",
+    },
+    {
+      title: "Factory Direct",
+      icon: Factory,
+      link: "/services/factory-direct",
+    },
+    {
+      title: "Delivery & Installation",
+      icon: Truck,
+      link: "/services/delivery-installation",
+    },
+  ];
+
+  const products = [
+    { name: "Cubicle Workstation", image: workstationImg },
+    { name: "Office Storage", image: storageImg },
+    { name: "Office Chair", image: chairExecutiveImg },
+    { name: "Staff Tables", image: deskExecutiveImg },
+    { name: "Office Sofas", image: loungeImg },
+    { name: "Executive Table", image: deskExecutiveImg },
+    { name: "Meeting Table", image: meetingRoomImg },
+    { name: "Reception Desk", image: receptionDeskImg, highlight: true },
+  ];
+
+  const features = [
+    {
+      icon: Palette,
+      title: "Custom Design Consultation",
+      description: "Professional design services tailored to your needs",
+    },
+    {
+      icon: Building2,
+      title: "3D Visualization",
+      description: "See your space before we build it",
+    },
+    {
+      icon: Truck,
+      title: "Professional Installation",
+      description: "Expert installation across Pakistan",
+    },
+    {
+      icon: Factory,
+      title: "Direct Factory Rate",
+      description: "Best prices with no middlemen",
+    },
+  ];
+
+  const clients = [
+    "ETIHAD",
+    "Haier",
+    "MindBridge",
+    "PACHEM",
+    "PAF TOWN",
+    "GLOBAL (Pvt) Limited",
+  ];
+
+  const stats = [
+    { icon: Users, value: "1,200+", label: "Satisfied Clients" },
+    { icon: Package, value: "56", label: "Products" },
+    { icon: Briefcase, value: "11", label: "Categories" },
+    { icon: Shield, value: "5-7 Years", label: "Warranty" },
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${heroImage})` }}
-        >
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
-        <div className="relative z-10 container mx-auto px-4 text-center text-white">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            Pakistan's Premier B2B Office Furniture
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed">
-            360-Degree Office Solutions from Manufacturing to Installation
-          </p>
-          <p className="text-lg mb-10 max-w-3xl mx-auto opacity-90">
-            1,200+ Satisfied Clients | 56 Premium Products | 5-7 Year Warranty | Nationwide Delivery
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      <section
+        className="relative min-h-[600px] flex items-center bg-cover bg-center"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${heroOfficeImg})`,
+        }}
+      >
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl text-white">
+            <div className="inline-block mb-4">
+              <span className="bg-accent text-accent-foreground px-4 py-2 rounded-full text-sm font-medium">
+                Best Seller
+              </span>
+            </div>
+            <h1 className="text-5xl md:text-6xl font-bold mb-4">
+              Woodex Lounge Series
+            </h1>
+            <p className="text-xl md:text-2xl mb-3">Sofa & Collection</p>
+            <p className="text-lg mb-3 font-semibold">Living Room</p>
+            <p className="text-base mb-8 max-w-2xl leading-relaxed">
+              Design to delivery manufacturing for startups, SMEs, and corporate
+              clients. Transform your workspace with furniture built exactly to
+              your specifications.
+            </p>
             <Link to="/shop">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-                Explore Collection
-              </Button>
-            </Link>
-            <Link to="/e-quotation">
-              <Button size="lg" variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-primary">
-                Get Quote
+              <Button size="lg" className="bg-accent hover:bg-accent/90">
+                SHOP NOW
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Features */}
-      <section className="py-16 bg-muted">
+      {/* Services Section */}
+      <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { icon: Box, title: "Factory Direct", desc: "Lahore-based manufacturing hub" },
-              { icon: Truck, title: "Nationwide Delivery", desc: "Covering all major cities" },
-              { icon: Shield, title: "5-7 Year Warranty", desc: "Industry-leading coverage" },
-              { icon: Lightbulb, title: "Free 3D Design", desc: "Floor plans & visualization" },
-            ].map((feature, i) => (
-              <Card key={i} className="border-none shadow-sm">
-                <CardContent className="pt-6 text-center">
-                  <feature.icon className="h-12 w-12 mx-auto mb-4 text-accent" />
-                  <h3 className="font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground">{feature.desc}</p>
-                </CardContent>
-              </Card>
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {services.map((service, index) => (
+              <Link key={index} to={service.link}>
+                <Card className="hover:shadow-lg transition-all hover:scale-105 cursor-pointer h-full">
+                  <CardContent className="p-6 text-center">
+                    <service.icon className="h-12 w-12 mx-auto mb-4 text-primary" />
+                    <h3 className="font-semibold mb-3">{service.title}</h3>
+                    <Button variant="outline" size="sm" className="w-full">
+                      E-Quote
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Product Categories */}
-      <section className="py-20">
+      {/* Products Section */}
+      <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">56 Premium Products Across 11 Categories</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              From executive suites to complete office fitouts - we handle projects of all sizes
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { image: chairImage, title: "Office Chairs", desc: "Executive, mesh & ergonomic seating" },
-              { image: deskImage, title: "Office Desks", desc: "Executive, standing & modular desks" },
-              { image: workstationImage, title: "Workstations", desc: "Complete office desk systems" },
-            ].map((product, i) => (
-              <Card key={i} className="group cursor-pointer overflow-hidden hover:shadow-lg transition-all">
-                <div className="aspect-square overflow-hidden">
-                  <img 
-                    src={product.image} 
-                    alt={product.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          <h2 className="text-4xl font-bold text-center mb-12">Products</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
+            {products.map((product, index) => (
+              <Link key={index} to="/shop" className="group text-center">
+                <div className="relative overflow-hidden rounded-full aspect-square mb-3 bg-muted">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                 </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
-                  <p className="text-muted-foreground mb-4">{product.desc}</p>
-                  <Link to="/shop" className="text-accent font-medium inline-flex items-center gap-2 hover:gap-3 transition-all">
-                    Shop Now <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </CardContent>
-              </Card>
+                <h3
+                  className={`text-sm font-medium ${
+                    product.highlight ? "text-accent" : "text-foreground"
+                  }`}
+                >
+                  {product.name}
+                </h3>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Statistics Section */}
+      {/* Features Section */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <div key={index} className="text-center">
+                <div className="bg-background rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-md">
+                  <feature.icon className="h-10 w-10 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                <p className="text-muted-foreground text-sm">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Best Selling Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Best Selling</h2>
+            <p className="text-xl text-muted-foreground mb-6">
+              Complete Furniture Solution for every workspace need
+            </p>
+            <Link to="/shop">
+              <Button variant="outline" size="lg">
+                See All Products
+                <ChevronRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
       <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[
-              { number: "1,200+", label: "Satisfied Clients" },
-              { number: "56", label: "Premium Products" },
-              { number: "11", label: "Product Categories" },
-              { number: "5-7 Years", label: "Warranty Coverage" },
-            ].map((stat, i) => (
-              <div key={i}>
-                <div className="text-4xl md:text-5xl font-bold mb-2 text-accent">{stat.number}</div>
-                <div className="text-sm md:text-base opacity-90">{stat.label}</div>
+            {stats.map((stat, index) => (
+              <div key={index}>
+                <stat.icon className="h-12 w-12 mx-auto mb-4 opacity-90" />
+                <div className="text-4xl font-bold mb-2">{stat.value}</div>
+                <div className="text-sm opacity-90">{stat.label}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Clients Section */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <p className="text-xl mb-8 max-w-3xl mx-auto">
+              Join 1,200+ satisfied clients across Pakistan who trust WoodEx for
+              their office furniture needs.
+            </p>
+            <h3 className="text-2xl font-bold mb-6">Clients</h3>
+            <div className="flex flex-wrap justify-center gap-6 md:gap-12 items-center">
+              {clients.map((client, index) => (
+                <div
+                  key={index}
+                  className="text-lg md:text-xl font-semibold text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {client}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -129,49 +272,83 @@ const Index = () => {
       {/* CTA Section */}
       <section className="py-20 bg-accent text-accent-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Office?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            From consultation to installation - we handle everything
-          </p>
-          <Link to="/e-quotation">
-            <Button size="lg" variant="secondary" className="gap-2">
-              Request Free Quotation <ArrowRight className="h-5 w-5" />
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Get a free consultation and 3D design for your workspace.
+          </h2>
+          <p className="text-xl mb-8 opacity-90">No commitment required.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/e-quotation">
+              <Button size="lg" variant="secondary" className="min-w-[200px]">
+                Get Free Quote
+              </Button>
+            </Link>
+            <Button
+              size="lg"
+              variant="outline"
+              className="min-w-[200px] border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-accent"
+            >
+              WhatsApp Us
             </Button>
-          </Link>
+          </div>
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-20 bg-muted">
+      {/* Content Section */}
+      <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold mb-6">Why Choose WoodEx?</h2>
-              <div className="space-y-4">
-                {[
-                  "Pakistan's first digital B2B furniture platform",
-                  "1,200+ satisfied clients nationwide",
-                  "Factory-direct manufacturing in Lahore",
-                  "5-7 year warranty on all products",
-                  "Free 3D design & floor planning",
-                  "Nationwide delivery & installation",
-                ].map((point, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <CheckCircle2 className="h-6 w-6 text-accent flex-shrink-0 mt-0.5" />
-                    <p className="text-lg">{point}</p>
-                  </div>
-                ))}
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold mb-6">
+              Modern Office Furniture Lahore Pakistan
+            </h2>
+            <div className="space-y-4">
+              <p className="text-foreground">
+                <strong>
+                  Ergonomic Office Chairs in Pakistan – Comfort That Works as
+                  Hard as You Do.
+                </strong>{" "}
+                At Woodex, we design ergonomic office chairs that go beyond basic
+                seating. These chairs are built to support your posture, reduce
+                strain, and keep you comfortable throughout long working hours. By
+                combining Master MoltyFoam cushioning, adjustable features, and
+                premium materials, Woodex chairs help improve not only your health
+                but also your focus and productivity at work.
+              </p>
+              <p className="text-muted-foreground">
+                A great chair isn't just where you sit—it's the foundation of a
+                smarter, healthier, and more productive workspace.
+              </p>
+              <div className="mt-8">
+                <Link to="/contact">
+                  <Button variant="outline" size="lg">
+                    Contact Us for More Options
+                  </Button>
+                </Link>
               </div>
-              <Link to="/about">
-                <Button size="lg" className="mt-8">
-                  Learn More About Us
-                </Button>
-              </Link>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              <img src={chairImage} alt="Office chair" className="rounded-lg shadow-lg" />
-              <img src={deskImage} alt="Office desk" className="rounded-lg shadow-lg mt-8" />
-            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQs Preview */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">FAQs</h2>
+          <div className="max-w-3xl mx-auto grid gap-4">
+            {[
+              "Are Woodex chairs durable?",
+              "Do Woodex office chairs come with warranty?",
+              "Where does Woodex deliver?",
+              "What types of ergonomic chairs does Woodex offer?",
+            ].map((question, index) => (
+              <Card key={index} className="hover:shadow-md transition-shadow cursor-pointer">
+                <CardContent className="p-6">
+                  <div className="flex justify-between items-center">
+                    <h3 className="font-medium">{question}</h3>
+                    <ChevronRight className="h-5 w-5 text-muted-foreground" />
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
