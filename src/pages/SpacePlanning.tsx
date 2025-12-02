@@ -84,19 +84,19 @@ const SpacePlanning = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <div className="relative h-[400px] overflow-hidden">
+      <div className="relative h-[500px] overflow-hidden">
         <img 
           src={spacePlanningImage} 
-          alt="Space Planning"
+          alt="Professional Space Planning & Design"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 flex items-center">
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent flex items-center">
           <div className="container mx-auto px-4">
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
-              Space Planning Services
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+              Space Planning & Design
             </h1>
-            <p className="text-xl text-white/90 max-w-2xl">
-              Transform your workspace with expert space planning. We create efficient, productive office layouts that maximize every square foot.
+            <p className="text-xl md:text-2xl text-white/90 max-w-2xl leading-relaxed">
+              Transform your workspace with expert space planning services. We create efficient, productive office layouts that maximize every square foot while enhancing employee wellbeing.
             </p>
           </div>
         </div>
@@ -105,19 +105,19 @@ const SpacePlanning = () => {
       <div className="container mx-auto px-4 py-16">
         {/* Services Grid */}
         <div className="mb-20">
-          <h2 className="text-4xl font-bold text-center mb-4">Comprehensive Space Planning</h2>
-          <p className="text-center text-muted-foreground text-lg mb-12 max-w-2xl mx-auto">
-            From concept to completion, we handle every aspect of workspace design and planning.
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">Comprehensive Space Planning</h2>
+          <p className="text-center text-muted-foreground text-lg mb-12 max-w-3xl mx-auto">
+            From initial concept to final completion, we handle every aspect of professional workspace design and strategic planning.
           </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, i) => (
-              <Card key={i}>
+              <Card key={i} className="border-border/50 hover:border-accent/50 transition-colors">
                 <CardContent className="pt-6">
-                  <div className="w-14 h-14 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
-                    <service.icon className="h-7 w-7 text-accent" />
+                  <div className="w-16 h-16 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
+                    <service.icon className="h-8 w-8 text-accent" />
                   </div>
-                  <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-                  <p className="text-muted-foreground">{service.desc}</p>
+                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{service.desc}</p>
                 </CardContent>
               </Card>
             ))}
@@ -163,53 +163,53 @@ const SpacePlanning = () => {
         </div>
 
         {/* Pricing */}
-        <Card className="mb-12 max-w-3xl mx-auto">
-          <CardContent className="p-8">
-            <h3 className="text-2xl font-bold mb-6">Service Packages</h3>
+        <Card className="mb-12 max-w-3xl mx-auto border-border/50">
+          <CardContent className="p-8 md:p-10">
+            <h3 className="text-3xl font-bold mb-8">Service Packages</h3>
             <div className="space-y-6">
               <div>
-                <h4 className="text-lg font-bold mb-2">Basic Space Plan</h4>
-                <p className="text-muted-foreground mb-2">
-                  2D floor plan with furniture layout and basic measurements
+                <h4 className="text-xl font-bold mb-2">Basic Space Plan</h4>
+                <p className="text-muted-foreground mb-3 leading-relaxed">
+                  Professional 2D floor plan with optimized furniture layout and detailed measurements
                 </p>
-                <p className="text-2xl font-bold text-accent">AED 2,500</p>
+                <p className="text-3xl font-bold text-accent">PKR 75,000</p>
               </div>
               <div className="border-t pt-6">
-                <h4 className="text-lg font-bold mb-2">Premium Package</h4>
-                <p className="text-muted-foreground mb-2">
-                  Complete planning with 3D visualization, multiple concepts, and furniture recommendations
+                <h4 className="text-xl font-bold mb-2">Premium Package</h4>
+                <p className="text-muted-foreground mb-3 leading-relaxed">
+                  Complete planning with photorealistic 3D visualization, multiple design concepts, and comprehensive furniture recommendations
                 </p>
-                <p className="text-2xl font-bold text-accent">AED 5,000</p>
+                <p className="text-3xl font-bold text-accent">PKR 150,000</p>
               </div>
               <div className="border-t pt-6">
-                <h4 className="text-lg font-bold mb-2">Full-Service Design</h4>
-                <p className="text-muted-foreground mb-2">
-                  End-to-end service including planning, design, furniture procurement, and project management
+                <h4 className="text-xl font-bold mb-2">Full-Service Design</h4>
+                <p className="text-muted-foreground mb-3 leading-relaxed">
+                  End-to-end turnkey service including planning, design, furniture procurement, project management, and installation
                 </p>
-                <p className="text-2xl font-bold text-accent">Custom Quote</p>
+                <p className="text-3xl font-bold text-accent">Custom Quote</p>
               </div>
             </div>
-            <p className="text-sm text-muted-foreground mt-6">
-              * Planning fees credited toward furniture purchase over AED 50,000
+            <p className="text-base text-muted-foreground mt-8">
+              * Planning fees are fully credited toward furniture purchases exceeding PKR 1,500,000
             </p>
           </CardContent>
         </Card>
 
         {/* CTA Card */}
-        <Card className="bg-primary text-primary-foreground">
-          <CardContent className="p-12 text-center">
-            <h2 className="text-4xl font-bold mb-4">Ready to Transform Your Space?</h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-              Schedule a free 30-minute consultation to discuss your space planning needs. We'll provide preliminary recommendations on the call.
+        <Card className="bg-primary text-primary-foreground border-0 shadow-2xl">
+          <CardContent className="p-12 md:p-16 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Transform Your Space?</h2>
+            <p className="text-xl md:text-2xl mb-10 max-w-2xl mx-auto opacity-90 leading-relaxed">
+              Schedule a complimentary 30-minute consultation to discuss your space planning needs. We'll provide preliminary expert recommendations during the call.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/e-quotation">
-                <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
+                <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90 font-semibold px-8 h-12">
                   Get Space Planning Quote
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold px-8 h-12">
                   Book Free Consultation
                 </Button>
               </Link>
