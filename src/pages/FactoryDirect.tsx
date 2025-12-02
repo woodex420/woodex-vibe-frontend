@@ -52,19 +52,19 @@ const FactoryDirect = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <div className="relative h-[400px] overflow-hidden">
+      <div className="relative h-[500px] overflow-hidden">
         <img 
           src={factoryImage} 
-          alt="Factory Direct"
+          alt="WoodEx Factory Direct Manufacturing"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 flex items-center">
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent flex items-center">
           <div className="container mx-auto px-4">
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
               Factory Direct Pricing
             </h1>
-            <p className="text-xl text-white/90 max-w-2xl">
-              Buy directly from our manufacturing facility and save 30-50% compared to retail prices. No middlemen, just quality furniture at honest prices.
+            <p className="text-xl md:text-2xl text-white/90 max-w-2xl leading-relaxed">
+              Buy directly from our Lahore manufacturing facility and save 30-50% compared to retail prices. No middlemen, no markups—just premium quality furniture at honest wholesale prices.
             </p>
           </div>
         </div>
@@ -83,19 +83,19 @@ const FactoryDirect = () => {
 
         {/* Benefits Grid */}
         <div className="mb-20">
-          <h2 className="text-4xl font-bold text-center mb-4">Why Buy Factory Direct?</h2>
-          <p className="text-center text-muted-foreground text-lg mb-12 max-w-2xl mx-auto">
-            Skip the retail markup and buy directly from the source. Better prices, better quality, better service.
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">Why Buy Factory Direct?</h2>
+          <p className="text-center text-muted-foreground text-lg mb-12 max-w-3xl mx-auto">
+            Skip the retail markup and buy directly from Pakistan's leading office furniture manufacturer. Better prices, superior quality, unmatched service.
           </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {benefits.map((benefit, i) => (
-              <Card key={i}>
+              <Card key={i} className="border-border/50 hover:border-accent/50 transition-colors">
                 <CardContent className="pt-6">
-                  <div className="w-14 h-14 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
-                    <benefit.icon className="h-7 w-7 text-accent" />
+                  <div className="w-16 h-16 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
+                    <benefit.icon className="h-8 w-8 text-accent" />
                   </div>
-                  <h3 className="text-xl font-bold mb-2">{benefit.title}</h3>
-                  <p className="text-muted-foreground">{benefit.desc}</p>
+                  <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{benefit.desc}</p>
                 </CardContent>
               </Card>
             ))}
@@ -137,20 +137,20 @@ const FactoryDirect = () => {
         </div>
 
         {/* CTA Card */}
-        <Card className="bg-primary text-primary-foreground">
-          <CardContent className="p-12 text-center">
-            <h2 className="text-4xl font-bold mb-4">Start Saving Today</h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-              Contact us for factory-direct pricing on your next furniture order. Minimum order: AED 10,000.
+        <Card className="bg-primary text-primary-foreground border-0 shadow-2xl">
+          <CardContent className="p-12 md:p-16 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Start Saving Today</h2>
+            <p className="text-xl md:text-2xl mb-10 max-w-2xl mx-auto opacity-90 leading-relaxed">
+              Contact us for factory-direct wholesale pricing on your next furniture order. Minimum order value: PKR 300,000.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/e-quotation">
-                <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
+                <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90 font-semibold px-8 h-12">
                   Get Factory Quote
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold px-8 h-12">
                   Schedule Factory Tour
                 </Button>
               </Link>

@@ -89,19 +89,19 @@ const CustomDesign = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <div className="relative h-[400px] overflow-hidden">
+      <div className="relative h-[500px] overflow-hidden">
         <img 
           src={customDesignImage} 
-          alt="Custom Design"
+          alt="WoodEx Custom Design Studio"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 flex items-center">
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent flex items-center">
           <div className="container mx-auto px-4">
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
               Custom Design Services
             </h1>
-            <p className="text-xl text-white/90 max-w-2xl">
-              Bring your vision to life with our bespoke furniture design service. From concept to creation, we craft unique pieces tailored to your exact specifications.
+            <p className="text-xl md:text-2xl text-white/90 max-w-2xl leading-relaxed">
+              Bring your vision to life with our bespoke furniture design service. From initial concept to final creation, we craft unique pieces tailored precisely to your specifications and brand identity.
             </p>
           </div>
         </div>
@@ -110,19 +110,19 @@ const CustomDesign = () => {
       <div className="container mx-auto px-4 py-16">
         {/* Services Grid */}
         <div className="mb-20">
-          <h2 className="text-4xl font-bold text-center mb-4">Our Custom Design Services</h2>
-          <p className="text-center text-muted-foreground text-lg mb-12 max-w-2xl mx-auto">
-            Every piece is designed and crafted specifically for you. No two projects are the same.
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">Our Custom Design Services</h2>
+          <p className="text-center text-muted-foreground text-lg mb-12 max-w-3xl mx-auto">
+            Every piece is designed and crafted specifically for you. No two projects are the same—each is a unique reflection of your vision.
           </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, i) => (
-              <Card key={i}>
+              <Card key={i} className="border-border/50 hover:border-accent/50 transition-colors">
                 <CardContent className="pt-6">
-                  <div className="w-14 h-14 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
-                    <service.icon className="h-7 w-7 text-accent" />
+                  <div className="w-16 h-16 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
+                    <service.icon className="h-8 w-8 text-accent" />
                   </div>
-                  <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-                  <p className="text-muted-foreground">{service.desc}</p>
+                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{service.desc}</p>
                 </CardContent>
               </Card>
             ))}
@@ -174,41 +174,41 @@ const CustomDesign = () => {
         </div>
 
         {/* Pricing Info */}
-        <Card className="mb-12 max-w-3xl mx-auto">
-          <CardContent className="p-8">
-            <h3 className="text-2xl font-bold mb-4">Investment & Timeline</h3>
-            <div className="space-y-4 text-muted-foreground">
+        <Card className="mb-12 max-w-3xl mx-auto border-border/50">
+          <CardContent className="p-8 md:p-10">
+            <h3 className="text-3xl font-bold mb-6">Investment & Timeline</h3>
+            <div className="space-y-5 text-muted-foreground text-lg">
               <p>
-                <strong className="text-foreground">Design Fee:</strong> AED 5,000 - 15,000 (credited toward final order)
+                <strong className="text-foreground">Design Fee:</strong> PKR 150,000 - 450,000 (fully credited toward final order)
               </p>
               <p>
-                <strong className="text-foreground">Minimum Order:</strong> AED 25,000 for custom design projects
+                <strong className="text-foreground">Minimum Order:</strong> PKR 750,000 for custom design projects
               </p>
               <p>
-                <strong className="text-foreground">Timeline:</strong> 10-16 weeks from initial consultation to delivery
+                <strong className="text-foreground">Timeline:</strong> 10-16 weeks from initial consultation to delivery and installation
               </p>
               <p>
-                <strong className="text-foreground">Warranty:</strong> 5-year warranty on all custom manufactured pieces
+                <strong className="text-foreground">Warranty:</strong> Comprehensive 5-year warranty on all custom manufactured pieces
               </p>
             </div>
           </CardContent>
         </Card>
 
         {/* CTA Card */}
-        <Card className="bg-primary text-primary-foreground">
-          <CardContent className="p-12 text-center">
-            <h2 className="text-4xl font-bold mb-4">Start Your Custom Project</h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-              Schedule a consultation with our design team to discuss your vision. Bring sketches, inspiration photos, or just your ideas.
+        <Card className="bg-primary text-primary-foreground border-0 shadow-2xl">
+          <CardContent className="p-12 md:p-16 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Start Your Custom Project</h2>
+            <p className="text-xl md:text-2xl mb-10 max-w-2xl mx-auto opacity-90 leading-relaxed">
+              Schedule a consultation with our expert design team to discuss your vision. Bring sketches, inspiration photos, mood boards, or just your ideas—we'll help bring them to life.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/e-quotation">
-                <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
+                <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90 font-semibold px-8 h-12">
                   Request Custom Quote
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold px-8 h-12">
                   Book Design Consultation
                 </Button>
               </Link>
