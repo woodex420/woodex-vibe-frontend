@@ -5,6 +5,13 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ChatWidget } from "@/components/ChatWidget";
 import { ArrowRight, Ruler, Palette, FileText, Factory, Truck, Building2, Users, Shield, Package, Briefcase, ChevronRight } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 // Import product images
 import workstationImg from "@/assets/workstation.jpg";
@@ -154,17 +161,39 @@ const Index = () => {
       {/* Products Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12">Products</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
-            {products.map((product, index) => <Link key={index} to="/shop" className="group text-center">
-                <div className="relative overflow-hidden rounded-full aspect-square mb-3 bg-muted">
-                  <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <h3 className={`text-sm font-medium ${product.highlight ? "text-accent" : "text-foreground"}`}>
-                  {product.name}
-                </h3>
-              </Link>)}
-          </div>
+          <h2 className="text-4xl font-bold text-center mb-4">Products</h2>
+          <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
+            Explore our complete range of premium office furniture categories
+          </p>
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {products.map((product, index) => (
+                <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 md:basis-1/4 lg:basis-1/6">
+                  <Link to="/shop" className="group text-center block">
+                    <div className="relative overflow-hidden rounded-full aspect-square mb-3 bg-muted border-4 border-transparent group-hover:border-accent transition-all duration-300 shadow-md group-hover:shadow-xl">
+                      <img 
+                        src={product.image} 
+                        alt={product.name} 
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                      />
+                      <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300 rounded-full" />
+                    </div>
+                    <h3 className={`text-sm font-medium transition-colors duration-300 ${product.highlight ? "text-accent" : "text-foreground group-hover:text-accent"}`}>
+                      {product.name}
+                    </h3>
+                  </Link>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex -left-4 lg:-left-12 bg-background border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground" />
+            <CarouselNext className="hidden md:flex -right-4 lg:-right-12 bg-background border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground" />
+          </Carousel>
         </div>
       </section>
 
