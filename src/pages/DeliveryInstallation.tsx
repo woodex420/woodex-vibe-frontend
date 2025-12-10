@@ -279,7 +279,7 @@ const DeliveryInstallation = () => {
                   </Button>
                 </Link>
                 <Link to="/contact">
-                  <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold px-10 h-14 text-lg">
+                  <Button size="lg" variant="outline" className="border-2 border-white hover:bg-white font-semibold px-10 h-14 text-lg text-primary">
                     Contact Us
                   </Button>
                 </Link>
