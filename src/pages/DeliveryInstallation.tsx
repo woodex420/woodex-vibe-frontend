@@ -7,69 +7,84 @@ import deliveryImage from "@/assets/delivery-truck.jpg";
 import showroomImage from "@/assets/showroom-exterior.jpg";
 import meetingImage from "@/assets/meeting-room.jpg";
 import { Truck, Clock, Shield, CheckCircle2, Package, MapPin, ArrowRight } from "lucide-react";
-
 const DeliveryInstallation = () => {
-  const features = [
-    {
-      icon: Truck,
-      title: "Pakistan-Wide Coverage",
-      desc: "Delivery to all major cities across Pakistan with our modern fleet equipped with real-time GPS tracking.",
-    },
-    {
-      icon: Clock,
-      title: "Flexible Scheduling",
-      desc: "Choose delivery times that work for your business. Weekend and evening delivery available upon request.",
-    },
-    {
-      icon: Shield,
-      title: "Fully Insured Transit",
-      desc: "All deliveries are comprehensively insured. Your furniture is protected from warehouse to final installation.",
-    },
-    {
-      icon: Package,
-      title: "White Glove Service",
-      desc: "Professional unpacking, expert assembly, and precise placement. Complete packaging material removal included.",
-    },
-    {
-      icon: MapPin,
-      title: "Real-Time Tracking",
-      desc: "Track your delivery in real-time with SMS and email updates at every stage of the delivery process.",
-    },
-    {
-      icon: CheckCircle2,
-      title: "Quality Inspection",
-      desc: "Comprehensive quality check and detailed walkthrough to ensure everything exceeds your expectations.",
-    },
-  ];
-
-  const process = [
-    { step: "1", title: "Order Confirmation", desc: "Receive order details and delivery estimate" },
-    { step: "2", title: "Preparation", desc: "Furniture prepared and packaged at our warehouse" },
-    { step: "3", title: "Dispatch", desc: "Team dispatched with real-time tracking link" },
-    { step: "4", title: "Delivery", desc: "Professional delivery and installation at your site" },
-    { step: "5", title: "Inspection", desc: "Final walkthrough and quality verification" },
-  ];
-
-  const cities = [
-    { name: "Lahore", time: "1-2 days", cost: "PKR 15,000" },
-    { name: "Karachi", time: "3-5 days", cost: "PKR 35,000" },
-    { name: "Islamabad", time: "2-3 days", cost: "PKR 25,000" },
-    { name: "Faisalabad", time: "1-2 days", cost: "PKR 18,000" },
-    { name: "Multan", time: "2-3 days", cost: "PKR 22,000" },
-    { name: "Peshawar", time: "3-4 days", cost: "PKR 30,000" },
-  ];
-
-  return (
-    <div className="min-h-screen bg-background">
+  const features = [{
+    icon: Truck,
+    title: "Pakistan-Wide Coverage",
+    desc: "Delivery to all major cities across Pakistan with our modern fleet equipped with real-time GPS tracking."
+  }, {
+    icon: Clock,
+    title: "Flexible Scheduling",
+    desc: "Choose delivery times that work for your business. Weekend and evening delivery available upon request."
+  }, {
+    icon: Shield,
+    title: "Fully Insured Transit",
+    desc: "All deliveries are comprehensively insured. Your furniture is protected from warehouse to final installation."
+  }, {
+    icon: Package,
+    title: "White Glove Service",
+    desc: "Professional unpacking, expert assembly, and precise placement. Complete packaging material removal included."
+  }, {
+    icon: MapPin,
+    title: "Real-Time Tracking",
+    desc: "Track your delivery in real-time with SMS and email updates at every stage of the delivery process."
+  }, {
+    icon: CheckCircle2,
+    title: "Quality Inspection",
+    desc: "Comprehensive quality check and detailed walkthrough to ensure everything exceeds your expectations."
+  }];
+  const process = [{
+    step: "1",
+    title: "Order Confirmation",
+    desc: "Receive order details and delivery estimate"
+  }, {
+    step: "2",
+    title: "Preparation",
+    desc: "Furniture prepared and packaged at our warehouse"
+  }, {
+    step: "3",
+    title: "Dispatch",
+    desc: "Team dispatched with real-time tracking link"
+  }, {
+    step: "4",
+    title: "Delivery",
+    desc: "Professional delivery and installation at your site"
+  }, {
+    step: "5",
+    title: "Inspection",
+    desc: "Final walkthrough and quality verification"
+  }];
+  const cities = [{
+    name: "Lahore",
+    time: "1-2 days",
+    cost: "PKR 15,000"
+  }, {
+    name: "Karachi",
+    time: "3-5 days",
+    cost: "PKR 35,000"
+  }, {
+    name: "Islamabad",
+    time: "2-3 days",
+    cost: "PKR 25,000"
+  }, {
+    name: "Faisalabad",
+    time: "1-2 days",
+    cost: "PKR 18,000"
+  }, {
+    name: "Multan",
+    time: "2-3 days",
+    cost: "PKR 22,000"
+  }, {
+    name: "Peshawar",
+    time: "3-4 days",
+    cost: "PKR 30,000"
+  }];
+  return <div className="min-h-screen bg-background">
       <Navbar />
       
       {/* Hero Section */}
       <div className="relative h-[600px] overflow-hidden">
-        <img 
-          src={deliveryImage} 
-          alt="Professional Delivery & Installation Services"
-          className="w-full h-full object-cover"
-        />
+        <img src={deliveryImage} alt="Professional Delivery & Installation Services" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/70 to-black/30 flex items-center">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl">
@@ -91,7 +106,7 @@ const DeliveryInstallation = () => {
                   </Button>
                 </Link>
                 <Link to="/contact">
-                  <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold px-8 h-14 text-lg">
+                  <Button size="lg" variant="outline" className="border-2 border-white hover:bg-white font-semibold px-8 h-14 text-lg text-secondary-foreground">
                     Schedule Delivery
                   </Button>
                 </Link>
@@ -136,8 +151,7 @@ const DeliveryInstallation = () => {
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, i) => (
-              <Card key={i} className="group border-border/50 hover:border-accent/50 hover:shadow-xl transition-all duration-300 overflow-hidden">
+            {features.map((feature, i) => <Card key={i} className="group border-border/50 hover:border-accent/50 hover:shadow-xl transition-all duration-300 overflow-hidden">
                 <CardContent className="pt-8 pb-8">
                   <div className="w-16 h-16 rounded-2xl bg-accent/10 group-hover:bg-accent group-hover:scale-110 flex items-center justify-center mb-6 transition-all duration-300">
                     <feature.icon className="h-8 w-8 text-accent group-hover:text-accent-foreground transition-colors" />
@@ -145,19 +159,14 @@ const DeliveryInstallation = () => {
                   <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">{feature.desc}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
 
         {/* Image + Content Section */}
         <div className="mb-24 grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative">
-            <img 
-              src={showroomImage} 
-              alt="Professional Installation" 
-              className="rounded-2xl shadow-2xl w-full"
-            />
+            <img src={showroomImage} alt="Professional Installation" className="rounded-2xl shadow-2xl w-full" />
             <div className="absolute -bottom-6 -right-6 bg-accent text-accent-foreground p-6 rounded-xl shadow-lg hidden md:block">
               <div className="text-3xl font-bold">5 Year</div>
               <div className="text-sm">Installation Warranty</div>
@@ -170,12 +179,10 @@ const DeliveryInstallation = () => {
               Our trained installation teams have years of experience setting up office spaces of all sizes. From single executive desks to complete corporate fit-outs, we ensure every piece is perfectly assembled and positioned.
             </p>
             <ul className="space-y-4">
-              {["Trained & certified installers", "Full assembly & positioning", "Cable management included", "Packaging removal & cleanup", "Post-installation support"].map((item, i) => (
-                <li key={i} className="flex items-center gap-3">
+              {["Trained & certified installers", "Full assembly & positioning", "Cable management included", "Packaging removal & cleanup", "Post-installation support"].map((item, i) => <li key={i} className="flex items-center gap-3">
                   <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0" />
                   <span className="font-medium">{item}</span>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
         </div>
@@ -188,8 +195,7 @@ const DeliveryInstallation = () => {
           </div>
           <div className="max-w-4xl mx-auto relative">
             <div className="absolute left-7 top-0 bottom-0 w-0.5 bg-accent/20 hidden md:block" />
-            {process.map((item, i) => (
-              <div key={i} className="flex gap-6 mb-10 last:mb-0 relative">
+            {process.map((item, i) => <div key={i} className="flex gap-6 mb-10 last:mb-0 relative">
                 <div className="flex-shrink-0 relative z-10">
                   <div className="w-14 h-14 rounded-full bg-accent text-accent-foreground font-bold flex items-center justify-center text-xl shadow-lg">
                     {item.step}
@@ -199,8 +205,7 @@ const DeliveryInstallation = () => {
                   <h3 className="text-2xl font-bold mb-2">{item.title}</h3>
                   <p className="text-muted-foreground text-lg">{item.desc}</p>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
 
@@ -212,8 +217,7 @@ const DeliveryInstallation = () => {
             <p className="text-muted-foreground text-lg">Standard delivery rates for major cities</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {cities.map((city, i) => (
-              <Card key={i} className="group hover:shadow-lg transition-all duration-300 border-border/50 hover:border-accent/30">
+            {cities.map((city, i) => <Card key={i} className="group hover:shadow-lg transition-all duration-300 border-border/50 hover:border-accent/30">
                 <CardContent className="p-6">
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="text-2xl font-bold">{city.name}</h3>
@@ -230,8 +234,7 @@ const DeliveryInstallation = () => {
                     </div>
                   </div>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
 
@@ -287,8 +290,6 @@ const DeliveryInstallation = () => {
       </div>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default DeliveryInstallation;
