@@ -5,35 +5,69 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Target, Eye, Award, Users, Factory, Shield, Truck, Heart, CheckCircle2 } from "lucide-react";
 import factoryImage from "@/assets/factory-floor.jpg";
-
 const About = () => {
-  const values = [
-    { icon: Target, title: "Quality Craftsmanship", desc: "Every piece reflects superior Pakistani manufacturing with the finest materials and attention to detail" },
-    { icon: Users, title: "Customer-Centric Innovation", desc: "Technology serving business needs with 3D visualization, automated quotations, and personalized service" },
-    { icon: Eye, title: "Transparency & Trust", desc: "Clear pricing, honest communication, and a quote-first approach that prioritizes your needs" },
-    { icon: Award, title: "Continuous Improvement", desc: "Evolving with market demands, investing in R&D, and setting new industry standards" },
-  ];
-
-  const milestones = [
-    { year: "2015", event: "Foundation", desc: "Established our Lahore-based manufacturing facility with a vision to transform Pakistani office furniture" },
-    { year: "2018", event: "B2B Focus", desc: "Pivoted to B2B model, establishing partnerships with leading corporations across Pakistan" },
-    { year: "2020", event: "Digital Transformation", desc: "Launched Pakistan's first B2B furniture e-commerce platform with 3D visualization" },
-    { year: "2023", event: "1,000+ Clients", desc: "Milestone achievement: Served over 1,000 businesses across all major Pakistani cities" },
-    { year: "2024", event: "Technology Leadership", desc: "Introduced AI-powered design consultation and automated quotation systems" },
-    { year: "2025", event: "Market Leader", desc: "1,200+ clients, 56 products, 11 categories, nationwide delivery network established" },
-  ];
-
-  const stats = [
-    { number: "1,200+", label: "Satisfied Clients" },
-    { number: "56", label: "Premium Products" },
-    { number: "11", label: "Product Categories" },
-    { number: "5-7 Years", label: "Warranty Coverage" },
-    { number: "15+", label: "Years Experience" },
-    { number: "95%", label: "Client Retention" },
-  ];
-
-  return (
-    <div className="min-h-screen bg-background">
+  const values = [{
+    icon: Target,
+    title: "Quality Craftsmanship",
+    desc: "Every piece reflects superior Pakistani manufacturing with the finest materials and attention to detail"
+  }, {
+    icon: Users,
+    title: "Customer-Centric Innovation",
+    desc: "Technology serving business needs with 3D visualization, automated quotations, and personalized service"
+  }, {
+    icon: Eye,
+    title: "Transparency & Trust",
+    desc: "Clear pricing, honest communication, and a quote-first approach that prioritizes your needs"
+  }, {
+    icon: Award,
+    title: "Continuous Improvement",
+    desc: "Evolving with market demands, investing in R&D, and setting new industry standards"
+  }];
+  const milestones = [{
+    year: "2015",
+    event: "Foundation",
+    desc: "Established our Lahore-based manufacturing facility with a vision to transform Pakistani office furniture"
+  }, {
+    year: "2018",
+    event: "B2B Focus",
+    desc: "Pivoted to B2B model, establishing partnerships with leading corporations across Pakistan"
+  }, {
+    year: "2020",
+    event: "Digital Transformation",
+    desc: "Launched Pakistan's first B2B furniture e-commerce platform with 3D visualization"
+  }, {
+    year: "2023",
+    event: "1,000+ Clients",
+    desc: "Milestone achievement: Served over 1,000 businesses across all major Pakistani cities"
+  }, {
+    year: "2024",
+    event: "Technology Leadership",
+    desc: "Introduced AI-powered design consultation and automated quotation systems"
+  }, {
+    year: "2025",
+    event: "Market Leader",
+    desc: "1,200+ clients, 56 products, 11 categories, nationwide delivery network established"
+  }];
+  const stats = [{
+    number: "1,200+",
+    label: "Satisfied Clients"
+  }, {
+    number: "56",
+    label: "Premium Products"
+  }, {
+    number: "11",
+    label: "Product Categories"
+  }, {
+    number: "5-7 Years",
+    label: "Warranty Coverage"
+  }, {
+    number: "15+",
+    label: "Years Experience"
+  }, {
+    number: "95%",
+    label: "Client Retention"
+  }];
+  return <div className="min-h-screen bg-background">
       <Navbar />
       
       {/* Hero Section */}
@@ -55,12 +89,10 @@ const About = () => {
       <section className="py-12 bg-muted/50 border-b">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
-            {stats.map((stat, i) => (
-              <div key={i}>
+            {stats.map((stat, i) => <div key={i}>
                 <div className="text-3xl font-bold text-accent mb-1">{stat.number}</div>
                 <div className="text-sm text-muted-foreground">{stat.label}</div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -124,8 +156,7 @@ const About = () => {
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, i) => (
-              <Card key={i} className="hover:shadow-xl transition-all hover:border-accent">
+            {values.map((value, i) => <Card key={i} className="hover:shadow-xl transition-all hover:border-accent">
                 <CardContent className="p-8 text-center">
                   <div className="w-16 h-16 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-6">
                     <value.icon className="h-8 w-8 text-accent" />
@@ -133,8 +164,7 @@ const About = () => {
                   <h3 className="text-xl font-bold mb-3">{value.title}</h3>
                   <p className="text-muted-foreground">{value.desc}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </section>
 
@@ -147,20 +177,29 @@ const About = () => {
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { icon: Factory, title: "Factory Direct", desc: "No middlemen means better prices and quality control" },
-              { icon: Shield, title: "5-7 Year Warranty", desc: "Industry-leading warranty coverage on all products" },
-              { icon: Truck, title: "Nationwide Delivery", desc: "Free delivery and installation across Pakistan" },
-              { icon: Heart, title: "Customer First", desc: "Dedicated support from quote to installation" },
-            ].map((item, i) => (
-              <div key={i} className="text-center">
+            {[{
+            icon: Factory,
+            title: "Factory Direct",
+            desc: "No middlemen means better prices and quality control"
+          }, {
+            icon: Shield,
+            title: "5-7 Year Warranty",
+            desc: "Industry-leading warranty coverage on all products"
+          }, {
+            icon: Truck,
+            title: "Nationwide Delivery",
+            desc: "Free delivery and installation across Pakistan"
+          }, {
+            icon: Heart,
+            title: "Customer First",
+            desc: "Dedicated support from quote to installation"
+          }].map((item, i) => <div key={i} className="text-center">
                 <div className="w-20 h-20 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
                   <item.icon className="h-10 w-10 text-accent" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">{item.title}</h3>
                 <p className="text-muted-foreground">{item.desc}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </section>
 
@@ -174,8 +213,7 @@ const About = () => {
           </div>
           <div className="max-w-4xl mx-auto">
             <div className="space-y-6">
-              {milestones.map((milestone, i) => (
-                <div key={i} className="flex gap-6 items-start">
+              {milestones.map((milestone, i) => <div key={i} className="flex gap-6 items-start">
                   <div className="flex-shrink-0 w-24 text-right">
                     <div className="inline-block px-4 py-2 bg-accent text-accent-foreground rounded-full font-bold">
                       {milestone.year}
@@ -187,8 +225,7 @@ const About = () => {
                       <p className="text-muted-foreground">{milestone.desc}</p>
                     </CardContent>
                   </Card>
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
         </section>
@@ -203,17 +240,10 @@ const About = () => {
                   WoodEx operates on a <span className="font-bold">quote-first strategy</span> that prioritizes relationship building over immediate sales. This approach enables:
                 </p>
                 <div className="grid md:grid-cols-2 gap-6 text-left">
-                  {[
-                    "Deep understanding of client needs before any recommendation",
-                    "Customization options beyond standard product offerings",
-                    "Premium value justified by truly personalized service",
-                    "Long-term client relationships with high repeat business",
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-start gap-3">
+                  {["Deep understanding of client needs before any recommendation", "Customization options beyond standard product offerings", "Premium value justified by truly personalized service", "Long-term client relationships with high repeat business"].map((item, i) => <div key={i} className="flex items-start gap-3">
                       <CheckCircle2 className="h-6 w-6 flex-shrink-0 mt-0.5 text-accent" />
                       <span className="opacity-90">{item}</span>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </div>
             </CardContent>
@@ -233,7 +263,7 @@ const About = () => {
               </Button>
             </Link>
             <Link to="/contact">
-              <Button size="lg" variant="outline" className="border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-accent min-w-[200px]">
+              <Button size="lg" variant="outline" className="border-accent-foreground hover:bg-accent-foreground min-w-[200px] text-primary">
                 Contact Us
               </Button>
             </Link>
@@ -242,8 +272,6 @@ const About = () => {
       </div>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default About;
