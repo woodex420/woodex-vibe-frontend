@@ -4,20 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ChatWidget } from "@/components/ChatWidget";
-import {
-  ArrowRight,
-  Ruler,
-  Palette,
-  FileText,
-  Factory,
-  Truck,
-  Building2,
-  Users,
-  Shield,
-  Package,
-  Briefcase,
-  ChevronRight,
-} from "lucide-react";
+import { ArrowRight, Ruler, Palette, FileText, Factory, Truck, Building2, Users, Shield, Package, Briefcase, ChevronRight } from "lucide-react";
 
 // Import product images
 import workstationImg from "@/assets/workstation.jpg";
@@ -28,97 +15,96 @@ import loungeImg from "@/assets/lounge.jpg";
 import meetingRoomImg from "@/assets/meeting-room.jpg";
 import receptionDeskImg from "@/assets/reception-desk.jpg";
 import heroOfficeImg from "@/assets/hero-office.jpg";
-
 const Index = () => {
-  const services = [
-    {
-      title: "Space Planning",
-      icon: Ruler,
-      link: "/services/space-planning",
-    },
-    {
-      title: "Custom Design",
-      icon: Palette,
-      link: "/services/custom-design",
-    },
-    {
-      title: "Project Based Quoting",
-      icon: FileText,
-      link: "/services/project-quoting",
-    },
-    {
-      title: "Factory Direct",
-      icon: Factory,
-      link: "/services/factory-direct",
-    },
-    {
-      title: "Delivery & Installation",
-      icon: Truck,
-      link: "/services/delivery-installation",
-    },
-  ];
-
-  const products = [
-    { name: "Cubicle Workstation", image: workstationImg },
-    { name: "Office Storage", image: storageImg },
-    { name: "Office Chair", image: chairExecutiveImg },
-    { name: "Staff Tables", image: deskExecutiveImg },
-    { name: "Office Sofas", image: loungeImg },
-    { name: "Executive Table", image: deskExecutiveImg },
-    { name: "Meeting Table", image: meetingRoomImg },
-    { name: "Reception Desk", image: receptionDeskImg, highlight: true },
-  ];
-
-  const features = [
-    {
-      icon: Palette,
-      title: "Custom Design Consultation",
-      description: "Professional design services tailored to your needs",
-    },
-    {
-      icon: Building2,
-      title: "3D Visualization",
-      description: "See your space before we build it",
-    },
-    {
-      icon: Truck,
-      title: "Professional Installation",
-      description: "Expert installation across Pakistan",
-    },
-    {
-      icon: Factory,
-      title: "Direct Factory Rate",
-      description: "Best prices with no middlemen",
-    },
-  ];
-
-  const clients = [
-    "ETIHAD",
-    "Haier",
-    "MindBridge",
-    "PACHEM",
-    "PAF TOWN",
-    "GLOBAL (Pvt) Limited",
-  ];
-
-  const stats = [
-    { icon: Users, value: "1,200+", label: "Satisfied Clients" },
-    { icon: Package, value: "56", label: "Products" },
-    { icon: Briefcase, value: "11", label: "Categories" },
-    { icon: Shield, value: "5-7 Years", label: "Warranty" },
-  ];
-
-  return (
-    <div className="min-h-screen bg-background">
+  const services = [{
+    title: "Space Planning",
+    icon: Ruler,
+    link: "/services/space-planning"
+  }, {
+    title: "Custom Design",
+    icon: Palette,
+    link: "/services/custom-design"
+  }, {
+    title: "Project Based Quoting",
+    icon: FileText,
+    link: "/services/project-quoting"
+  }, {
+    title: "Factory Direct",
+    icon: Factory,
+    link: "/services/factory-direct"
+  }, {
+    title: "Delivery & Installation",
+    icon: Truck,
+    link: "/services/delivery-installation"
+  }];
+  const products = [{
+    name: "Cubicle Workstation",
+    image: workstationImg
+  }, {
+    name: "Office Storage",
+    image: storageImg
+  }, {
+    name: "Office Chair",
+    image: chairExecutiveImg
+  }, {
+    name: "Staff Tables",
+    image: deskExecutiveImg
+  }, {
+    name: "Office Sofas",
+    image: loungeImg
+  }, {
+    name: "Executive Table",
+    image: deskExecutiveImg
+  }, {
+    name: "Meeting Table",
+    image: meetingRoomImg
+  }, {
+    name: "Reception Desk",
+    image: receptionDeskImg,
+    highlight: true
+  }];
+  const features = [{
+    icon: Palette,
+    title: "Custom Design Consultation",
+    description: "Professional design services tailored to your needs"
+  }, {
+    icon: Building2,
+    title: "3D Visualization",
+    description: "See your space before we build it"
+  }, {
+    icon: Truck,
+    title: "Professional Installation",
+    description: "Expert installation across Pakistan"
+  }, {
+    icon: Factory,
+    title: "Direct Factory Rate",
+    description: "Best prices with no middlemen"
+  }];
+  const clients = ["ETIHAD", "Haier", "MindBridge", "PACHEM", "PAF TOWN", "GLOBAL (Pvt) Limited"];
+  const stats = [{
+    icon: Users,
+    value: "1,200+",
+    label: "Satisfied Clients"
+  }, {
+    icon: Package,
+    value: "56",
+    label: "Products"
+  }, {
+    icon: Briefcase,
+    value: "11",
+    label: "Categories"
+  }, {
+    icon: Shield,
+    value: "5-7 Years",
+    label: "Warranty"
+  }];
+  return <div className="min-h-screen bg-background">
       <Navbar />
 
       {/* Hero Section */}
-      <section
-        className="relative min-h-[600px] flex items-center bg-cover bg-center"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${heroOfficeImg})`,
-        }}
-      >
+      <section className="relative min-h-[600px] flex items-center bg-cover bg-center" style={{
+      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${heroOfficeImg})`
+    }}>
         <div className="container mx-auto px-4">
           <div className="max-w-3xl text-white">
             <div className="inline-block mb-4">
@@ -150,8 +136,7 @@ const Index = () => {
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {services.map((service, index) => (
-              <Link key={index} to={service.link}>
+            {services.map((service, index) => <Link key={index} to={service.link}>
                 <Card className="hover:shadow-lg transition-all hover:scale-105 cursor-pointer h-full">
                   <CardContent className="p-6 text-center">
                     <service.icon className="h-12 w-12 mx-auto mb-4 text-primary" />
@@ -161,8 +146,7 @@ const Index = () => {
                     </Button>
                   </CardContent>
                 </Card>
-              </Link>
-            ))}
+              </Link>)}
           </div>
         </div>
       </section>
@@ -172,24 +156,14 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12">Products</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
-            {products.map((product, index) => (
-              <Link key={index} to="/shop" className="group text-center">
+            {products.map((product, index) => <Link key={index} to="/shop" className="group text-center">
                 <div className="relative overflow-hidden rounded-full aspect-square mb-3 bg-muted">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
+                  <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3
-                  className={`text-sm font-medium ${
-                    product.highlight ? "text-accent" : "text-foreground"
-                  }`}
-                >
+                <h3 className={`text-sm font-medium ${product.highlight ? "text-accent" : "text-foreground"}`}>
                   {product.name}
                 </h3>
-              </Link>
-            ))}
+              </Link>)}
           </div>
         </div>
       </section>
@@ -198,8 +172,7 @@ const Index = () => {
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <div key={index} className="text-center">
+            {features.map((feature, index) => <div key={index} className="text-center">
                 <div className="bg-background rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-md">
                   <feature.icon className="h-10 w-10 text-primary" />
                 </div>
@@ -207,8 +180,7 @@ const Index = () => {
                 <p className="text-muted-foreground text-sm">
                   {feature.description}
                 </p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -235,13 +207,11 @@ const Index = () => {
       <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {stats.map((stat, index) => (
-              <div key={index}>
+            {stats.map((stat, index) => <div key={index}>
                 <stat.icon className="h-12 w-12 mx-auto mb-4 opacity-90" />
                 <div className="text-4xl font-bold mb-2">{stat.value}</div>
                 <div className="text-sm opacity-90">{stat.label}</div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -256,14 +226,9 @@ const Index = () => {
             </p>
             <h3 className="text-2xl font-bold mb-6">Clients</h3>
             <div className="flex flex-wrap justify-center gap-6 md:gap-12 items-center">
-              {clients.map((client, index) => (
-                <div
-                  key={index}
-                  className="text-lg md:text-xl font-semibold text-muted-foreground hover:text-foreground transition-colors"
-                >
+              {clients.map((client, index) => <div key={index} className="text-lg md:text-xl font-semibold text-muted-foreground hover:text-foreground transition-colors">
                   {client}
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
         </div>
@@ -282,11 +247,7 @@ const Index = () => {
                 Get Free Quote
               </Button>
             </Link>
-            <Button
-              size="lg"
-              variant="outline"
-              className="min-w-[200px] border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-accent"
-            >
+            <Button size="lg" variant="outline" className="min-w-[200px] border-accent-foreground hover:bg-accent-foreground text-primary">
               WhatsApp Us
             </Button>
           </div>
@@ -334,29 +295,20 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">FAQs</h2>
           <div className="max-w-3xl mx-auto grid gap-4">
-            {[
-              "Are Woodex chairs durable?",
-              "Do Woodex office chairs come with warranty?",
-              "Where does Woodex deliver?",
-              "What types of ergonomic chairs does Woodex offer?",
-            ].map((question, index) => (
-              <Card key={index} className="hover:shadow-md transition-shadow cursor-pointer">
+            {["Are Woodex chairs durable?", "Do Woodex office chairs come with warranty?", "Where does Woodex deliver?", "What types of ergonomic chairs does Woodex offer?"].map((question, index) => <Card key={index} className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-6">
                   <div className="flex justify-between items-center">
                     <h3 className="font-medium">{question}</h3>
                     <ChevronRight className="h-5 w-5 text-muted-foreground" />
                   </div>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
 
       <Footer />
       <ChatWidget />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
