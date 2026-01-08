@@ -94,12 +94,12 @@ const Index = () => {
     label: "Satisfied Clients"
   }, {
     icon: Package,
-    value: "56",
-    label: "Products"
+    value: "56+",
+    label: "Chair Products"
   }, {
     icon: Briefcase,
-    value: "11",
-    label: "Categories"
+    value: "4",
+    label: "Chair Categories"
   }, {
     icon: Shield,
     value: "5-7 Years",
