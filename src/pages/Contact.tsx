@@ -9,8 +9,15 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { MapPin, Phone, Mail, Clock, MessageCircle, Building2, Users, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
+import { SEO, generateLocalBusinessSchema, generateFAQSchema } from "@/components/SEO";
 
 const Contact = () => {
+  const faqSchema = generateFAQSchema([
+    { question: "What areas do you deliver to?", answer: "We deliver nationwide across Pakistan including all major cities and remote areas." },
+    { question: "How long does delivery take?", answer: "Standard delivery is 7-14 business days. Express options available for urgent orders." },
+    { question: "Do you offer installation services?", answer: "Yes, professional installation is included free with all furniture orders." },
+    { question: "What warranty do you provide?", answer: "All products come with 5-7 year warranty covering manufacturing defects." },
+  ]);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast.success("Message sent! We'll get back to you within 24 hours.");
@@ -75,6 +82,13 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Contact Us - Office Furniture Inquiries"
+        description="Contact WOODEX for office furniture quotes, design consultations, and B2B inquiries. Offices in Lahore, Karachi, Islamabad. WhatsApp: +92 300 1234567"
+        keywords="contact WOODEX, office furniture Lahore, furniture quote Pakistan, B2B furniture inquiry"
+        canonical="https://woodex.pk/contact"
+        structuredData={[generateLocalBusinessSchema(), faqSchema]}
+      />
       <Navbar />
       
       {/* Hero Section */}

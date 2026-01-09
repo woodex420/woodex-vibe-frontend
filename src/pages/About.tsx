@@ -3,8 +3,10 @@ import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { SEO, generateOrganizationSchema } from "@/components/SEO";
 import { Target, Eye, Award, Users, Factory, Shield, Truck, Heart, CheckCircle2 } from "lucide-react";
 import factoryImage from "@/assets/factory-floor.jpg";
+
 const About = () => {
   const values = [{
     icon: Target,
@@ -67,7 +69,24 @@ const About = () => {
     number: "95%",
     label: "Client Retention"
   }];
-  return <div className="min-h-screen bg-background">
+
+  return (
+    <div className="min-h-screen bg-background">
+      <SEO
+        title="About WOODEX - Pakistan's #1 B2B Furniture Manufacturer"
+        description="Learn about WOODEX, Pakistan's leading B2B office furniture manufacturer. 1,200+ satisfied clients, 15+ years experience, factory-direct quality with 5-7 year warranty."
+        keywords="about WOODEX, office furniture manufacturer Pakistan, B2B furniture company, furniture factory Lahore"
+        canonical="https://woodex.pk/about"
+        structuredData={generateOrganizationSchema()}
+      />
+      <Navbar />
+      <SEO
+        title="About WOODEX - Pakistan's #1 B2B Furniture Manufacturer"
+        description="Learn about WOODEX, Pakistan's leading B2B office furniture manufacturer. 1,200+ satisfied clients, 15+ years experience, factory-direct quality with 5-7 year warranty."
+        keywords="about WOODEX, office furniture manufacturer Pakistan, B2B furniture company, furniture factory Lahore"
+        canonical="https://woodex.pk/about"
+        structuredData={generateOrganizationSchema()}
+      />
       <Navbar />
       
       {/* Hero Section */}
@@ -272,6 +291,8 @@ const About = () => {
       </div>
 
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default About;

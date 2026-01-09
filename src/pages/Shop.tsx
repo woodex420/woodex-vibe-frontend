@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
+import { SEO, generateBreadcrumbSchema } from "@/components/SEO";
 import chairImage from "@/assets/chair-executive.jpg";
 import chairMeshImage from "@/assets/chair-mesh.jpg";
 import deskImage from "@/assets/desk-standing.jpg";
@@ -17,6 +18,10 @@ import meetingRoomImage from "@/assets/meeting-room.jpg";
 import { Armchair, MonitorUp, LayoutGrid, Archive, Sofa, Star, Shield, Truck, Phone } from "lucide-react";
 
 const Shop = () => {
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://woodex.pk" },
+    { name: "Shop", url: "https://woodex.pk/shop" },
+  ]);
   const categories = [
     { icon: Armchair, title: "Office Chairs", desc: "Executive, mesh & ergonomic seating solutions", image: chairImage, count: 8 },
     { icon: MonitorUp, title: "Office Desks", desc: "Executive, standing & modular desk systems", image: deskImage, count: 6 },
@@ -90,6 +95,13 @@ const Shop = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Office Furniture Shop - Chairs, Desks & Workstations"
+        description="Browse 56+ premium office furniture products. Executive chairs, ergonomic desks, workstations, storage solutions. Factory-direct prices with 5-7 year warranty."
+        keywords="buy office furniture Pakistan, office chairs online, executive desks, workstation furniture, office storage"
+        canonical="https://woodex.pk/shop"
+        structuredData={breadcrumbSchema}
+      />
       <Navbar />
       
       {/* Hero Section */}

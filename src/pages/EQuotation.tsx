@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { CheckCircle2, FileText, Clock, DollarSign, Users, Phone, MessageCircle, Shield } from "lucide-react";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 
 const EQuotation = () => {
   const handleSubmit = (e: React.FormEvent) => {
@@ -34,6 +35,12 @@ const EQuotation = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Get Free Quote - Office Furniture Quotation"
+        description="Request a free office furniture quote. Transparent pricing, 24-hour response, no obligation. Get personalized recommendations for your workspace needs."
+        keywords="office furniture quote, free quotation, furniture pricing Pakistan, B2B furniture quote"
+        canonical="https://woodex.pk/e-quotation"
+      />
       <Navbar />
       
       {/* Hero Section */}
