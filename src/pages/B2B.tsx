@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import { SEO, generateBreadcrumbSchema } from "@/components/SEO";
 import { Building2, TrendingDown, HeadphonesIcon, FileCheck, Clock, Award, Users, Shield, Truck, CheckCircle2 } from "lucide-react";
 const B2B = () => {
   const benefits = [{
@@ -72,7 +73,21 @@ const B2B = () => {
     title: "Custom Solutions",
     desc: "Tailored furniture to match your brand"
   }];
-  return <div className="min-h-screen bg-background">
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://woodex.pk" },
+    { name: "B2B", url: "https://woodex.pk/b2b" },
+  ]);
+
+  return (
+    <div className="min-h-screen bg-background">
+      <SEO
+        title="B2B Office Furniture Solutions - Corporate Discounts"
+        description="Enterprise B2B office furniture solutions with up to 40% volume discounts. Dedicated account manager, flexible payment terms, 7-year extended warranty for businesses."
+        keywords="B2B office furniture, corporate furniture Pakistan, bulk office chairs, enterprise furniture solutions, volume discounts"
+        canonical="https://woodex.pk/b2b"
+        structuredData={breadcrumbSchema}
+      />
       <Navbar />
       
       {/* Hero Section */}
@@ -220,6 +235,8 @@ const B2B = () => {
       </div>
 
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default B2B;

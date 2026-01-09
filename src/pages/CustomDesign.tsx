@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 import customDesignImage from "@/assets/custom-design-studio.jpg";
 import receptionImage from "@/assets/reception-desk.jpg";
 import loungeImage from "@/assets/lounge.jpg";
@@ -89,6 +90,12 @@ const CustomDesign = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Custom Furniture Design - Bespoke Office Solutions"
+        description="Create bespoke office furniture tailored to your specifications. 200+ materials, expert craftsmanship, 6-8 week production. From concept to creation."
+        keywords="custom office furniture, bespoke furniture Pakistan, custom design studio, tailored furniture solutions"
+        canonical="https://woodex.pk/services/custom-design"
+      />
       <Navbar />
       
       {/* Hero Section */}

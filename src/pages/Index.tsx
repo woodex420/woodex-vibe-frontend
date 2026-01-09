@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ChatWidget } from "@/components/ChatWidget";
+import { SEO, generateOrganizationSchema, generateLocalBusinessSchema, generateFAQSchema } from "@/components/SEO";
 import { ArrowRight, Ruler, Palette, FileText, Factory, Truck, Building2, Users, Shield, Package, Briefcase, ChevronRight } from "lucide-react";
 import {
   Carousel,
@@ -22,6 +23,14 @@ import loungeImg from "@/assets/lounge.jpg";
 import meetingRoomImg from "@/assets/meeting-room.jpg";
 import receptionDeskImg from "@/assets/reception-desk.jpg";
 import heroOfficeImg from "@/assets/hero-office.jpg";
+
+const faqs = [
+  { question: "Are Woodex chairs durable?", answer: "Yes, all Woodex chairs are built with high-density plywood frames, premium PU foam, and quality materials designed to last 5-7 years with daily use." },
+  { question: "Do Woodex office chairs come with warranty?", answer: "Yes, all our office furniture comes with 5-7 year comprehensive warranty covering manufacturing defects and structural issues." },
+  { question: "Where does Woodex deliver?", answer: "We deliver nationwide across Pakistan including Lahore, Karachi, Islamabad, Faisalabad, and all major cities with free delivery and installation." },
+  { question: "What types of ergonomic chairs does Woodex offer?", answer: "We offer Executive Chairs, Manager Chairs, Staff Chairs, and Visitor Chairs with ergonomic features including lumbar support, adjustable headrests, and 4D armrests." },
+];
+
 const Index = () => {
   const services = [{
     title: "Space Planning",
@@ -105,7 +114,22 @@ const Index = () => {
     value: "5-7 Years",
     label: "Warranty"
   }];
-  return <div className="min-h-screen bg-background">
+  const structuredData = {
+    ...generateOrganizationSchema(),
+    ...generateLocalBusinessSchema(),
+  };
+
+  const faqSchema = generateFAQSchema(faqs);
+
+  return (
+    <div className="min-h-screen bg-background">
+      <SEO
+        title="Modern Office Furniture Pakistan - Ergonomic Chairs & Desks"
+        description="Pakistan's #1 B2B office furniture manufacturer. Premium ergonomic chairs, executive desks, workstations with 5-7 year warranty. Factory-direct prices. Free delivery nationwide."
+        keywords="office furniture Pakistan, ergonomic chairs Lahore, executive desks, office workstations, B2B furniture, office chairs Pakistan"
+        canonical="https://woodex.pk"
+        structuredData={[structuredData, faqSchema]}
+      />
       <Navbar />
 
       {/* Hero Section */}
@@ -338,6 +362,8 @@ const Index = () => {
 
       <Footer />
       <ChatWidget />
-    </div>;
+    </div>
+  );
 };
+
 export default Index;

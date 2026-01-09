@@ -3,10 +3,12 @@ import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 import deliveryImage from "@/assets/delivery-truck.jpg";
 import showroomImage from "@/assets/showroom-exterior.jpg";
 import meetingImage from "@/assets/meeting-room.jpg";
 import { Truck, Clock, Shield, CheckCircle2, Package, MapPin, ArrowRight } from "lucide-react";
+
 const DeliveryInstallation = () => {
   const features = [{
     icon: Truck,
@@ -79,7 +81,15 @@ const DeliveryInstallation = () => {
     time: "3-4 days",
     cost: "PKR 30,000"
   }];
-  return <div className="min-h-screen bg-background">
+
+  return (
+    <div className="min-h-screen bg-background">
+      <SEO
+        title="Delivery & Installation - Nationwide Furniture Service"
+        description="Professional furniture delivery and installation across Pakistan. White glove service, real-time tracking, fully insured transit. 50+ cities covered."
+        keywords="furniture delivery Pakistan, office furniture installation, nationwide delivery, professional assembly"
+        canonical="https://woodex.pk/services/delivery-installation"
+      />
       <Navbar />
       
       {/* Hero Section */}
@@ -290,6 +300,8 @@ const DeliveryInstallation = () => {
       </div>
 
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default DeliveryInstallation;

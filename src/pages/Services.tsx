@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { SEO, generateBreadcrumbSchema } from "@/components/SEO";
 import consultationImage from "@/assets/consultation.jpg";
 import customDesignImage from "@/assets/custom-design-studio.jpg";
 import deliveryImage from "@/assets/delivery-service.jpg";
@@ -94,8 +95,20 @@ const Services = () => {
     },
   ];
 
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://woodex.pk" },
+    { name: "Services", url: "https://woodex.pk/services" },
+  ]);
+
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Office Furniture Services - Design, Delivery & Installation"
+        description="Complete office furniture services: space planning, custom design studio, nationwide delivery & installation, project management. Free consultation available."
+        keywords="office furniture services Pakistan, space planning, custom furniture design, furniture installation, office fit-out"
+        canonical="https://woodex.pk/services"
+        structuredData={breadcrumbSchema}
+      />
       <Navbar />
       
       {/* Hero Section */}
