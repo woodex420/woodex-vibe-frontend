@@ -73,21 +73,15 @@ const B2B = () => {
     title: "Custom Solutions",
     desc: "Tailored furniture to match your brand"
   }];
-
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://woodex.pk" },
-    { name: "B2B", url: "https://woodex.pk/b2b" },
-  ]);
-
-  return (
-    <div className="min-h-screen bg-background">
-      <SEO
-        title="B2B Office Furniture Solutions - Corporate Discounts"
-        description="Enterprise B2B office furniture solutions with up to 40% volume discounts. Dedicated account manager, flexible payment terms, 7-year extended warranty for businesses."
-        keywords="B2B office furniture, corporate furniture Pakistan, bulk office chairs, enterprise furniture solutions, volume discounts"
-        canonical="https://woodex.pk/b2b"
-        structuredData={breadcrumbSchema}
-      />
+  const breadcrumbSchema = generateBreadcrumbSchema([{
+    name: "Home",
+    url: "https://woodex.pk"
+  }, {
+    name: "B2B",
+    url: "https://woodex.pk/b2b"
+  }]);
+  return <div className="min-h-screen bg-background">
+      <SEO title="B2B Office Furniture Solutions - Corporate Discounts" description="Enterprise B2B office furniture solutions with up to 40% volume discounts. Dedicated account manager, flexible payment terms, 7-year extended warranty for businesses." keywords="B2B office furniture, corporate furniture Pakistan, bulk office chairs, enterprise furniture solutions, volume discounts" canonical="https://woodex.pk/b2b" structuredData={breadcrumbSchema} />
       <Navbar />
       
       {/* Hero Section */}
@@ -226,7 +220,7 @@ const B2B = () => {
               </Button>
             </Link>
             <a href="tel:+923001234567">
-              <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary min-w-[200px]">
+              <Button size="lg" variant="outline" className="border-primary-foreground hover:bg-primary-foreground min-w-[200px] text-primary">
                 Call: +92 300 1234567
               </Button>
             </a>
@@ -235,8 +229,6 @@ const B2B = () => {
       </div>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default B2B;
