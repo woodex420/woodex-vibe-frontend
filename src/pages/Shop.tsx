@@ -228,7 +228,7 @@ const Shop = () => {
               </Button>
             </Link>
             <Link to="/contact">
-              <Button size="lg" variant="outline" className="border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-accent">
+              <Button size="lg" variant="secondary">
                 Contact Design Team
               </Button>
             </Link>
