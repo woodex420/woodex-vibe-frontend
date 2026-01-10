@@ -66,18 +66,20 @@ const Services = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={servicesHero} alt="WoodEx Services" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-primary/80" />
-        </div>
-        <div className="container mx-auto px-4 relative z-10 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-primary-foreground">
-            360-Degree Office Solutions
-          </h1>
-          <p className="text-xl md:text-2xl text-primary-foreground/90 max-w-3xl mx-auto">
-            From consultation to installation - complete turnkey solutions for your office furniture needs
-          </p>
+      <section className="relative h-[420px] md:h-[480px] overflow-hidden">
+        <img src={servicesHero} alt="WoodEx Services" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40 flex items-center">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
+                360-Degree Office <br />
+                <span className="text-accent">Solutions</span>
+              </h1>
+              <p className="text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed">
+                From consultation to installation - complete turnkey solutions for your office furniture needs
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
