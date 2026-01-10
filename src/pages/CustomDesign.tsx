@@ -99,34 +99,34 @@ const CustomDesign = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <div className="relative h-[600px] overflow-hidden">
+      <div className="relative h-[420px] md:h-[480px] overflow-hidden">
         <img 
           src={customDesignImage} 
           alt="WoodEx Custom Design Studio"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/70 to-black/30 flex items-center">
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40 flex items-center">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl">
-              <span className="inline-block px-4 py-2 bg-accent/20 text-accent rounded-full text-sm font-semibold mb-6 animate-fade-in">
+            <div className="max-w-2xl">
+              <span className="inline-block px-4 py-1.5 bg-accent text-accent-foreground rounded-full text-sm font-semibold mb-4">
                 Bespoke Furniture Design
               </span>
-              <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
                 Custom Design <br />
                 <span className="text-accent">Services</span>
               </h1>
-              <p className="text-xl md:text-2xl text-white/90 max-w-2xl leading-relaxed mb-8">
+              <p className="text-base md:text-lg text-white/90 max-w-xl leading-relaxed mb-6">
                 Bring your vision to life with our bespoke furniture design service. From initial concept to final creation, we craft unique pieces tailored precisely to your specifications and brand identity.
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-3">
                 <Link to="/e-quotation">
-                  <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 h-14 text-lg">
+                  <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-6 h-12">
                     Start Your Project
-                    <ArrowRight className="ml-2 h-5 w-5" />
+                    <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
                 <Link to="/contact">
-                  <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold px-8 h-14 text-lg">
+                  <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold px-6 h-12">
                     Book Consultation
                   </Button>
                 </Link>
@@ -137,24 +137,24 @@ const CustomDesign = () => {
       </div>
 
       {/* Stats Bar */}
-      <div className="bg-accent text-accent-foreground py-8">
+      <div className="bg-accent text-accent-foreground py-6">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
-              <div className="text-4xl font-bold mb-1">500+</div>
-              <div className="text-sm opacity-90">Custom Projects</div>
+              <div className="text-3xl md:text-4xl font-bold mb-1">500+</div>
+              <div className="text-xs md:text-sm opacity-90">Custom Projects</div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-1">200+</div>
-              <div className="text-sm opacity-90">Material Options</div>
+              <div className="text-3xl md:text-4xl font-bold mb-1">200+</div>
+              <div className="text-xs md:text-sm opacity-90">Material Options</div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-1">25+</div>
-              <div className="text-sm opacity-90">Years Experience</div>
+              <div className="text-3xl md:text-4xl font-bold mb-1">25+</div>
+              <div className="text-xs md:text-sm opacity-90">Years Experience</div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-1">100%</div>
-              <div className="text-sm opacity-90">Client Satisfaction</div>
+              <div className="text-3xl md:text-4xl font-bold mb-1">100%</div>
+              <div className="text-xs md:text-sm opacity-90">Client Satisfaction</div>
             </div>
           </div>
         </div>

@@ -107,34 +107,34 @@ const SpacePlanning = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <div className="relative h-[600px] overflow-hidden">
+      <div className="relative h-[420px] md:h-[480px] overflow-hidden">
         <img 
           src={spacePlanningImage} 
           alt="Professional Space Planning & Design"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/70 to-black/30 flex items-center">
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40 flex items-center">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl">
-              <span className="inline-block px-4 py-2 bg-accent/20 text-accent rounded-full text-sm font-semibold mb-6 animate-fade-in">
+            <div className="max-w-2xl">
+              <span className="inline-block px-4 py-1.5 bg-accent text-accent-foreground rounded-full text-sm font-semibold mb-4">
                 Professional Workspace Design
               </span>
-              <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
                 Space Planning <br />
                 <span className="text-accent">& Design</span>
               </h1>
-              <p className="text-xl md:text-2xl text-white/90 max-w-2xl leading-relaxed mb-8">
+              <p className="text-base md:text-lg text-white/90 max-w-xl leading-relaxed mb-6">
                 Transform your workspace with expert space planning services. We create efficient, productive office layouts that maximize every square foot while enhancing employee wellbeing.
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-3">
                 <Link to="/e-quotation">
-                  <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 h-14 text-lg">
+                  <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-6 h-12">
                     Get Space Plan Quote
-                    <ArrowRight className="ml-2 h-5 w-5" />
+                    <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
                 <Link to="/contact">
-                  <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold px-8 h-14 text-lg">
+                  <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-primary font-semibold px-6 h-12">
                     Free Consultation
                   </Button>
                 </Link>
@@ -145,24 +145,24 @@ const SpacePlanning = () => {
       </div>
 
       {/* Stats Bar */}
-      <div className="bg-accent text-accent-foreground py-8">
+      <div className="bg-accent text-accent-foreground py-6">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
-              <div className="text-4xl font-bold mb-1">300+</div>
-              <div className="text-sm opacity-90">Spaces Designed</div>
+              <div className="text-3xl md:text-4xl font-bold mb-1">300+</div>
+              <div className="text-xs md:text-sm opacity-90">Spaces Designed</div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-1">2M+</div>
-              <div className="text-sm opacity-90">Sq. Ft. Planned</div>
+              <div className="text-3xl md:text-4xl font-bold mb-1">2M+</div>
+              <div className="text-xs md:text-sm opacity-90">Sq. Ft. Planned</div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-1">35%</div>
-              <div className="text-sm opacity-90">Avg. Space Saved</div>
+              <div className="text-3xl md:text-4xl font-bold mb-1">35%</div>
+              <div className="text-xs md:text-sm opacity-90">Avg. Space Saved</div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-1">5-7</div>
-              <div className="text-sm opacity-90">Days Turnaround</div>
+              <div className="text-3xl md:text-4xl font-bold mb-1">5-7</div>
+              <div className="text-xs md:text-sm opacity-90">Days Turnaround</div>
             </div>
           </div>
         </div>
