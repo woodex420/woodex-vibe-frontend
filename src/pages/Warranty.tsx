@@ -2,8 +2,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, Shield, FileText, Headphones, Clock, Award, Phone, Mail } from "lucide-react";
+import { CheckCircle2, Shield, FileText, Headphones, Clock, Award, Phone, Mail, Users, Truck } from "lucide-react";
 import { Link } from "react-router-dom";
+import heroImage from "@/assets/hero-office.jpg";
 
 const Warranty = () => {
   const coverage = [
@@ -53,32 +54,45 @@ const Warranty = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="relative bg-primary text-primary-foreground py-20">
-        <div className="container mx-auto px-4 text-center">
-          <Shield className="h-20 w-20 mx-auto mb-6 opacity-90" />
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Warranty & Protection</h1>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
-            We stand behind the quality of every piece. Enjoy peace of mind with Pakistan's most comprehensive furniture warranty.
-          </p>
+      {/* Hero Banner */}
+      <section 
+        className="relative h-[340px] md:h-[400px] flex items-center bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroImage})` }}
+      >
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+              Warranty &
+              <span className="block text-accent">Protection</span>
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 max-w-2xl">
+              We stand behind the quality of every piece. Enjoy peace of mind with Pakistan's most comprehensive furniture warranty.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Trust Bar */}
-      <section className="py-8 bg-muted/50 border-b">
+      {/* Stats Bar */}
+      <section className="py-4 bg-accent">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {[
-              { icon: Shield, label: "5-7 Year Coverage" },
-              { icon: Award, label: "Quality Guaranteed" },
-              { icon: Clock, label: "Fast Claim Process" },
-              { icon: Headphones, label: "24/7 Support" },
-            ].map((item, i) => (
-              <div key={i} className="flex items-center justify-center gap-3">
-                <item.icon className="h-6 w-6 text-accent" />
-                <span className="font-medium">{item.label}</span>
-              </div>
-            ))}
+          <div className="flex flex-wrap justify-center gap-8 text-sm text-accent-foreground">
+            <div className="flex items-center gap-2">
+              <Shield className="h-5 w-5" />
+              <span className="font-medium">5-7 Year Coverage</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Award className="h-5 w-5" />
+              <span className="font-medium">Quality Guaranteed</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Clock className="h-5 w-5" />
+              <span className="font-medium">Fast Claim Process</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Headphones className="h-5 w-5" />
+              <span className="font-medium">24/7 Support</span>
+            </div>
           </div>
         </div>
       </section>
@@ -225,7 +239,7 @@ const Warranty = () => {
         </section>
 
         {/* Contact Support */}
-        <section className="bg-primary text-primary-foreground rounded-2xl p-12">
+        <section className="bg-accent text-accent-foreground rounded-2xl p-12">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <Headphones className="h-16 w-16 mb-6 opacity-90" />
@@ -254,14 +268,14 @@ const Warranty = () => {
               </div>
             </div>
             <div className="text-center">
-              <Card className="bg-primary-foreground/10 border-0">
+              <Card className="bg-accent-foreground/10 border-0">
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-bold mb-4">Quick Claim Form</h3>
                   <p className="opacity-90 mb-6">
                     File your warranty claim online and get a response within 24 hours.
                   </p>
                   <Link to="/contact">
-                    <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
+                    <Button size="lg" variant="secondary">
                       Submit Warranty Claim
                     </Button>
                   </Link>

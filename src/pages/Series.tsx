@@ -7,7 +7,8 @@ import chairImage from "@/assets/chair-executive.jpg";
 import deskImage from "@/assets/desk-standing.jpg";
 import workstationImage from "@/assets/workstation.jpg";
 import loungeImage from "@/assets/lounge.jpg";
-import { Award, Sparkles, Users2 } from "lucide-react";
+import heroImage from "@/assets/hero-office.jpg";
+import { Award, Sparkles, Users2, Package, Shield, Truck } from "lucide-react";
 
 const Series = () => {
   const series = [
@@ -19,7 +20,7 @@ const Series = () => {
       icon: Award,
       badge: "Premium",
       features: ["Italian leather upholstery", "Solid wood construction", "Customizable finishes", "Lifetime structural warranty"],
-      priceRange: "AED 15,000 - 45,000"
+      priceRange: "PKR 150,000 - 450,000"
     },
     {
       name: "Modern Series",
@@ -29,7 +30,7 @@ const Series = () => {
       icon: Sparkles,
       badge: "Bestseller",
       features: ["Clean lines", "Integrated cable management", "Height-adjustable options", "Eco-friendly materials"],
-      priceRange: "AED 8,000 - 25,000"
+      priceRange: "PKR 80,000 - 250,000"
     },
     {
       name: "Collaborative Series",
@@ -39,7 +40,7 @@ const Series = () => {
       icon: Users2,
       badge: "Popular",
       features: ["Modular design", "Quick reconfiguration", "Acoustic privacy panels", "Integrated power outlets"],
-      priceRange: "AED 6,000 - 20,000"
+      priceRange: "PKR 60,000 - 200,000"
     },
     {
       name: "Comfort Series",
@@ -49,7 +50,7 @@ const Series = () => {
       icon: Award,
       badge: "New",
       features: ["Ergonomic certification", "Breathable materials", "Adjustable components", "Posture support"],
-      priceRange: "AED 5,000 - 18,000"
+      priceRange: "PKR 50,000 - 180,000"
     },
   ];
 
@@ -57,14 +58,46 @@ const Series = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       
-      <div className="container mx-auto px-4 py-12">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold mb-4">Furniture Series</h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Curated collections designed for different work styles and office environments
-          </p>
+      {/* Hero Banner */}
+      <section 
+        className="relative h-[340px] md:h-[400px] flex items-center bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroImage})` }}
+      >
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+              Furniture
+              <span className="block text-accent">Series</span>
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 max-w-2xl">
+              Curated collections designed for different work styles and office environments
+            </p>
+          </div>
         </div>
+      </section>
 
+      {/* Stats Bar */}
+      <section className="py-4 bg-accent">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap justify-center gap-8 text-sm text-accent-foreground">
+            <div className="flex items-center gap-2">
+              <Package className="h-5 w-5" />
+              <span className="font-medium">4 Curated Series</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Shield className="h-5 w-5" />
+              <span className="font-medium">5-7 Year Warranty</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Truck className="h-5 w-5" />
+              <span className="font-medium">Free Delivery</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="container mx-auto px-4 py-16">
         <div className="space-y-16">
           {series.map((item, i) => (
             <Card key={i} className="overflow-hidden hover:shadow-xl transition-shadow">

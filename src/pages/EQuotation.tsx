@@ -6,10 +6,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { CheckCircle2, FileText, Clock, DollarSign, Users, Phone, MessageCircle, Shield } from "lucide-react";
+import { CheckCircle2, FileText, Clock, DollarSign, Users, Phone, MessageCircle, Shield, Truck, Award } from "lucide-react";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
+import heroImage from "@/assets/hero-office.jpg";
 
 const EQuotation = () => {
   const handleSubmit = (e: React.FormEvent) => {
@@ -43,32 +44,41 @@ const EQuotation = () => {
       />
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="relative bg-primary text-primary-foreground py-16 lg:py-20">
-        <div className="container mx-auto px-4 text-center">
-          <span className="inline-flex items-center bg-accent text-accent-foreground px-4 py-2 rounded-full text-sm font-medium mb-6">
-            <FileText className="h-4 w-4 mr-2" />
-            Free Quote Service
-          </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Get Your Free Quotation</h1>
-          <p className="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto opacity-90">
-            Fast, transparent pricing for all your office furniture needs. Fill out the form and receive a detailed quote within 24 hours.
-          </p>
+      {/* Hero Banner */}
+      <section 
+        className="relative h-[340px] md:h-[400px] flex items-center bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroImage})` }}
+      >
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center bg-accent text-accent-foreground px-4 py-2 rounded-full text-sm font-medium mb-4">
+              <FileText className="h-4 w-4 mr-2" />
+              Free Quote Service
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+              Get Your Free
+              <span className="block text-accent">Quotation</span>
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 max-w-2xl">
+              Fast, transparent pricing for all your office furniture needs. Fill out the form and receive a detailed quote within 24 hours.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Benefits Bar */}
-      <section className="py-6 lg:py-8 bg-muted/50 border-b">
+      {/* Stats Bar */}
+      <section className="py-4 bg-accent">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 text-accent-foreground">
             {benefits.map((benefit, i) => (
               <div key={i} className="flex items-center gap-3">
-                <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-                  <benefit.icon className="h-5 w-5 lg:h-6 lg:w-6 text-accent" />
+                <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-xl bg-accent-foreground/10 flex items-center justify-center flex-shrink-0">
+                  <benefit.icon className="h-5 w-5 lg:h-6 lg:w-6" />
                 </div>
                 <div>
                   <h3 className="font-bold text-sm">{benefit.title}</h3>
-                  <p className="text-xs text-muted-foreground hidden sm:block">{benefit.desc}</p>
+                  <p className="text-xs opacity-90 hidden sm:block">{benefit.desc}</p>
                 </div>
               </div>
             ))}
@@ -214,7 +224,7 @@ const EQuotation = () => {
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full h-12 bg-accent hover:bg-accent/90 text-accent-foreground font-semibold text-base">
+                  <Button type="submit" size="lg" className="w-full h-12 font-semibold text-base">
                     Submit Quote Request
                   </Button>
 
@@ -315,17 +325,19 @@ const EQuotation = () => {
         </section>
 
         {/* CTA */}
-        <section className="mt-16 lg:mt-20 bg-muted rounded-2xl p-8 lg:p-12 text-center">
+        <section className="mt-16 lg:mt-20 bg-accent text-accent-foreground rounded-2xl p-8 lg:p-12 text-center">
           <h2 className="text-2xl lg:text-3xl font-bold mb-4">Need Immediate Assistance?</h2>
-          <p className="text-base lg:text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-base lg:text-lg mb-8 max-w-2xl mx-auto opacity-90">
             Our sales team is available to discuss your requirements and provide instant guidance.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="tel:+923001234567">
-              <Button size="lg" className="w-full sm:w-auto">Call Now: +92 300 1234567</Button>
+              <Button size="lg" variant="secondary" className="w-full sm:w-auto">
+                Call Now: +92 300 1234567
+              </Button>
             </a>
             <Link to="/contact">
-              <Button size="lg" variant="outline" className="w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+              <Button size="lg" variant="secondary" className="w-full sm:w-auto">
                 Visit Contact Page
               </Button>
             </Link>

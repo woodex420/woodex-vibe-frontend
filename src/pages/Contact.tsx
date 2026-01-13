@@ -10,6 +10,7 @@ import { MapPin, Phone, Mail, Clock, MessageCircle, Building2, Users, CheckCircl
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { SEO, generateLocalBusinessSchema, generateFAQSchema } from "@/components/SEO";
+import heroImage from "@/assets/hero-office.jpg";
 
 const Contact = () => {
   const faqSchema = generateFAQSchema([
@@ -91,20 +92,29 @@ const Contact = () => {
       />
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="relative bg-primary text-primary-foreground py-24">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Contact Us</h1>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
-            Let's transform your office together. Reach out to our team and we'll respond within 24 hours.
-          </p>
+      {/* Hero Banner */}
+      <section 
+        className="relative h-[340px] md:h-[400px] flex items-center bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroImage})` }}
+      >
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+              Contact
+              <span className="block text-accent">Us</span>
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 max-w-2xl">
+              Let's transform your office together. Reach out to our team and we'll respond within 24 hours.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Quick Contact Bar */}
-      <section className="py-6 bg-accent text-accent-foreground">
+      <section className="py-4 bg-accent">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-8 text-sm">
+          <div className="flex flex-wrap justify-center gap-8 text-sm text-accent-foreground">
             <a href="tel:+923001234567" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
               <Phone className="h-5 w-5" />
               <span>+92 300 1234567</span>
@@ -178,7 +188,7 @@ const Contact = () => {
                   <Textarea id="message" rows={5} placeholder="Please describe your inquiry in detail..." required />
                 </div>
 
-                <Button type="submit" size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
+                <Button type="submit" size="lg" className="w-full">
                   Send Message
                 </Button>
               </form>
@@ -223,7 +233,7 @@ const Contact = () => {
                       For urgent inquiries, reach us on WhatsApp for immediate assistance with quotes, consultations, and questions.
                     </p>
                     <a href="https://wa.me/923001234567">
-                      <Button className="bg-accent hover:bg-accent/90 text-accent-foreground">
+                      <Button>
                         <MessageCircle className="h-4 w-4 mr-2" />
                         WhatsApp Us Now
                       </Button>
@@ -309,19 +319,19 @@ const Contact = () => {
         </section>
 
         {/* CTA */}
-        <section className="bg-primary text-primary-foreground rounded-2xl p-12 text-center">
+        <section className="bg-accent text-accent-foreground rounded-2xl p-12 text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
             Request a free consultation and quote for your office furniture project
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/e-quotation">
-              <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground min-w-[200px]">
+              <Button size="lg" variant="secondary" className="min-w-[200px]">
                 Get Free Quote
               </Button>
             </Link>
             <Link to="/showrooms">
-              <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary min-w-[200px]">
+              <Button size="lg" variant="secondary" className="min-w-[200px]">
                 Visit Showroom
               </Button>
             </Link>
