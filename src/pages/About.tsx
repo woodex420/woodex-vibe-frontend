@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { SEO, generateOrganizationSchema } from "@/components/SEO";
 import { Target, Eye, Award, Users, Factory, Shield, Truck, Heart, CheckCircle2 } from "lucide-react";
 import factoryImage from "@/assets/factory-floor.jpg";
+import heroImage from "@/assets/hero-office.jpg";
 
 const About = () => {
   const values = [{
@@ -80,24 +81,20 @@ const About = () => {
         structuredData={generateOrganizationSchema()}
       />
       <Navbar />
-      <SEO
-        title="About WOODEX - Pakistan's #1 B2B Furniture Manufacturer"
-        description="Learn about WOODEX, Pakistan's leading B2B office furniture manufacturer. 1,200+ satisfied clients, 15+ years experience, factory-direct quality with 5-7 year warranty."
-        keywords="about WOODEX, office furniture manufacturer Pakistan, B2B furniture company, furniture factory Lahore"
-        canonical="https://woodex.pk/about"
-        structuredData={generateOrganizationSchema()}
-      />
-      <Navbar />
       
-      {/* Hero Section */}
-      <section className="relative bg-primary text-primary-foreground py-24">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-block bg-accent text-accent-foreground px-4 py-2 rounded-full text-sm font-medium mb-6">
-              Pakistan's #1 B2B Furniture Platform
-            </span>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">About WoodEx Furniture</h1>
-            <p className="text-xl md:text-2xl opacity-90">
+      {/* Hero Banner */}
+      <section 
+        className="relative h-[340px] md:h-[400px] flex items-center bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroImage})` }}
+      >
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+              About WoodEx
+              <span className="block text-accent">Furniture</span>
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 max-w-2xl">
               Empowering Pakistani businesses with world-class office furniture solutions through innovation, quality craftsmanship, and exceptional customer service.
             </p>
           </div>
@@ -105,12 +102,12 @@ const About = () => {
       </section>
 
       {/* Stats Bar */}
-      <section className="py-12 bg-muted/50 border-b">
+      <section className="py-4 bg-accent">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center text-accent-foreground">
             {stats.map((stat, i) => <div key={i}>
-                <div className="text-3xl font-bold text-accent mb-1">{stat.number}</div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
+                <div className="text-2xl font-bold mb-1">{stat.number}</div>
+                <div className="text-sm opacity-90">{stat.label}</div>
               </div>)}
           </div>
         </div>
@@ -282,7 +279,7 @@ const About = () => {
               </Button>
             </Link>
             <Link to="/contact">
-              <Button size="lg" variant="outline" className="border-accent-foreground hover:bg-accent-foreground min-w-[200px] text-primary">
+              <Button size="lg" variant="secondary" className="min-w-[200px]">
                 Contact Us
               </Button>
             </Link>

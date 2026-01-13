@@ -15,6 +15,7 @@ import bookshelfImage from "@/assets/bookshelf.jpg";
 import loungeImage from "@/assets/lounge.jpg";
 import receptionImage from "@/assets/reception-desk.jpg";
 import meetingRoomImage from "@/assets/meeting-room.jpg";
+import heroImage from "@/assets/hero-office.jpg";
 import { Armchair, MonitorUp, LayoutGrid, Archive, Sofa, Star, Shield, Truck, Phone } from "lucide-react";
 
 const Shop = () => {
@@ -104,34 +105,40 @@ const Shop = () => {
       />
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="relative bg-primary text-primary-foreground py-20">
-        <div className="container mx-auto px-4 text-center">
-          <span className="inline-block bg-accent text-accent-foreground px-4 py-2 rounded-full text-sm font-medium mb-6">
-            56 Products • 11 Categories
-          </span>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">Premium Office Furniture</h1>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
-            Pakistan's most comprehensive B2B office furniture collection. Factory-direct pricing with 5-7 year warranty on all products.
-          </p>
+      {/* Hero Banner */}
+      <section 
+        className="relative h-[340px] md:h-[400px] flex items-center bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroImage})` }}
+      >
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+              Premium Office
+              <span className="block text-accent">Furniture Shop</span>
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 max-w-2xl">
+              Pakistan's most comprehensive B2B office furniture collection. Factory-direct pricing with 5-7 year warranty on all products.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Trust Bar */}
-      <section className="py-6 bg-muted/50 border-b">
+      {/* Stats Bar */}
+      <section className="py-4 bg-accent">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-8 text-sm">
+          <div className="flex flex-wrap justify-center gap-8 text-sm text-accent-foreground">
             <div className="flex items-center gap-2">
-              <Shield className="h-5 w-5 text-accent" />
-              <span>5-7 Year Warranty</span>
+              <Shield className="h-5 w-5" />
+              <span className="font-medium">5-7 Year Warranty</span>
             </div>
             <div className="flex items-center gap-2">
-              <Truck className="h-5 w-5 text-accent" />
-              <span>Free Nationwide Delivery</span>
+              <Truck className="h-5 w-5" />
+              <span className="font-medium">Free Nationwide Delivery</span>
             </div>
             <div className="flex items-center gap-2">
-              <Phone className="h-5 w-5 text-accent" />
-              <span>Expert Consultation</span>
+              <Phone className="h-5 w-5" />
+              <span className="font-medium">Expert Consultation</span>
             </div>
           </div>
         </div>

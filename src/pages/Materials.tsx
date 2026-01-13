@@ -2,6 +2,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import heroImage from "@/assets/hero-office.jpg";
+import { Palette, Shield, Package, Truck } from "lucide-react";
 
 const Materials = () => {
   const materials = [
@@ -53,14 +57,46 @@ const Materials = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       
-      <div className="container mx-auto px-4 py-12">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold mb-4">Materials & Colors</h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Choose from our extensive range of premium materials and finishes to customize your furniture
-          </p>
+      {/* Hero Banner */}
+      <section 
+        className="relative h-[340px] md:h-[400px] flex items-center bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroImage})` }}
+      >
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+              Materials &
+              <span className="block text-accent">Colors</span>
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 max-w-2xl">
+              Choose from our extensive range of premium materials and finishes to customize your furniture
+            </p>
+          </div>
         </div>
+      </section>
 
+      {/* Stats Bar */}
+      <section className="py-4 bg-accent">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap justify-center gap-8 text-sm text-accent-foreground">
+            <div className="flex items-center gap-2">
+              <Palette className="h-5 w-5" />
+              <span className="font-medium">200+ Color Options</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Package className="h-5 w-5" />
+              <span className="font-medium">Premium Materials</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Shield className="h-5 w-5" />
+              <span className="font-medium">Quality Guaranteed</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="container mx-auto px-4 py-16">
         {/* Materials */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold mb-8">Material Options</h2>
@@ -128,12 +164,24 @@ const Materials = () => {
         </div>
 
         {/* CTA */}
-        <Card className="bg-muted">
+        <Card className="bg-accent text-accent-foreground">
           <CardContent className="p-12 text-center">
             <h2 className="text-3xl font-bold mb-4">Need Help Choosing?</h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
               Our design consultants can help you select the perfect materials and colors for your space. Request a sample kit or visit our showroom.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/e-quotation">
+                <Button size="lg" variant="secondary">
+                  Request Sample Kit
+                </Button>
+              </Link>
+              <Link to="/showrooms">
+                <Button size="lg" variant="secondary">
+                  Visit Showroom
+                </Button>
+              </Link>
+            </div>
           </CardContent>
         </Card>
       </div>

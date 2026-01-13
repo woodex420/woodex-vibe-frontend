@@ -5,6 +5,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { SEO, generateBreadcrumbSchema } from "@/components/SEO";
 import { Building2, TrendingDown, HeadphonesIcon, FileCheck, Clock, Award, Users, Shield, Truck, CheckCircle2 } from "lucide-react";
+import heroImage from "@/assets/hero-office.jpg";
+
 const B2B = () => {
   const benefits = [{
     icon: TrendingDown,
@@ -80,29 +82,41 @@ const B2B = () => {
     name: "B2B",
     url: "https://woodex.pk/b2b"
   }]);
-  return <div className="min-h-screen bg-background">
-      <SEO title="B2B Office Furniture Solutions - Corporate Discounts" description="Enterprise B2B office furniture solutions with up to 40% volume discounts. Dedicated account manager, flexible payment terms, 7-year extended warranty for businesses." keywords="B2B office furniture, corporate furniture Pakistan, bulk office chairs, enterprise furniture solutions, volume discounts" canonical="https://woodex.pk/b2b" structuredData={breadcrumbSchema} />
+
+  return (
+    <div className="min-h-screen bg-background">
+      <SEO 
+        title="B2B Office Furniture Solutions - Corporate Discounts" 
+        description="Enterprise B2B office furniture solutions with up to 40% volume discounts. Dedicated account manager, flexible payment terms, 7-year extended warranty for businesses." 
+        keywords="B2B office furniture, corporate furniture Pakistan, bulk office chairs, enterprise furniture solutions, volume discounts" 
+        canonical="https://woodex.pk/b2b" 
+        structuredData={breadcrumbSchema} 
+      />
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="relative bg-primary text-primary-foreground py-24">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-block bg-accent text-accent-foreground px-4 py-2 rounded-full text-sm font-medium mb-6">
-              Enterprise Solutions
-            </span>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">B2B Office Furniture Solutions</h1>
-            <p className="text-xl md:text-2xl mb-8 opacity-90">
+      {/* Hero Banner */}
+      <section 
+        className="relative h-[340px] md:h-[400px] flex items-center bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroImage})` }}
+      >
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+              B2B Office Furniture
+              <span className="block text-accent">Solutions</span>
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 max-w-2xl mb-6">
               Partner with Pakistan's leading office furniture manufacturer. Volume pricing, dedicated support, and flexible terms for businesses of all sizes.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/e-quotation">
-                <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground min-w-[200px]">
+                <Button size="lg" variant="secondary">
                   Request B2B Quote
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary min-w-[200px]">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
                   Schedule Consultation
                 </Button>
               </Link>
@@ -111,19 +125,21 @@ const B2B = () => {
         </div>
       </section>
 
-      {/* Features Bar */}
-      <section className="py-12 bg-muted/50 border-b">
+      {/* Stats Bar */}
+      <section className="py-4 bg-accent">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {features.map((feature, i) => <div key={i} className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-                  <feature.icon className="h-7 w-7 text-accent" />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-accent-foreground">
+            {features.map((feature, i) => (
+              <div key={i} className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-accent-foreground/10 flex items-center justify-center flex-shrink-0">
+                  <feature.icon className="h-6 w-6" />
                 </div>
                 <div>
                   <h3 className="font-bold text-sm">{feature.title}</h3>
-                  <p className="text-xs text-muted-foreground">{feature.desc}</p>
+                  <p className="text-xs opacity-90">{feature.desc}</p>
                 </div>
-              </div>)}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -138,7 +154,8 @@ const B2B = () => {
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit, i) => <Card key={i} className="hover:shadow-xl transition-all hover:border-accent">
+            {benefits.map((benefit, i) => (
+              <Card key={i} className="hover:shadow-xl transition-all hover:border-accent">
                 <CardContent className="p-8">
                   <div className="w-16 h-16 rounded-xl bg-accent/10 flex items-center justify-center mb-6">
                     <benefit.icon className="h-8 w-8 text-accent" />
@@ -146,7 +163,8 @@ const B2B = () => {
                   <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">{benefit.desc}</p>
                 </CardContent>
-              </Card>)}
+              </Card>
+            ))}
           </div>
         </section>
 
@@ -159,13 +177,15 @@ const B2B = () => {
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {industries.map((industry, i) => <Card key={i} className="hover:shadow-xl hover:border-accent transition-all cursor-pointer group">
+            {industries.map((industry, i) => (
+              <Card key={i} className="hover:shadow-xl hover:border-accent transition-all cursor-pointer group">
                 <CardContent className="p-6 text-center">
                   <Building2 className="h-10 w-10 mx-auto mb-4 text-muted-foreground group-hover:text-accent transition-colors" />
                   <h3 className="font-bold mb-2">{industry.name}</h3>
                   <p className="text-sm text-accent font-medium">{industry.count}</p>
                 </CardContent>
-              </Card>)}
+              </Card>
+            ))}
           </div>
         </section>
 
@@ -179,48 +199,47 @@ const B2B = () => {
           </div>
           <div className="grid md:grid-cols-4 gap-8">
             {[{
-            step: "01",
-            title: "Consultation",
-            desc: "Free needs assessment and space planning consultation with our experts"
-          }, {
-            step: "02",
-            title: "Custom Proposal",
-            desc: "Detailed quotation with 3D visualization and product recommendations"
-          }, {
-            step: "03",
-            title: "Agreement",
-            desc: "Flexible payment terms, timelines, and project milestones"
-          }, {
-            step: "04",
-            title: "Delivery & Setup",
-            desc: "Professional installation with minimal disruption to your operations"
-          }].map((item, i) => <div key={i} className="text-center">
+              step: "01",
+              title: "Consultation",
+              desc: "Free needs assessment and space planning consultation with our experts"
+            }, {
+              step: "02",
+              title: "Custom Proposal",
+              desc: "Detailed quotation with 3D visualization and product recommendations"
+            }, {
+              step: "03",
+              title: "Agreement",
+              desc: "Flexible payment terms, timelines, and project milestones"
+            }, {
+              step: "04",
+              title: "Delivery & Setup",
+              desc: "Professional installation with minimal disruption to your operations"
+            }].map((item, i) => (
+              <div key={i} className="text-center">
                 <div className="w-20 h-20 rounded-full bg-accent text-accent-foreground font-bold flex items-center justify-center mx-auto mb-6 text-2xl">
                   {item.step}
                 </div>
                 <h3 className="text-xl font-bold mb-3">{item.title}</h3>
                 <p className="text-muted-foreground">{item.desc}</p>
-              </div>)}
+              </div>
+            ))}
           </div>
         </section>
 
-        {/* Pricing Tiers */}
-        
-
         {/* CTA */}
-        <section className="bg-primary text-primary-foreground rounded-2xl p-12 text-center">
+        <section className="bg-accent text-accent-foreground rounded-2xl p-12 text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Partner With Us?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
             Contact our B2B team to discuss volume pricing, custom solutions, and partnership opportunities.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/e-quotation">
-              <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground min-w-[200px]">
+              <Button size="lg" variant="secondary" className="min-w-[200px]">
                 Request B2B Quote
               </Button>
             </Link>
             <a href="tel:+923001234567">
-              <Button size="lg" variant="outline" className="border-primary-foreground hover:bg-primary-foreground min-w-[200px] text-primary">
+              <Button size="lg" variant="secondary" className="min-w-[200px]">
                 Call: +92 300 1234567
               </Button>
             </a>
@@ -229,6 +248,8 @@ const B2B = () => {
       </div>
 
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default B2B;

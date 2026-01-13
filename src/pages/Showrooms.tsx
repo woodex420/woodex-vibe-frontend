@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import showroomImage from "@/assets/showroom-exterior.jpg";
-import { MapPin, Phone, Clock, Mail, Navigation, Calendar, CheckCircle2 } from "lucide-react";
+import { MapPin, Phone, Clock, Mail, Navigation, Calendar, CheckCircle2, Package, Shield, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Showrooms = () => {
@@ -54,22 +54,41 @@ const Showrooms = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="relative">
-        <div className="h-[400px] md:h-[500px] overflow-hidden">
-          <img 
-            src={showroomImage} 
-            alt="WoodEx Showroom" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 pb-12">
-          <div className="container mx-auto px-4 text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-4">Visit Our Showrooms</h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+      {/* Hero Banner */}
+      <section 
+        className="relative h-[340px] md:h-[400px] flex items-center bg-cover bg-center"
+        style={{ backgroundImage: `url(${showroomImage})` }}
+      >
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+              Visit Our
+              <span className="block text-accent">Showrooms</span>
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 max-w-2xl">
               Experience Pakistan's finest office furniture collection in person. Walk-ins welcome or schedule a personalized visit.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Bar */}
+      <section className="py-4 bg-accent">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap justify-center gap-8 text-sm text-accent-foreground">
+            <div className="flex items-center gap-2">
+              <Package className="h-5 w-5" />
+              <span className="font-medium">56 Products</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Shield className="h-5 w-5" />
+              <span className="font-medium">5-7 Year Warranty</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Users className="h-5 w-5" />
+              <span className="font-medium">Expert Consultants</span>
+            </div>
           </div>
         </div>
       </section>
@@ -162,7 +181,7 @@ const Showrooms = () => {
                   </div>
 
                   <div className="space-y-3">
-                    <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
+                    <Button className="w-full">
                       <Navigation className="h-4 w-4 mr-2" />
                       Get Directions
                     </Button>
@@ -231,19 +250,19 @@ const Showrooms = () => {
         </section>
 
         {/* CTA */}
-        <section className="bg-primary text-primary-foreground rounded-2xl p-12 text-center">
+        <section className="bg-accent text-accent-foreground rounded-2xl p-12 text-center">
           <h2 className="text-4xl font-bold mb-6">Schedule Your Showroom Visit</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
             Book an appointment with our design consultants for a personalized showroom tour and expert advice.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/contact">
-              <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground min-w-[200px]">
+              <Button size="lg" variant="secondary" className="min-w-[200px]">
                 Schedule Appointment
               </Button>
             </Link>
             <a href="tel:+923001234567">
-              <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary min-w-[200px]">
+              <Button size="lg" variant="secondary" className="min-w-[200px]">
                 Call: +92 300 1234567
               </Button>
             </a>
