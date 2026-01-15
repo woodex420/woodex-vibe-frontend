@@ -23,6 +23,7 @@ import meetingRoomImg from "@/assets/meeting-room.jpg";
 import receptionDeskImg from "@/assets/reception-desk.jpg";
 import heroOfficeImg from "@/assets/hero-office.jpg";
 import heroSofaImg from "@/assets/hero-sofa.jpg";
+import officeIsometricImg from "@/assets/office-isometric.jpg";
 
 // Import bestseller images
 import matrixFlowManager from "@/assets/products/matrix-flow-manager.jpg";
@@ -272,38 +273,33 @@ const Index = () => {
       </section>
 
       {/* Complete Office Solutions */}
-      <section className="py-20 bg-foreground text-background">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="text-accent font-semibold mb-3 uppercase tracking-wider">Why Choose WoodEx</p>
-              <h2 className="text-3xl md:text-4xl font-bold mb-8">Complete Office Solutions</h2>
-              <div className="space-y-5">
+              <h2 className="text-3xl md:text-4xl font-bold mb-10 text-accent">Complete Office Solutions</h2>
+              <div className="space-y-6">
                 {features.map((feature, index) => (
-                  <div key={index} className="flex gap-4 items-start">
-                    <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
-                      <ChevronRight className="h-5 w-5 text-accent-foreground" />
-                    </div>
+                  <div key={index} className="flex gap-3 items-start">
+                    <ChevronRight className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                     <div>
                       <h3 className="font-bold text-base mb-1">{feature.title}</h3>
-                      <p className="text-sm text-background/70">{feature.description}</p>
+                      <p className="text-sm text-muted-foreground">{feature.description}</p>
                     </div>
                   </div>
                 ))}
               </div>
               <Link to="/services">
-                <Button variant="secondary" className="mt-10">
-                  Explore Services
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                <Button variant="outline" className="mt-10 border-foreground border-2">
+                  Load More
                 </Button>
               </Link>
             </div>
             <div className="relative">
-              <div className="absolute -inset-4 bg-accent/20 rounded-lg" />
               <img 
-                src={workstationImg} 
-                alt="Complete Office Solutions"
-                className="w-full h-auto relative rounded-lg shadow-2xl"
+                src={officeIsometricImg} 
+                alt="Complete Office Solutions - Isometric View"
+                className="w-full h-auto"
               />
             </div>
           </div>
