@@ -16,14 +16,27 @@ import { useState } from "react";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [shopOpen, setShopOpen] = useState(false);
 
   const navItems = [
     { name: "Home", path: "/" },
-    { name: "Shop", path: "/shop" },
     { name: "Series", path: "/series" },
     { name: "Projects", path: "/projects" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
+  ];
+
+  const shopCategories = [
+    { name: "All Products", path: "/shop" },
+    { name: "Executive Chairs", path: "/shop?category=executive" },
+    { name: "Manager Chairs", path: "/shop?category=manager" },
+    { name: "Staff Chairs", path: "/shop?category=staff" },
+    { name: "Visitor Chairs", path: "/shop?category=visitor" },
+    { name: "Office Desks", path: "/shop?category=desks" },
+    { name: "Workstations", path: "/shop?category=workstations" },
+    { name: "Office Sofas", path: "/shop?category=sofas" },
+    { name: "Meeting Tables", path: "/shop?category=meeting" },
+    { name: "Reception Desks", path: "/shop?category=reception" },
   ];
 
   const servicesItems = [
@@ -74,15 +87,36 @@ const Navbar = () => {
 
             {/* Desktop Navigation - Centered */}
             <div className="hidden lg:flex items-center gap-1">
-              {navItems.slice(0, 2).map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className="text-sm font-medium px-4 py-2 border border-border rounded hover:bg-muted transition-colors"
-                >
-                  {item.name}
-                </Link>
-              ))}
+              <Link
+                to="/"
+                className="text-sm font-medium px-4 py-2 border border-border rounded hover:bg-muted transition-colors"
+              >
+                Home
+              </Link>
+
+              {/* Shop Dropdown */}
+              <NavigationMenu>
+                <NavigationMenuList>
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger className="text-sm font-medium px-4 py-2 border border-border rounded hover:bg-muted transition-colors bg-transparent h-auto">
+                      Shop
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <div className="w-[280px] p-3 bg-background border border-border rounded-lg shadow-lg">
+                        <div className="grid gap-1">
+                          {shopCategories.map((item) => (
+                            <Link key={item.path} to={item.path}>
+                              <div className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-muted focus:bg-muted">
+                                <div className="text-sm font-medium leading-none">{item.name}</div>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
               
               <Link
                 to="/series"
@@ -167,7 +201,40 @@ const Navbar = () => {
                 </SheetTrigger>
                 <SheetContent side="right" className="w-[300px]">
                   <div className="flex flex-col gap-4 mt-8">
-                    {navItems.map((item) => (
+                    <Link
+                      to="/"
+                      onClick={() => setIsOpen(false)}
+                      className="text-lg font-medium hover:text-accent transition-colors"
+                    >
+                      Home
+                    </Link>
+
+                    {/* Shop Collapsible */}
+                    <Collapsible open={shopOpen} onOpenChange={setShopOpen}>
+                      <CollapsibleTrigger className="flex items-center justify-between w-full text-lg font-medium hover:text-accent transition-colors">
+                        Shop
+                        <ChevronDown className={`h-4 w-4 transition-transform ${shopOpen ? 'rotate-180' : ''}`} />
+                      </CollapsibleTrigger>
+                      <CollapsibleContent>
+                        <div className="flex flex-col gap-3 mt-2 ml-4">
+                          {shopCategories.map((item) => (
+                            <Link
+                              key={item.path}
+                              to={item.path}
+                              onClick={() => {
+                                setIsOpen(false);
+                                setShopOpen(false);
+                              }}
+                              className="text-base font-medium hover:text-accent transition-colors"
+                            >
+                              {item.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </CollapsibleContent>
+                    </Collapsible>
+
+                    {navItems.slice(1).map((item) => (
                       <Link
                         key={item.path}
                         to={item.path}
