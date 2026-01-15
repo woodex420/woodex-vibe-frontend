@@ -207,40 +207,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Category Carousel */}
-      <section className="py-16 bg-muted/20">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between mb-10">
-            <h2 className="text-2xl md:text-3xl font-bold">Browse by Category</h2>
-            <div className="flex gap-2">
-              <Button variant="outline" size="icon" className="h-10 w-10 rounded-full border-2 border-foreground hover:bg-foreground hover:text-background transition-all">
-                <MoveLeft className="h-5 w-5" />
-              </Button>
-              <Button variant="outline" size="icon" className="h-10 w-10 rounded-full border-2 border-foreground hover:bg-foreground hover:text-background transition-all">
-                <MoveRight className="h-5 w-5" />
-              </Button>
-            </div>
-          </div>
-          <div className="overflow-x-auto scrollbar-hide">
-            <div className="flex gap-6 md:gap-8 pb-4">
-              {categories.map((category, index) => (
-                <Link key={index} to="/shop" className="group text-center flex-shrink-0">
-                  <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden mb-4 mx-auto border-4 border-background shadow-lg group-hover:border-accent group-hover:shadow-xl transition-all duration-300">
-                    <img 
-                      src={category.image} 
-                      alt={category.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-                  <span className={`text-sm font-semibold ${category.highlight ? 'text-accent' : 'text-foreground group-hover:text-accent'} transition-colors`}>
-                    {category.name}
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Bestsellers Section */}
       <section className="py-16">
