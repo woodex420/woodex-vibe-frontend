@@ -22,6 +22,7 @@ import loungeImg from "@/assets/lounge.jpg";
 import meetingRoomImg from "@/assets/meeting-room.jpg";
 import receptionDeskImg from "@/assets/reception-desk.jpg";
 import heroOfficeImg from "@/assets/hero-office.jpg";
+import heroSofaImg from "@/assets/hero-sofa.jpg";
 
 // Import bestseller images
 import matrixFlowManager from "@/assets/products/matrix-flow-manager.jpg";
@@ -148,50 +149,34 @@ const Index = () => {
       />
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative min-h-[550px] flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-transparent z-10" />
-        <div className="absolute right-0 top-0 w-full lg:w-2/3 h-full">
-          <img 
-            src={loungeImg} 
-            alt="WoodEx Lounge Series Sofa" 
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="container mx-auto px-4 relative z-20">
-          <div className="max-w-xl py-16">
-            <p className="text-sm font-medium text-accent mb-3 tracking-wider uppercase">Woodex Lounge Series</p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
-              Best Seller<br />
-              <span className="text-accent">Sofa Collection</span>
-            </h1>
-            <p className="text-muted-foreground mb-8 max-w-md">
-              Premium office sofas designed for modern workspaces. Built with quality materials for lasting comfort.
-            </p>
-            <div className="flex gap-4">
+      {/* Hero Section - Clean White Background */}
+      <section className="relative bg-background py-12 lg:py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            {/* Left Content */}
+            <div className="order-2 lg:order-1">
+              <p className="text-sm font-medium text-muted-foreground mb-3 tracking-wider">Woodex Lounge Series</p>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                Best Seller<br />
+                Sofa & Collection<br />
+                LivingRoom
+              </h1>
               <Link to="/shop">
-                <Button variant="secondary" size="lg" className="font-semibold">
+                <Button variant="outline" size="lg" className="font-semibold border-foreground border-2 px-8">
                   SHOP NOW
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
-              <Link to="/e-quotation">
-                <Button variant="outline" size="lg" className="font-semibold border-foreground">
-                  GET QUOTE
                 </Button>
               </Link>
             </div>
+            
+            {/* Right Image */}
+            <div className="order-1 lg:order-2">
+              <img 
+                src={heroSofaImg} 
+                alt="WoodEx Premium Lounge Sofa - Best Seller Collection" 
+                className="w-full h-auto max-w-xl mx-auto lg:max-w-none"
+              />
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* Tagline */}
-      <section className="py-6 bg-accent">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-accent-foreground font-medium">
-            Design to delivery manufacturing for startups, SMEs, and corporate clients. Transform your workspace
-            with furniture built exactly to your specifications.
-          </p>
         </div>
       </section>
 
