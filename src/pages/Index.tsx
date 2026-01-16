@@ -4,8 +4,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ChatWidget } from "@/components/ChatWidget";
+import HeroSlider from "@/components/HeroSlider";
 import { SEO, generateOrganizationSchema, generateLocalBusinessSchema, generateFAQSchema } from "@/components/SEO";
-import { ArrowRight, Ruler, Palette, FileText, Factory, Truck, ChevronRight, ChevronLeft, MoveLeft, MoveRight } from "lucide-react";
+import { ArrowRight, Ruler, Palette, FileText, Factory, Truck, ChevronRight, ChevronLeft } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -150,36 +151,8 @@ const Index = () => {
       />
       <Navbar />
 
-      {/* Hero Section - Clean White Background */}
-      <section className="relative bg-background py-12 lg:py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            {/* Left Content */}
-            <div className="order-2 lg:order-1">
-              <p className="text-sm font-medium text-muted-foreground mb-3 tracking-wider">Woodex Lounge Series</p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Best Seller<br />
-                Sofa & Collection<br />
-                LivingRoom
-              </h1>
-              <Link to="/shop">
-                <Button variant="outline" size="lg" className="font-semibold border-foreground border-2 px-8">
-                  SHOP NOW
-                </Button>
-              </Link>
-            </div>
-            
-            {/* Right Image */}
-            <div className="order-1 lg:order-2">
-              <img 
-                src={heroSofaImg} 
-                alt="WoodEx Premium Lounge Sofa - Best Seller Collection" 
-                className="w-full h-auto max-w-xl mx-auto lg:max-w-none"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Section with Slider */}
+      <HeroSlider />
 
       {/* Services Section */}
       <section className="py-14 border-b">
