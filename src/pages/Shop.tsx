@@ -1,103 +1,76 @@
+import { useState, useMemo } from "react";
+import { useSearchParams, Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Link } from "react-router-dom";
 import { SEO, generateBreadcrumbSchema } from "@/components/SEO";
-import chairImage from "@/assets/chair-executive.jpg";
-import chairMeshImage from "@/assets/chair-mesh.jpg";
-import deskImage from "@/assets/desk-standing.jpg";
-import deskExecutiveImage from "@/assets/desk-executive.jpg";
-import workstationImage from "@/assets/workstation.jpg";
-import storageImage from "@/assets/storage.jpg";
-import bookshelfImage from "@/assets/bookshelf.jpg";
-import loungeImage from "@/assets/lounge.jpg";
-import receptionImage from "@/assets/reception-desk.jpg";
-import meetingRoomImage from "@/assets/meeting-room.jpg";
+import { 
+  allProducts, 
+  executiveChairs, 
+  managerChairs, 
+  staffChairs, 
+  visitorChairs, 
+  categories,
+  formatPrice,
+  Product 
+} from "@/data/products";
 import heroImage from "@/assets/hero-office.jpg";
-import { Armchair, MonitorUp, LayoutGrid, Archive, Sofa, Star, Shield, Truck, Phone } from "lucide-react";
+import { Armchair, Star, Shield, Truck, Phone, Filter, X } from "lucide-react";
 
 const Shop = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const categoryParam = searchParams.get("category");
+  
+  const [activeCategory, setActiveCategory] = useState<string | null>(categoryParam);
+
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "https://woodex.pk" },
     { name: "Shop", url: "https://woodex.pk/shop" },
   ]);
-  const categories = [
-    { icon: Armchair, title: "Office Chairs", desc: "Executive, mesh & ergonomic seating solutions", image: chairImage, count: 8 },
-    { icon: MonitorUp, title: "Office Desks", desc: "Executive, standing & modular desk systems", image: deskImage, count: 6 },
-    { icon: LayoutGrid, title: "Workstations", desc: "Complete cubicle and open office systems", image: workstationImage, count: 5 },
-    { icon: Archive, title: "Storage Solutions", desc: "Cabinets, filing systems & shelving units", image: storageImage, count: 7 },
-    { icon: Sofa, title: "Lounge & Sofas", desc: "Reception seating & breakout furniture", image: loungeImage, count: 4 },
-    { icon: Star, title: "Conference Tables", desc: "Meeting room & boardroom solutions", image: meetingRoomImage, count: 5 },
-    { icon: Armchair, title: "Meeting Chairs", desc: "Visitor and conference room seating", image: chairMeshImage, count: 4 },
-    { icon: Star, title: "Reception Desks", desc: "Welcome desks & front office furniture", image: receptionImage, count: 3 },
-    { icon: Armchair, title: "Executive Suites", desc: "Premium CEO & director office furniture", image: deskExecutiveImage, count: 6 },
-    { icon: Archive, title: "Bookshelf Systems", desc: "Library shelving & display units", image: bookshelfImage, count: 4 },
-    { icon: Star, title: "Office Accessories", desc: "Monitor arms, cable management & more", image: storageImage, count: 4 },
+
+  // Get products based on active category
+  const filteredProducts = useMemo(() => {
+    if (!activeCategory) return allProducts;
+    
+    switch (activeCategory) {
+      case "executive":
+        return executiveChairs;
+      case "manager":
+        return managerChairs;
+      case "staff":
+        return staffChairs;
+      case "visitor":
+        return visitorChairs;
+      default:
+        return allProducts;
+    }
+  }, [activeCategory]);
+
+  const categoryFilters = [
+    { id: null, name: "All Products", count: allProducts.length },
+    { id: "executive", name: "Executive Chairs", count: executiveChairs.length },
+    { id: "manager", name: "Manager Chairs", count: managerChairs.length },
+    { id: "staff", name: "Staff Chairs", count: staffChairs.length },
+    { id: "visitor", name: "Visitor Chairs", count: visitorChairs.length },
   ];
 
-  const featured = [
-    { 
-      name: "ErgoMax Executive Chair", 
-      price: "45,000", 
-      originalPrice: "55,000",
-      image: chairImage,
-      rating: 4.9,
-      reviews: 156,
-      badge: "Best Seller"
-    },
-    { 
-      name: "FlexiDesk Pro Standing", 
-      price: "68,000", 
-      originalPrice: "78,000",
-      image: deskImage,
-      rating: 4.8,
-      reviews: 203,
-      badge: "New Arrival"
-    },
-    { 
-      name: "AeroMesh Task Chair", 
-      price: "28,500", 
-      originalPrice: "35,000",
-      image: chairMeshImage,
-      rating: 4.7,
-      reviews: 89,
-      badge: null
-    },
-    { 
-      name: "Premium L-Shape Desk", 
-      price: "85,000", 
-      originalPrice: "98,000",
-      image: deskExecutiveImage,
-      rating: 4.9,
-      reviews: 124,
-      badge: "Premium"
-    },
-    { 
-      name: "ModernShelf Storage", 
-      price: "32,000", 
-      originalPrice: "38,000",
-      image: bookshelfImage,
-      rating: 4.6,
-      reviews: 67,
-      badge: null
-    },
-    { 
-      name: "Welcome Reception Desk", 
-      price: "125,000", 
-      originalPrice: "145,000",
-      image: receptionImage,
-      rating: 4.8,
-      reviews: 43,
-      badge: "Featured"
-    },
-  ];
+  const handleCategoryChange = (categoryId: string | null) => {
+    setActiveCategory(categoryId);
+    if (categoryId) {
+      setSearchParams({ category: categoryId });
+    } else {
+      setSearchParams({});
+    }
+  };
+
+  const activeCategoryName = categoryFilters.find(c => c.id === activeCategory)?.name || "All Products";
 
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Office Furniture Shop - Chairs, Desks & Workstations"
+        title={`${activeCategoryName} - Office Furniture Shop | WoodEx`}
         description="Browse 56+ premium office furniture products. Executive chairs, ergonomic desks, workstations, storage solutions. Factory-direct prices with 5-7 year warranty."
         keywords="buy office furniture Pakistan, office chairs online, executive desks, workstation furniture, office storage"
         canonical="https://woodex.pk/shop"
@@ -107,18 +80,18 @@ const Shop = () => {
       
       {/* Hero Banner */}
       <section 
-        className="relative h-[340px] md:h-[400px] flex items-center bg-cover bg-center"
+        className="relative h-[280px] md:h-[340px] flex items-center bg-cover bg-center"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
         <div className="absolute inset-0 bg-black/60" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
               Premium Office
               <span className="block text-accent">Furniture Shop</span>
             </h1>
-            <p className="text-lg md:text-xl text-white/90 max-w-2xl">
-              Pakistan's most comprehensive B2B office furniture collection. Factory-direct pricing with 5-7 year warranty on all products.
+            <p className="text-base md:text-lg text-white/90 max-w-2xl">
+              Pakistan's most comprehensive B2B office furniture collection.
             </p>
           </div>
         </div>
@@ -144,89 +117,105 @@ const Shop = () => {
         </div>
       </section>
 
-      <div className="container mx-auto px-4 py-16">
-        {/* Categories */}
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Browse by Category</h2>
-            <p className="text-lg text-muted-foreground">Explore our complete range of office furniture solutions</p>
+      <div className="container mx-auto px-4 py-12">
+        {/* Category Filters */}
+        <div className="mb-10">
+          <div className="flex items-center gap-2 mb-4">
+            <Filter className="h-5 w-5 text-muted-foreground" />
+            <h2 className="text-lg font-semibold">Filter by Category</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {categories.map((category, i) => (
-              <Card key={i} className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all hover:border-accent">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img 
-                    src={category.image} 
-                    alt={category.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
-                      <category.icon className="h-5 w-5 text-accent" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold">{category.title}</h3>
-                      <p className="text-sm text-accent">{category.count} products</p>
-                    </div>
-                  </div>
-                  <p className="text-muted-foreground mb-4">{category.desc}</p>
-                  <Button className="w-full">Browse Category</Button>
-                </CardContent>
-              </Card>
+          <div className="flex flex-wrap gap-3">
+            {categoryFilters.map((filter) => (
+              <Button
+                key={filter.id || "all"}
+                variant={activeCategory === filter.id ? "default" : "outline"}
+                size="sm"
+                onClick={() => handleCategoryChange(filter.id)}
+                className={`${
+                  activeCategory === filter.id 
+                    ? "bg-accent text-accent-foreground" 
+                    : "border-border hover:border-accent"
+                }`}
+              >
+                {filter.name}
+                <Badge variant="secondary" className="ml-2 bg-muted text-muted-foreground">
+                  {filter.count}
+                </Badge>
+              </Button>
             ))}
           </div>
-        </section>
+          
+          {activeCategory && (
+            <div className="mt-4 flex items-center gap-2">
+              <span className="text-sm text-muted-foreground">
+                Showing {filteredProducts.length} products in "{activeCategoryName}"
+              </span>
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={() => handleCategoryChange(null)}
+                className="h-7 px-2"
+              >
+                <X className="h-4 w-4 mr-1" />
+                Clear
+              </Button>
+            </div>
+          )}
+        </div>
 
-        {/* Featured Products */}
+        {/* Products Grid */}
         <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Featured Products</h2>
-            <p className="text-lg text-muted-foreground">Our most popular office furniture selections</p>
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold mb-3">{activeCategoryName}</h2>
+            <p className="text-muted-foreground">
+              {activeCategory 
+                ? `Browse our ${activeCategoryName.toLowerCase()} collection`
+                : "Explore our complete range of office furniture"
+              }
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featured.map((product, i) => (
-              <Card key={i} className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all">
-                <div className="aspect-square overflow-hidden relative">
-                  {product.badge && (
-                    <Badge className="absolute top-4 right-4 z-10 bg-accent text-accent-foreground">
-                      {product.badge}
-                    </Badge>
-                  )}
-                  <img 
-                    src={product.image} 
-                    alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-2">{product.name}</h3>
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="flex items-center gap-1">
-                      <Star className="h-4 w-4 fill-accent text-accent" />
-                      <span className="text-sm font-medium">{product.rating}</span>
-                    </div>
-                    <span className="text-sm text-muted-foreground">({product.reviews} reviews)</span>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {filteredProducts.map((product) => (
+              <Link key={product.id} to={`/product/${product.id}`}>
+                <Card className="group cursor-pointer overflow-hidden hover:shadow-xl transition-all h-full">
+                  <div className="aspect-square overflow-hidden relative">
+                    {product.badge && (
+                      <Badge className="absolute top-3 right-3 z-10 bg-accent text-accent-foreground">
+                        {product.badge}
+                      </Badge>
+                    )}
+                    <img 
+                      src={product.image} 
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <span className="text-2xl font-bold">PKR {product.price}</span>
-                      <span className="text-sm text-muted-foreground line-through ml-2">PKR {product.originalPrice}</span>
+                  <CardContent className="p-5">
+                    <p className="text-xs text-accent font-medium mb-1 uppercase tracking-wide">
+                      {product.category}
+                    </p>
+                    <h3 className="text-base font-bold mb-2 line-clamp-2 min-h-[48px]">
+                      {product.name}
+                    </h3>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xl font-bold text-accent">
+                        {formatPrice(product.price)}
+                      </span>
                     </div>
-                  </div>
-                  <Button size="sm" className="w-full mt-4">Get Quote</Button>
-                </CardContent>
-              </Card>
+                    <Button size="sm" className="w-full mt-4">View Details</Button>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </section>
 
         {/* CTA */}
         <section className="bg-accent text-accent-foreground rounded-2xl p-12 text-center">
-          <h2 className="text-4xl font-bold mb-6">Can't Find What You're Looking For?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            We offer custom furniture solutions tailored to your specific needs. Contact our design team for personalized assistance.
+          <h2 className="text-3xl font-bold mb-4">Can't Find What You're Looking For?</h2>
+          <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
+            We offer custom furniture solutions tailored to your specific needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/e-quotation">
