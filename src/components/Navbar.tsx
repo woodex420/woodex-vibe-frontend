@@ -63,6 +63,10 @@ const Navbar = () => {
                 Warranty
               </Link>
               <span className="text-border">|</span>
+              <Link to="/materials" className="hover:text-foreground transition-colors hover:underline">
+                Materials
+              </Link>
+              <span className="text-border">|</span>
               <Link to="/services/custom-design" className="hover:text-foreground transition-colors hover:underline">
                 Designing
               </Link>
