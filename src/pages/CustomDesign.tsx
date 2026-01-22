@@ -161,19 +161,10 @@ const CustomDesign = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-20">
-        {/* Interactive Configurator Section */}
-        <div className="mb-24">
-          <div className="text-center mb-12">
-            <span className="text-accent font-semibold text-sm uppercase tracking-wider">Live Preview</span>
-            <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-4">Interactive Material Configurator</h2>
-            <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-              Click on hotspots in the scene to select furniture components, then choose from our premium materials library to visualize your custom design in real-time.
-            </p>
-          </div>
-          <InteractiveConfigurator />
-        </div>
+      {/* Full-Page Interactive Configurator */}
+      <InteractiveConfigurator />
 
+      <div className="container mx-auto px-4 py-20">
         {/* Services Grid */}
         <div className="mb-24">
           <div className="text-center mb-16">
