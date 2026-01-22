@@ -4,13 +4,19 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
+import InteractiveConfigurator from "@/components/InteractiveConfigurator";
 import customDesignImage from "@/assets/custom-design-studio.jpg";
 import receptionImage from "@/assets/reception-desk.jpg";
 import loungeImage from "@/assets/lounge.jpg";
-import { Palette, Ruler, Sparkles, CheckCircle2, Package, Clock, ArrowRight } from "lucide-react";
+import { Palette, Ruler, Sparkles, CheckCircle2, Package, Clock, ArrowRight, MousePointer2 } from "lucide-react";
 
 const CustomDesign = () => {
   const services = [
+    {
+      icon: MousePointer2,
+      title: "Interactive Configurator",
+      desc: "Visualize your custom furniture with our live 3D configurator. Select materials, colors, and finishes in real-time.",
+    },
     {
       icon: Palette,
       title: "Bespoke Designs",
@@ -30,11 +36,6 @@ const CustomDesign = () => {
       icon: Package,
       title: "Prototype Development",
       desc: "Full-scale prototypes for approval before production. Make changes until it's exactly what you want.",
-    },
-    {
-      icon: CheckCircle2,
-      title: "Quality Craftsmanship",
-      desc: "Expert craftsmen with 25+ years experience. Every piece is inspected before delivery.",
     },
     {
       icon: Clock,
@@ -161,6 +162,18 @@ const CustomDesign = () => {
       </div>
 
       <div className="container mx-auto px-4 py-20">
+        {/* Interactive Configurator Section */}
+        <div className="mb-24">
+          <div className="text-center mb-12">
+            <span className="text-accent font-semibold text-sm uppercase tracking-wider">Live Preview</span>
+            <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-4">Interactive Material Configurator</h2>
+            <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+              Click on hotspots in the scene to select furniture components, then choose from our premium materials library to visualize your custom design in real-time.
+            </p>
+          </div>
+          <InteractiveConfigurator />
+        </div>
+
         {/* Services Grid */}
         <div className="mb-24">
           <div className="text-center mb-16">
