@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import { ChatWidget } from "@/components/ChatWidget";
 import HeroSlider from "@/components/HeroSlider";
 import { SEO, generateOrganizationSchema, generateLocalBusinessSchema, generateFAQSchema } from "@/components/SEO";
-import { ArrowRight, Ruler, Palette, FileText, Factory, Truck, ChevronRight, ChevronLeft } from "lucide-react";
+import { ArrowRight, Ruler, Palette, FileText, Factory, Truck, ChevronRight, ChevronLeft, ShoppingCart, ClipboardList, Download } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -180,6 +180,76 @@ const Index = () => {
         </div>
       </section>
 
+      {/* E-Quotation Process Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold mb-3">
+            Now you can Create your Own E-Quotation Instantly!
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto mb-14">
+            Browse products, add to cart, customize options, and get your instant quotation with transparent pricing in PKR.
+          </p>
+
+          {/* 3-Step Process */}
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-0 mb-14">
+            {/* Step 1 */}
+            <div className="flex flex-col items-center">
+              <div className="w-24 h-24 rounded-2xl bg-card border border-border shadow-sm flex items-center justify-center mb-4">
+                <ShoppingCart className="h-10 w-10 text-foreground" />
+              </div>
+              <p className="font-bold text-sm tracking-wider">ADD TO CART</p>
+            </div>
+
+            {/* Arrow */}
+            <div className="hidden md:flex items-center px-6">
+              <ArrowRight className="h-8 w-8 text-accent" />
+            </div>
+            <div className="flex md:hidden items-center py-2">
+              <ArrowRight className="h-8 w-8 text-accent rotate-90" />
+            </div>
+
+            {/* Step 2 */}
+            <div className="flex flex-col items-center relative">
+              <div className="w-24 h-24 rounded-2xl bg-card border border-border shadow-sm flex items-center justify-center mb-4">
+                <ClipboardList className="h-10 w-10 text-foreground" />
+              </div>
+              <span className="absolute top-16 right-2 bg-accent text-accent-foreground text-[10px] font-bold px-1.5 py-0.5 rounded">
+                PKR
+              </span>
+              <p className="font-bold text-sm tracking-wider">REVIEW & SUBMIT</p>
+            </div>
+
+            {/* Arrow */}
+            <div className="hidden md:flex items-center px-6">
+              <ArrowRight className="h-8 w-8 text-accent" />
+            </div>
+            <div className="flex md:hidden items-center py-2">
+              <ArrowRight className="h-8 w-8 text-accent rotate-90" />
+            </div>
+
+            {/* Step 3 */}
+            <div className="flex flex-col items-center">
+              <div className="w-24 h-24 rounded-2xl bg-card border border-border shadow-sm flex items-center justify-center mb-4">
+                <Download className="h-10 w-10 text-foreground" />
+              </div>
+              <p className="font-bold text-sm tracking-wider">DOWNLOAD</p>
+            </div>
+          </div>
+
+          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
+            If you are having difficulties or require product customization, you can always{" "}
+            <Link to="/contact" className="text-accent font-medium hover:underline">Contact Us</Link>
+            {" "}and our consultant will be in touch with you and assist with customized office furniture quotations.
+          </p>
+
+          <Link to="/e-quotation">
+            <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold px-10 text-base rounded-full">
+              <ArrowRight className="mr-2 h-5 w-5" />
+              CREATE A QUOTE!
+            </Button>
+          </Link>
+        </div>
+      </section>
 
       {/* Bestsellers Section */}
       <section className="py-16">
