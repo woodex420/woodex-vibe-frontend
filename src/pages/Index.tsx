@@ -52,11 +52,21 @@ const faqs = [
 ];
 
 const faqLinks = [
-  "Contact Us for More Options",
-  "Are Woodex chairs durable",
-  "Do Woodex office chairs",
-  "Where does Woodex deliver",
-  "What types of ergonomic chairs",
+  { label: "Contact Us for More Options", group: 1 },
+  { label: "Are Woodex chairs durable", group: 1 },
+  { label: "Do Woodex office chairs", group: 1 },
+  { label: "Where does Woodex deliver", group: 1 },
+  { label: "What types of ergonomic chairs", group: 1 },
+  { label: "Contact Us for More Options", group: 2 },
+  { label: "Are Woodex chairs durable", group: 2 },
+  { label: "Do Woodex office chairs", group: 2 },
+  { label: "Where does Woodex deliver", group: 2 },
+  { label: "What types of ergonomic chairs", group: 2 },
+  { label: "Contact Us for More Options", group: 3 },
+  { label: "Are Woodex chairs durable", group: 3 },
+  { label: "Do Woodex office chairs", group: 3 },
+  { label: "Where does Woodex deliver", group: 3 },
+  { label: "What types of ergonomic chairs", group: 3 },
 ];
 
 const Index = () => {
@@ -88,7 +98,7 @@ const Index = () => {
     {
       title: "Delivery & Installation",
       icon: Truck,
-      description: "Professional delivery and installation services ensure your furniture is set up correctly and ready to use. Our expert team",
+      description: "Professional delivery and installation services ensure your furniture is set up correctly and ready to use.",
       link: "/services/delivery-installation"
     }
   ];
@@ -112,7 +122,7 @@ const Index = () => {
   ];
 
   const exploreProducts = [
-    { name: "Ambassador Executive Chair", price: 60000, oldPrice: 65000, image: ambassadorExecutive, isNew: true },
+    { name: "Silverstone Executive Chair", price: 60000, oldPrice: 65000, image: ambassadorExecutive, isNew: true },
     { name: "Wave Comfort Staff Chair", price: 0, oldPrice: 42000, image: waveComfortStaff, isNew: true },
     { name: "Workstation 6", price: 70000, oldPrice: 75000, image: workstationImg, isNew: true },
     { name: "Pinnacle Office Reception Desk", price: 65000, oldPrice: 75000, image: receptionDeskImg, isNew: true },
@@ -154,25 +164,34 @@ const Index = () => {
       {/* Hero Section with Slider */}
       <HeroSlider />
 
-      {/* Services Section */}
-      <section className="py-14 border-b">
+      {/* Services Description Banner */}
+      <section className="py-6 bg-muted/40 border-y border-border">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+            Design to delivery manufacturing for startups, SMEs, and corporate clients. Transform your workspace with furniture built exactly to your specifications.
+          </p>
+        </div>
+      </section>
+
+      {/* Services Section - 5 columns with E-Quote links */}
+      <section className="py-12 border-b border-border">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
             {services.map((service, index) => (
               <div key={index} className="group relative">
                 <div className="flex flex-col items-start">
-                  <div className="w-14 h-14 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent transition-colors">
-                    <service.icon className="h-7 w-7 text-accent group-hover:text-accent-foreground transition-colors" />
+                  <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent transition-colors">
+                    <service.icon className="h-6 w-6 text-accent group-hover:text-accent-foreground transition-colors" />
                   </div>
-                  <h3 className="font-bold text-base mb-2">{service.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed line-clamp-3">{service.description}</p>
-                  <Link to={service.link} className="inline-flex items-center gap-1 text-sm font-semibold text-accent hover:underline">
+                  <h3 className="font-bold text-sm mb-2">{service.title}</h3>
+                  <p className="text-xs text-muted-foreground mb-3 leading-relaxed line-clamp-3">{service.description}</p>
+                  <Link to={service.link} className="inline-flex items-center gap-1 text-xs font-semibold text-accent hover:underline">
                     E-Quote
-                    <ChevronRight className="h-4 w-4" />
+                    <ChevronRight className="h-3 w-3" />
                   </Link>
                 </div>
                 {index < services.length - 1 && (
-                  <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-px h-20 bg-border" />
+                  <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-px h-16 bg-border" />
                 )}
               </div>
             ))}
@@ -180,111 +199,60 @@ const Index = () => {
         </div>
       </section>
 
-      {/* E-Quotation Process Section */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-3">
-            Now you can Create your Own E-Quotation Instantly!
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-14">
-            Browse products, add to cart, customize options, and get your instant quotation with transparent pricing in PKR.
-          </p>
-
-          {/* 3-Step Process */}
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-0 mb-14">
-            {/* Step 1 */}
-            <div className="flex flex-col items-center">
-              <div className="w-24 h-24 rounded-2xl bg-card border border-border shadow-sm flex items-center justify-center mb-4">
-                <ShoppingCart className="h-10 w-10 text-foreground" />
-              </div>
-              <p className="font-bold text-sm tracking-wider">ADD TO CART</p>
-            </div>
-
-            {/* Arrow */}
-            <div className="hidden md:flex items-center px-6">
-              <ArrowRight className="h-8 w-8 text-accent" />
-            </div>
-            <div className="flex md:hidden items-center py-2">
-              <ArrowRight className="h-8 w-8 text-accent rotate-90" />
-            </div>
-
-            {/* Step 2 */}
-            <div className="flex flex-col items-center relative">
-              <div className="w-24 h-24 rounded-2xl bg-card border border-border shadow-sm flex items-center justify-center mb-4">
-                <ClipboardList className="h-10 w-10 text-foreground" />
-              </div>
-              <span className="absolute top-16 right-2 bg-accent text-accent-foreground text-[10px] font-bold px-1.5 py-0.5 rounded">
-                PKR
-              </span>
-              <p className="font-bold text-sm tracking-wider">REVIEW & SUBMIT</p>
-            </div>
-
-            {/* Arrow */}
-            <div className="hidden md:flex items-center px-6">
-              <ArrowRight className="h-8 w-8 text-accent" />
-            </div>
-            <div className="flex md:hidden items-center py-2">
-              <ArrowRight className="h-8 w-8 text-accent rotate-90" />
-            </div>
-
-            {/* Step 3 */}
-            <div className="flex flex-col items-center">
-              <div className="w-24 h-24 rounded-2xl bg-card border border-border shadow-sm flex items-center justify-center mb-4">
-                <Download className="h-10 w-10 text-foreground" />
-              </div>
-              <p className="font-bold text-sm tracking-wider">DOWNLOAD</p>
-            </div>
+      {/* Category Thumbnails Strip */}
+      <section className="py-10 border-b border-border">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center gap-6 overflow-x-auto pb-2 scrollbar-hide">
+            {categories.map((cat, index) => (
+              <Link 
+                key={index} 
+                to={`/shop?category=${cat.name.toLowerCase().replace(/\s+/g, '-')}`}
+                className={`flex flex-col items-center gap-2 min-w-[90px] group ${cat.highlight ? 'text-accent' : ''}`}
+              >
+                <div className="w-20 h-20 rounded-lg overflow-hidden bg-muted border border-border group-hover:border-accent transition-colors">
+                  <img 
+                    src={cat.image} 
+                    alt={cat.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <span className={`text-xs font-medium text-center leading-tight ${cat.highlight ? 'text-accent' : 'text-muted-foreground group-hover:text-foreground'} transition-colors`}>
+                  {cat.name}
+                </span>
+              </Link>
+            ))}
           </div>
-
-          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-            If you are having difficulties or require product customization, you can always{" "}
-            <Link to="/contact" className="text-accent font-medium hover:underline">Contact Us</Link>
-            {" "}and our consultant will be in touch with you and assist with customized office furniture quotations.
-          </p>
-
-          <Link to="/e-quotation">
-            <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold px-10 text-base rounded-full">
-              <ArrowRight className="mr-2 h-5 w-5" />
-              CREATE A QUOTE!
-            </Button>
-          </Link>
         </div>
       </section>
 
       {/* Bestsellers Section */}
-      <section className="py-16">
+      <section className="py-14">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between mb-10">
-            <div>
-              <h2 className="text-2xl md:text-3xl font-bold">Bestsellers</h2>
-              <p className="text-muted-foreground mt-1">Our most popular office furniture picks</p>
-            </div>
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-xl md:text-2xl font-bold">Bestsellers</h2>
             <div className="flex gap-2">
-              <Button variant="outline" size="icon" className="h-10 w-10 rounded-full border-2">
-                <ChevronLeft className="h-5 w-5" />
+              <Button variant="outline" size="icon" className="h-9 w-9 rounded-full border-2 border-foreground">
+                <ChevronLeft className="h-4 w-4" />
               </Button>
-              <Button variant="outline" size="icon" className="h-10 w-10 rounded-full border-2">
-                <ChevronRight className="h-5 w-5" />
+              <Button variant="outline" size="icon" className="h-9 w-9 rounded-full border-2 border-foreground">
+                <ChevronRight className="h-4 w-4" />
               </Button>
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
             {bestsellers.map((product, index) => (
               <Link key={index} to="/shop" className="group">
-                <Card className="overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300">
-                  <div className="aspect-[4/3] bg-muted overflow-hidden relative">
-                    <div className="absolute top-3 left-3 bg-accent text-accent-foreground text-xs font-bold px-3 py-1 z-10">
-                      BESTSELLER
-                    </div>
+                <Card className="overflow-hidden border border-border shadow-none hover:shadow-md transition-all duration-300 rounded-none">
+                  <div className="aspect-[4/3] bg-muted overflow-hidden">
                     <img 
                       src={product.image} 
                       alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <CardContent className="p-5 text-center bg-card">
-                    <p className="text-xs text-accent font-medium mb-1 uppercase tracking-wide">{product.category}</p>
-                    <h3 className="text-base font-bold">{product.name}</h3>
+                  <CardContent className="p-4 text-center bg-card border-t border-border">
+                    <p className="text-[11px] text-muted-foreground uppercase tracking-wider mb-1">{product.category}</p>
+                    <h3 className="text-sm font-bold">{product.name}</h3>
                   </CardContent>
                 </Card>
               </Link>
@@ -294,24 +262,26 @@ const Index = () => {
       </section>
 
       {/* Complete Office Solutions */}
-      <section className="py-20 bg-background">
+      <section className="py-16 bg-muted/20">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <h2 className="text-2xl md:text-3xl font-bold mb-10 text-accent italic">Complete Office Solutions</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-10 text-accent">Complete Office Solutions</h2>
-              <div className="space-y-6">
+              <div className="space-y-5">
                 {features.map((feature, index) => (
                   <div key={index} className="flex gap-3 items-start">
-                    <ChevronRight className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                    <div className="w-5 h-5 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <ChevronRight className="h-3 w-3 text-accent-foreground" />
+                    </div>
                     <div>
-                      <h3 className="font-bold text-base mb-1">{feature.title}</h3>
-                      <p className="text-sm text-muted-foreground">{feature.description}</p>
+                      <h3 className="font-bold text-sm mb-0.5">{feature.title}</h3>
+                      <p className="text-xs text-muted-foreground leading-relaxed">{feature.description}</p>
                     </div>
                   </div>
                 ))}
               </div>
               <Link to="/services">
-                <Button variant="outline" className="mt-10 border-foreground border-2">
+                <Button variant="outline" className="mt-8 border-foreground border-2 text-sm font-semibold rounded-none">
                   Load More
                 </Button>
               </Link>
@@ -320,7 +290,7 @@ const Index = () => {
               <img 
                 src={officeIsometricImg} 
                 alt="Complete Office Solutions - Isometric View"
-                className="w-full h-auto"
+                className="w-full h-auto rounded-sm"
               />
             </div>
           </div>
@@ -328,38 +298,38 @@ const Index = () => {
       </section>
 
       {/* Explore Our Categories - Product Grid */}
-      <section className="py-16">
+      <section className="py-14">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-3">Explore Our Products</h2>
-            <p className="text-muted-foreground">Complete furniture solutions for every workspace need</p>
+          <div className="text-center mb-10">
+            <h2 className="text-xl md:text-2xl font-bold mb-2 italic">Explore Our Categories</h2>
+            <p className="text-sm text-muted-foreground">Complete Furniture Solution for every workspace need</p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {exploreProducts.map((product, index) => (
               <Link key={index} to="/shop" className="group">
-                <Card className="overflow-hidden border-0 shadow-sm hover:shadow-lg transition-all duration-300">
+                <Card className="overflow-hidden border border-border shadow-none hover:shadow-md transition-all duration-300 rounded-none">
                   <div className="relative aspect-square bg-muted overflow-hidden">
                     {product.isNew && (
-                      <span className="absolute top-2 left-2 bg-accent text-accent-foreground text-xs font-bold px-2 py-1 z-10">
-                        NEW
+                      <span className="absolute top-2 left-2 bg-accent text-accent-foreground text-[10px] font-bold px-2 py-0.5 z-10">
+                        New
                       </span>
                     )}
                     <img 
                       src={product.image} 
                       alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <CardContent className="p-4 bg-card">
-                    <h3 className="text-sm font-semibold mb-2 line-clamp-2 min-h-[40px]">{product.name}</h3>
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-base font-bold text-accent">
-                        Rs. {product.price > 0 ? product.price.toLocaleString() : 'Quote'}
+                  <CardContent className="p-3 bg-card border-t border-border">
+                    <h3 className="text-xs font-semibold mb-1 line-clamp-2 min-h-[32px]">{product.name}</h3>
+                    <div className="flex items-baseline gap-1.5">
+                      <span className="text-sm font-bold">
+                        {product.price > 0 ? `$${product.price.toLocaleString()}.00` : '$0.00'}
                       </span>
                       {product.oldPrice > 0 && (
-                        <span className="text-xs text-muted-foreground line-through">
-                          Rs. {product.oldPrice.toLocaleString()}
+                        <span className="text-[10px] text-muted-foreground line-through">
+                          ${product.oldPrice.toLocaleString()}.00
                         </span>
                       )}
                     </div>
@@ -369,11 +339,10 @@ const Index = () => {
             ))}
           </div>
           
-          <div className="text-center mt-10">
+          <div className="text-center mt-8">
             <Link to="/shop">
-              <Button variant="secondary" size="lg">
-                View All Products
-                <ArrowRight className="ml-2 h-4 w-4" />
+              <Button variant="outline" className="border-foreground border-2 text-sm font-semibold rounded-none">
+                Load More
               </Button>
             </Link>
           </div>
@@ -381,15 +350,14 @@ const Index = () => {
       </section>
 
       {/* Clients Section */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-10 border-y border-border">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-3">Trusted by Leading Brands</h2>
-          <p className="text-muted-foreground mb-10 max-w-xl mx-auto">
+          <p className="text-sm text-muted-foreground mb-8">
             Join 1,200+ satisfied clients across Pakistan who trust WoodEx for their office furniture needs.
           </p>
-          <div className="flex flex-wrap justify-center gap-10 md:gap-20 items-center">
+          <div className="flex flex-wrap justify-center gap-10 md:gap-16 items-center">
             {clients.map((client, index) => (
-              <div key={index} className="text-2xl md:text-3xl font-bold text-muted-foreground/40 hover:text-accent transition-colors cursor-pointer">
+              <div key={index} className="text-xl md:text-2xl font-bold text-muted-foreground/30 hover:text-foreground transition-colors cursor-pointer tracking-wider">
                 {client}
               </div>
             ))}
@@ -398,44 +366,65 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-accent">
+      <section className="py-16 bg-accent">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-accent-foreground mb-4">
-            Transform Your Workspace Today
+          <h2 className="text-2xl md:text-3xl font-bold text-accent-foreground mb-3">
+            Transform Your Office Workspace Today
           </h2>
-          <p className="text-accent-foreground/80 mb-10 max-w-2xl mx-auto text-lg">
+          <p className="text-accent-foreground/80 mb-8 max-w-xl mx-auto text-sm">
             Get a free consultation and 3D design for your workspace. No commitment required.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link to="/e-quotation">
-              <Button variant="secondary" size="lg" className="min-w-[180px] font-bold">
+              <Button variant="secondary" size="lg" className="font-bold rounded-none min-w-[160px]">
                 Get Free Quote
-                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
-            <Button variant="outline" size="lg" className="min-w-[180px] font-bold bg-transparent border-2 border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-accent">
+            <Button variant="outline" size="lg" className="font-bold rounded-none min-w-[160px] bg-transparent border-2 border-accent-foreground text-accent-foreground hover:bg-accent-foreground hover:text-accent">
               WhatsApp Us
             </Button>
           </div>
         </div>
       </section>
 
-      {/* FAQs Section */}
-      <section className="py-20">
+      {/* SEO Content Block */}
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-3">Frequently Asked Questions</h2>
-            <p className="text-muted-foreground">Everything you need to know about WoodEx</p>
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-xl md:text-2xl font-bold mb-4">Modern Office Furniture Lahore Pakistan</h2>
+            <h3 className="text-lg font-bold mb-4">Ergonomic Office Chairs in Pakistan – Comfort That Works as Hard as You Do</h3>
+            
+            <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+              <p>
+                At Woodex, we design ergonomic office chairs that go beyond basic seating. These chairs are built to support your posture, reduce strain, and keep you comfortable throughout long working hours. By combining Master MoltyFoam cushioning, adjustable features, and premium materials, Woodex chairs help improve not only your health but also your focus and productivity at work.
+              </p>
+              <p>
+                A great chair isn't just where you sit—it's the foundation of a smarter, healthier, and more productive workspace.
+              </p>
+              <p>
+                Your chair isn't just a seat—it's where you spend hours thinking, working, and creating. That's why a poorly designed chair leads to back pain, fatigue, and low productivity.
+              </p>
+              <p>
+                At Woodex Furniture Pakistan, our ergonomic office chairs are designed to help you work smarter, feel better, and stay productive all day. Built with premium Master MoltyFoam cushioning, adjustable features, and durable steel + wood frames, they're the perfect balance of health, comfort, and professional style.
+              </p>
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* FAQs Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-xl md:text-2xl font-bold mb-8">FAQs – Woodex</h2>
           
-          <div className="max-w-3xl mx-auto">
-            <Accordion type="single" collapsible className="space-y-4">
+          <div className="max-w-4xl">
+            <Accordion type="single" collapsible className="space-y-3">
               {faqs.map((faq, index) => (
-                <AccordionItem key={index} value={`faq-${index}`} className="border rounded-lg px-6 bg-card shadow-sm">
-                  <AccordionTrigger className="text-base font-semibold hover:no-underline py-5">
+                <AccordionItem key={index} value={`faq-${index}`} className="border border-border rounded-none px-5 bg-card">
+                  <AccordionTrigger className="text-sm font-semibold hover:no-underline py-4">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pb-5">
+                  <AccordionContent className="text-sm text-muted-foreground pb-4">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -443,19 +432,22 @@ const Index = () => {
             </Accordion>
           </div>
 
-          {/* FAQ Links Grid */}
-          <div className="mt-12 pt-10 border-t">
-            <h3 className="font-bold text-lg mb-6 text-center">Quick Links</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-3 max-w-3xl mx-auto">
-              {faqLinks.map((link, index) => (
-                <Link 
-                  key={index} 
-                  to="/contact" 
-                  className="flex items-center gap-2 text-sm text-foreground hover:text-accent transition-colors group"
-                >
-                  <ChevronRight className="h-4 w-4 text-accent group-hover:translate-x-1 transition-transform" />
-                  {link}
-                </Link>
+          {/* FAQ Links Grid - 3 Columns */}
+          <div className="mt-10 pt-8 border-t border-border">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-2 max-w-4xl">
+              {[1, 2, 3].map((group) => (
+                <div key={group} className="space-y-2">
+                  {faqLinks.filter(l => l.group === group).map((link, index) => (
+                    <Link 
+                      key={index} 
+                      to="/contact" 
+                      className="flex items-center gap-1.5 text-xs text-foreground hover:text-accent transition-colors group"
+                    >
+                      <ChevronRight className="h-3 w-3 text-accent group-hover:translate-x-0.5 transition-transform" />
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
               ))}
             </div>
           </div>
