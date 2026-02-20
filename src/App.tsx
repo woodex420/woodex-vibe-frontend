@@ -25,6 +25,7 @@ import Warranty from "./pages/Warranty";
 import NotFound from "./pages/NotFound";
 import AgentDashboard from "./pages/AgentDashboard";
 import KnowledgeBase from "./pages/KnowledgeBase";
+import Blog from "./pages/Blog";
 
 const queryClient = new QueryClient();
 
@@ -56,6 +57,7 @@ const App = () => (
           <Route path="/warranty" element={<Warranty />} />
           <Route path="/agent-dashboard" element={<AgentDashboard />} />
           <Route path="/knowledge-base" element={<KnowledgeBase />} />
+          <Route path="/blog" element={<Blog />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
