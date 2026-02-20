@@ -5,7 +5,13 @@ import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { SEO, generateBreadcrumbSchema } from "@/components/SEO";
+import { SEO, generateBreadcrumbSchema, generateFAQSchema } from "@/components/SEO";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { 
   allProducts, 
   executiveChairs, 
@@ -32,10 +38,21 @@ const Shop = () => {
   const [sortBy, setSortBy] = useState("default");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
+  const shopFaqs = [
+    { question: "How do I choose the right office chair?", answer: "Consider your daily usage hours, body type, and work style. For 8+ hours, choose Executive or Manager chairs with lumbar support. For task-based work, Staff chairs offer great value. Our consultation team can help you find the perfect match." },
+    { question: "What is your return and exchange policy?", answer: "We offer a 7-day return policy for unused items in original packaging. Exchanges are free within 14 days. Custom-made furniture is non-returnable but covered by our quality guarantee." },
+    { question: "Do you offer bulk discounts for offices?", answer: "Yes! 10+ units get 10% off, 25+ units get 15% off, and 50+ units qualify for custom project pricing. Contact our B2B team at sales@woodex.pk for a tailored quote." },
+    { question: "What warranty do your chairs come with?", answer: "All chairs include a 5-7 year structural warranty covering frames, bases, and mechanisms. Upholstery is covered for 3 years. Executive chairs come with an extended warranty option." },
+    { question: "How long does delivery take?", answer: "Standard delivery within Lahore: 3-5 business days. Nationwide delivery: 5-10 business days. Express delivery available for urgent orders. All deliveries include free professional assembly." },
+    { question: "Can I visit a showroom to test chairs?", answer: "Absolutely! Visit our showrooms in Lahore (Gulberg III) and Islamabad. Walk-ins welcome Mon-Sat 9AM-7PM. Book an appointment for a personalized consultation." },
+  ];
+
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "https://woodex.pk" },
     { name: "Shop", url: "https://woodex.pk/shop" },
   ]);
+
+  const faqSchema = generateFAQSchema(shopFaqs);
 
   const filteredProducts = useMemo(() => {
     let products: Product[];
@@ -87,7 +104,7 @@ const Shop = () => {
         description="Browse 56+ premium office furniture products. Executive chairs, ergonomic desks, workstations, storage solutions. Factory-direct prices with 5-7 year warranty."
         keywords="buy office furniture Pakistan, office chairs online, executive desks, workstation furniture, office storage"
         canonical="https://woodex.pk/shop"
-        structuredData={breadcrumbSchema}
+        structuredData={[breadcrumbSchema, faqSchema]}
       />
       <Navbar />
       
@@ -339,6 +356,55 @@ const Shop = () => {
           </div>
         </section>
       </div>
+
+      {/* FAQ Accordion */}
+      <section className="bg-secondary/30 py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-10">
+              <h2 className="text-2xl md:text-3xl font-bold mb-3">
+                Frequently Asked <span className="text-accent">Questions</span>
+              </h2>
+              <p className="text-muted-foreground text-sm">Everything you need to know before buying</p>
+            </div>
+            <Accordion type="single" collapsible className="space-y-3">
+              {shopFaqs.map((faq, i) => (
+                <AccordionItem key={i} value={`faq-${i}`} className="border border-border rounded-lg px-6 bg-background">
+                  <AccordionTrigger className="text-left font-semibold hover:text-accent text-sm">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </div>
+      </section>
+
+      {/* SEO Content Block */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl font-bold mb-4">
+              Buy Office Furniture Online in Pakistan – WoodEx Shop
+            </h2>
+            <p className="text-muted-foreground mb-3 text-sm leading-relaxed">
+              Welcome to <strong>WoodEx</strong>, Pakistan's premier destination for premium office furniture. Browse our collection of <strong>56+ ergonomic office chairs</strong>, executive desks, workstations, and storage solutions — all at factory-direct prices with nationwide free delivery.
+            </p>
+            <p className="text-muted-foreground mb-3 text-sm leading-relaxed">
+              Our <strong>Executive Chairs</strong> feature Italian leather, adjustable lumbar support, and premium finishes starting from Rs. 35,000. <strong>Manager Chairs</strong> offer the perfect balance of comfort and value for mid-level professionals. <strong>Staff Chairs</strong> provide ergonomic support at budget-friendly prices, and our <strong>Visitor Chairs</strong> ensure a great first impression for clients and guests.
+            </p>
+            <p className="text-muted-foreground mb-3 text-sm leading-relaxed">
+              Every WoodEx product comes with a <strong>5-7 year structural warranty</strong>, free professional assembly, and expert consultation. Whether you're furnishing a single home office or a 500-seat corporate headquarters, we offer bulk pricing, customization options, and dedicated project management.
+            </p>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Shop online or visit our showrooms in <strong>Lahore</strong> and <strong>Islamabad</strong>. We deliver across Pakistan including Karachi, Faisalabad, Rawalpindi, Multan, and Peshawar. Request a free e-quotation or book a consultation with our office design experts today.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>
