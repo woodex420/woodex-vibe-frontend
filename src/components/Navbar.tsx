@@ -6,7 +6,6 @@ import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
@@ -17,14 +16,6 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
-
-  const navItems = [
-    { name: "Home", path: "/" },
-    { name: "Series", path: "/series" },
-    { name: "Projects", path: "/projects" },
-    { name: "About", path: "/about" },
-    { name: "Contact", path: "/contact" },
-  ];
 
   const shopCategories = [
     { name: "All Products", path: "/shop" },
@@ -48,33 +39,59 @@ const Navbar = () => {
     { name: "Space Planning", path: "/services/space-planning" },
   ];
 
+  const mainNavItems = [
+    { name: "Series", path: "/series" },
+    { name: "Projects", path: "/projects" },
+    { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
+  ];
+
   return (
     <>
-      {/* Top Bar */}
-      <div className="bg-background border-b border-border">
+      {/* Top Utility Bar */}
+      <div className="border-b border-border">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-8 text-xs text-muted-foreground">
-            <div className="flex items-center gap-4">
-              <Link to="/showrooms" className="hover:text-foreground transition-colors hover:underline">
+          <div className="flex items-center justify-between h-8">
+            <div className="flex items-center gap-0 text-xs text-muted-foreground">
+              <Link to="/showrooms" className="hover:text-foreground transition-colors px-2 first:pl-0">
                 Showrooms
               </Link>
               <span className="text-border">|</span>
-              <Link to="/warranty" className="hover:text-foreground transition-colors hover:underline">
+              <Link to="/materials" className="hover:text-foreground transition-colors px-2">
+                Material and Colors
+              </Link>
+              <span className="text-border">|</span>
+              <Link to="/warranty" className="hover:text-foreground transition-colors px-2">
                 Warranty
               </Link>
-              <span className="text-border">|</span>
-              <Link to="/materials" className="hover:text-foreground transition-colors hover:underline">
-                Materials
-              </Link>
-              <span className="text-border">|</span>
-              <Link to="/services/custom-design" className="hover:text-foreground transition-colors hover:underline">
-                Designing
-              </Link>
             </div>
-            <div className="flex items-center gap-3">
-              <Search className="h-4 w-4" />
-              <User className="h-4 w-4" />
-              <ShoppingCart className="h-4 w-4" />
+          </div>
+        </div>
+      </div>
+
+      {/* Logo Bar */}
+      <div className="border-b border-border">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-20">
+            <Link to="/" className="flex items-baseline">
+              <span className="text-3xl md:text-4xl font-black tracking-tight text-foreground" style={{ fontFamily: "'Arial Black', 'Helvetica Neue', sans-serif" }}>
+                WOOD
+              </span>
+              <span className="text-3xl md:text-4xl font-light tracking-tight text-foreground" style={{ fontFamily: "'Arial', 'Helvetica Neue', sans-serif" }}>
+                EX
+              </span>
+              <span className="text-[8px] align-super ml-0.5 text-muted-foreground">®</span>
+            </Link>
+            <div className="flex items-center gap-4">
+              <button className="text-muted-foreground hover:text-foreground transition-colors">
+                <Search className="h-5 w-5" />
+              </button>
+              <button className="text-muted-foreground hover:text-foreground transition-colors">
+                <User className="h-5 w-5" />
+              </button>
+              <button className="text-muted-foreground hover:text-foreground transition-colors relative">
+                <ShoppingCart className="h-5 w-5" />
+              </button>
             </div>
           </div>
         </div>
@@ -83,35 +100,23 @@ const Navbar = () => {
       {/* Main Navigation */}
       <nav className="bg-background border-b border-border sticky top-0 z-50">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-14">
-            {/* Logo */}
-            <Link to="/" className="text-2xl font-bold tracking-tight underline decoration-2 underline-offset-4">
-              WOODEX
-            </Link>
-
-            {/* Desktop Navigation - Centered */}
-            <div className="hidden lg:flex items-center gap-1">
-              <Link
-                to="/"
-                className="text-sm font-medium px-4 py-2 border border-border rounded hover:bg-muted transition-colors"
-              >
-                Home
-              </Link>
-
+          <div className="flex items-center justify-between h-11">
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center h-full">
               {/* Shop Dropdown */}
               <NavigationMenu>
                 <NavigationMenuList>
                   <NavigationMenuItem>
-                    <NavigationMenuTrigger className="text-sm font-medium px-4 py-2 border border-border rounded hover:bg-muted transition-colors bg-transparent h-auto">
-                      Shop
+                    <NavigationMenuTrigger className="text-sm font-medium px-5 h-11 rounded-none bg-transparent hover:bg-muted transition-colors data-[state=open]:bg-muted border-r border-border">
+                      Chairs
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <div className="w-[280px] p-3 bg-background border border-border rounded-lg shadow-lg">
-                        <div className="grid gap-1">
+                      <div className="w-[280px] p-3 bg-background border border-border shadow-lg">
+                        <div className="grid gap-0.5">
                           {shopCategories.map((item) => (
                             <Link key={item.path} to={item.path}>
-                              <div className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-muted focus:bg-muted">
-                                <div className="text-sm font-medium leading-none">{item.name}</div>
+                              <div className="block select-none px-3 py-2.5 text-sm leading-none no-underline outline-none transition-colors hover:bg-muted">
+                                {item.name}
                               </div>
                             </Link>
                           ))}
@@ -121,35 +126,33 @@ const Navbar = () => {
                   </NavigationMenuItem>
                 </NavigationMenuList>
               </NavigationMenu>
-              
-              <Link
-                to="/series"
-                className="text-sm font-medium px-4 py-2 border border-border rounded hover:bg-muted transition-colors"
-              >
-                Series
+
+              <Link to="/shop?category=desks" className="text-sm font-medium px-5 h-11 flex items-center border-r border-border hover:bg-muted transition-colors">
+                Desks
               </Link>
 
-              <Link
-                to="/projects"
-                className="text-sm font-medium px-4 py-2 border border-border rounded hover:bg-muted transition-colors"
-              >
-                Projects
+              <Link to="/shop?category=storage" className="text-sm font-medium px-5 h-11 flex items-center border-r border-border hover:bg-muted transition-colors">
+                Storage
+              </Link>
+
+              <Link to="/shop?category=sofas" className="text-sm font-medium px-5 h-11 flex items-center border-r border-border hover:bg-muted transition-colors">
+                Lounge
               </Link>
 
               {/* Services Dropdown */}
               <NavigationMenu>
                 <NavigationMenuList>
                   <NavigationMenuItem>
-                    <NavigationMenuTrigger className="text-sm font-medium px-4 py-2 border border-border rounded hover:bg-muted transition-colors bg-transparent h-auto">
+                    <NavigationMenuTrigger className="text-sm font-medium px-5 h-11 rounded-none bg-transparent hover:bg-muted transition-colors data-[state=open]:bg-muted border-r border-border">
                       Services
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <div className="w-[280px] p-3">
-                        <div className="grid gap-1">
+                      <div className="w-[280px] p-3 bg-background border border-border shadow-lg">
+                        <div className="grid gap-0.5">
                           {servicesItems.map((item) => (
                             <Link key={item.path} to={item.path}>
-                              <div className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-muted focus:bg-muted">
-                                <div className="text-sm font-medium leading-none">{item.name}</div>
+                              <div className="block select-none px-3 py-2.5 text-sm leading-none no-underline outline-none transition-colors hover:bg-muted">
+                                {item.name}
                               </div>
                             </Link>
                           ))}
@@ -160,60 +163,43 @@ const Navbar = () => {
                 </NavigationMenuList>
               </NavigationMenu>
 
-              <Link
-                to="/about"
-                className="text-sm font-medium px-4 py-2 border border-border rounded hover:bg-muted transition-colors"
-              >
-                About
-              </Link>
-
-              <Link
-                to="/contact"
-                className="text-sm font-medium px-4 py-2 border border-border rounded hover:bg-muted transition-colors"
-              >
-                Contact
-              </Link>
-
-              <Button variant="ghost" size="icon" className="h-9 w-9">
-                <Search className="h-4 w-4" />
-              </Button>
+              {mainNavItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className="text-sm font-medium px-5 h-11 flex items-center border-r border-border hover:bg-muted transition-colors"
+                >
+                  {item.name}
+                </Link>
+              ))}
             </div>
 
-            {/* Right Side Actions */}
-            <div className="flex items-center gap-3">
-              <Link to="/services/custom-design" className="hidden lg:flex items-center gap-2 text-sm font-medium">
-                <span className="text-orange-500">🎨</span>
-                Customization
+            {/* Right Side - Inspirations + E-Quotation */}
+            <div className="hidden lg:flex items-center gap-0 ml-auto h-full">
+              <Link to="/blog" className="text-sm font-medium px-5 h-11 flex items-center border-l border-border hover:bg-muted transition-colors">
+                Inspirations
               </Link>
-              <Link to="/e-quotation">
-                <Button variant="outline" size="sm" className="hidden md:flex items-center gap-2 border-foreground">
-                  <FileText className="h-4 w-4" />
-                  E-Quotation
-                </Button>
+              <Link to="/e-quotation" className="text-sm font-medium px-5 h-11 flex items-center gap-2 border-l border-border hover:bg-muted transition-colors">
+                <FileText className="h-4 w-4" />
+                E-Quotation
               </Link>
-              <div className="hidden lg:flex items-center gap-2">
-                <Search className="h-4 w-4 text-muted-foreground" />
-                <ShoppingCart className="h-4 w-4 text-muted-foreground" />
-              </div>
+            </div>
 
-              {/* Mobile Menu */}
+            {/* Mobile Menu */}
+            <div className="lg:hidden flex items-center justify-between w-full">
+              <span className="text-sm font-bold">Menu</span>
               <Sheet open={isOpen} onOpenChange={setIsOpen}>
-                <SheetTrigger asChild className="lg:hidden">
+                <SheetTrigger asChild>
                   <Button variant="ghost" size="icon">
                     <Menu className="h-6 w-6" />
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="right" className="w-[300px]">
                   <div className="flex flex-col gap-4 mt-8">
-                    <Link
-                      to="/"
-                      onClick={() => setIsOpen(false)}
-                      className="text-lg font-medium hover:text-accent transition-colors"
-                    >
+                    <Link to="/" onClick={() => setIsOpen(false)} className="text-lg font-medium hover:text-accent transition-colors">
                       Home
                     </Link>
 
-                    {/* Shop Collapsible */}
                     <Collapsible open={shopOpen} onOpenChange={setShopOpen}>
                       <CollapsibleTrigger className="flex items-center justify-between w-full text-lg font-medium hover:text-accent transition-colors">
                         Shop
@@ -222,15 +208,7 @@ const Navbar = () => {
                       <CollapsibleContent>
                         <div className="flex flex-col gap-3 mt-2 ml-4">
                           {shopCategories.map((item) => (
-                            <Link
-                              key={item.path}
-                              to={item.path}
-                              onClick={() => {
-                                setIsOpen(false);
-                                setShopOpen(false);
-                              }}
-                              className="text-base font-medium hover:text-accent transition-colors"
-                            >
+                            <Link key={item.path} to={item.path} onClick={() => { setIsOpen(false); setShopOpen(false); }} className="text-base hover:text-accent transition-colors">
                               {item.name}
                             </Link>
                           ))}
@@ -238,18 +216,6 @@ const Navbar = () => {
                       </CollapsibleContent>
                     </Collapsible>
 
-                    {navItems.slice(1).map((item) => (
-                      <Link
-                        key={item.path}
-                        to={item.path}
-                        onClick={() => setIsOpen(false)}
-                        className="text-lg font-medium hover:text-accent transition-colors"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
-                    
-                    {/* Services Collapsible */}
                     <Collapsible open={servicesOpen} onOpenChange={setServicesOpen}>
                       <CollapsibleTrigger className="flex items-center justify-between w-full text-lg font-medium hover:text-accent transition-colors">
                         Services
@@ -258,15 +224,7 @@ const Navbar = () => {
                       <CollapsibleContent>
                         <div className="flex flex-col gap-3 mt-2 ml-4">
                           {servicesItems.map((item) => (
-                            <Link
-                              key={item.path}
-                              to={item.path}
-                              onClick={() => {
-                                setIsOpen(false);
-                                setServicesOpen(false);
-                              }}
-                              className="text-base font-medium hover:text-accent transition-colors"
-                            >
+                            <Link key={item.path} to={item.path} onClick={() => { setIsOpen(false); setServicesOpen(false); }} className="text-base hover:text-accent transition-colors">
                               {item.name}
                             </Link>
                           ))}
@@ -274,8 +232,14 @@ const Navbar = () => {
                       </CollapsibleContent>
                     </Collapsible>
 
-                    <Link to="/virtual-showroom" onClick={() => setIsOpen(false)} className="text-lg font-medium hover:text-accent">
-                      Virtual Showroom
+                    {mainNavItems.map((item) => (
+                      <Link key={item.path} to={item.path} onClick={() => setIsOpen(false)} className="text-lg font-medium hover:text-accent transition-colors">
+                        {item.name}
+                      </Link>
+                    ))}
+
+                    <Link to="/blog" onClick={() => setIsOpen(false)} className="text-lg font-medium hover:text-accent">
+                      Inspirations
                     </Link>
                     <Link to="/b2b" onClick={() => setIsOpen(false)} className="text-lg font-medium hover:text-accent">
                       B2B
