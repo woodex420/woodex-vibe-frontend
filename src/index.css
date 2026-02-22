@@ -26,19 +26,19 @@ All colors MUST be HSL.
     --muted: 30 5% 96%;
     --muted-foreground: 0 0% 45%;
 
-    --accent: 30 30% 40%;
+    --accent: 90 60% 40%;
     --accent-foreground: 0 0% 100%;
 
-    --wood: 30 30% 40%;
-    --wood-light: 30 20% 60%;
-    --wood-dark: 30 40% 25%;
+    --wood: 90 60% 40%;
+    --wood-light: 90 40% 55%;
+    --wood-dark: 90 70% 28%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 30 30% 40%;
+    --ring: 90 60% 40%;
 
     --radius: 0.25rem;
 
@@ -64,19 +64,19 @@ All colors MUST be HSL.
     --muted: 0 0% 14%;
     --muted-foreground: 0 0% 60%;
 
-    --accent: 30 30% 50%;
+    --accent: 90 60% 45%;
     --accent-foreground: 0 0% 100%;
 
-    --wood: 30 30% 45%;
-    --wood-light: 30 20% 60%;
-    --wood-dark: 30 40% 30%;
+    --wood: 90 60% 45%;
+    --wood-light: 90 40% 60%;
+    --wood-dark: 90 70% 32%;
 
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 0 0% 20%;
     --input: 0 0% 18%;
-    --ring: 30 30% 50%;
+    --ring: 90 60% 45%;
   }
 }
 
