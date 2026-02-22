@@ -39,12 +39,14 @@ const Shop = () => {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
   const shopFaqs = [
-    { question: "How do I choose the right office chair?", answer: "Consider your daily usage hours, body type, and work style. For 8+ hours, choose Executive or Manager chairs with lumbar support. For task-based work, Staff chairs offer great value. Our consultation team can help you find the perfect match." },
-    { question: "What is your return and exchange policy?", answer: "We offer a 7-day return policy for unused items in original packaging. Exchanges are free within 14 days. Custom-made furniture is non-returnable but covered by our quality guarantee." },
-    { question: "Do you offer bulk discounts for offices?", answer: "Yes! 10+ units get 10% off, 25+ units get 15% off, and 50+ units qualify for custom project pricing. Contact our B2B team at sales@woodex.pk for a tailored quote." },
-    { question: "What warranty do your chairs come with?", answer: "All chairs include a 5-7 year structural warranty covering frames, bases, and mechanisms. Upholstery is covered for 3 years. Executive chairs come with an extended warranty option." },
-    { question: "How long does delivery take?", answer: "Standard delivery within Lahore: 3-5 business days. Nationwide delivery: 5-10 business days. Express delivery available for urgent orders. All deliveries include free professional assembly." },
-    { question: "Can I visit a showroom to test chairs?", answer: "Absolutely! Visit our showrooms in Lahore (Gulberg III) and Islamabad. Walk-ins welcome Mon-Sat 9AM-7PM. Book an appointment for a personalized consultation." },
+    { question: "Can I see products before buying?", answer: "Yes! Visit our Lahore showroom (Gulberg III) or Islamabad showroom to test any product in person. Walk-ins are welcome Mon-Sat 9AM-7PM, or book an appointment for a personalized consultation with our furniture experts." },
+    { question: "Is online pricing the same as showroom pricing?", answer: "Yes, our online prices match showroom prices. In fact, online-exclusive deals and seasonal offers may give you additional savings. All prices are factory-direct with no middleman markups." },
+    { question: "Can I modify or customize products?", answer: "Absolutely! Most of our products can be customized — upholstery color, fabric type, arm style, base finish, and even logo embroidery. Visit our Custom Design page or contact our team for bespoke options." },
+    { question: "What about installation and assembly?", answer: "Professional installation is available nationwide. In Lahore, we offer free doorstep assembly. For other cities, assembly service is available at a nominal fee. Self-assembly instructions (Urdu/English) are also included." },
+    { question: "Do you offer bulk discounts for offices?", answer: "Yes! 10-25 units get 10% off with free delivery in Lahore. 26-50 units get 15% off with free nationwide delivery and professional installation. 51-100 units get 20% off with a dedicated project manager. For 100+ units, we offer custom pricing." },
+    { question: "What warranty do your chairs come with?", answer: "All chairs include: 5-year mechanism warranty (covers all moving parts and gas lift), 3-year structural warranty (frame, base, armrests), and 1-year upholstery warranty. Extended warranty options are available for executive chairs." },
+    { question: "How long does delivery take?", answer: "Lahore (city limits): 2-3 business days, free for orders above Rs. 50,000. Major cities (Karachi, Islamabad, Faisalabad): 4-6 business days. Rest of Pakistan: 6-10 business days with tracking provided. Express delivery available." },
+    { question: "What payment options are available?", answer: "We accept credit/debit cards, bank transfers, and easy installments. All transactions are SSL encrypted and PCI compliant. Corporate accounts with net-30 payment terms are available for verified businesses." },
   ];
 
   const breadcrumbSchema = generateBreadcrumbSchema([
@@ -100,9 +102,9 @@ const Shop = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title={`${activeCategoryName} - Office Furniture Shop | WoodEx`}
-        description="Browse 56+ premium office furniture products. Executive chairs, ergonomic desks, workstations, storage solutions. Factory-direct prices with 5-7 year warranty."
-        keywords="buy office furniture Pakistan, office chairs online, executive desks, workstation furniture, office storage"
+        title={`${activeCategoryName} - Shop Office Furniture Online | WoodEx Pakistan`}
+        description="Shop 56+ premium office chairs in Pakistan. Executive leather chairs, ergonomic mesh seating, staff chairs, visitor chairs. 5-year warranty, BIFMA certified, factory-direct prices. Free delivery nationwide."
+        keywords="buy office furniture Pakistan, office chairs online, executive chairs Lahore, ergonomic mesh chairs, office furniture factory direct, buy office chair Karachi, office seating Islamabad"
         canonical="https://woodex.pk/shop"
         structuredData={[breadcrumbSchema, faqSchema]}
       />
@@ -315,11 +317,15 @@ const Shop = () => {
                             {product.category}
                           </p>
                           <h3 className="text-sm font-bold mb-1">{product.name}</h3>
-                          {product.features && (
+                          {product.description ? (
+                            <p className="text-xs text-muted-foreground line-clamp-2 mb-2">
+                              {product.description}
+                            </p>
+                          ) : product.features ? (
                             <p className="text-xs text-muted-foreground line-clamp-1 mb-2">
                               {Object.values(product.features).slice(0, 2).join(" • ")}
                             </p>
-                          )}
+                          ) : null}
                           <div className="flex items-center justify-between mt-auto">
                             <span className="text-base font-bold">{formatPrice(product.price)}</span>
                             <Button size="sm" variant="outline" className="rounded-none text-xs border-foreground h-8">
@@ -338,11 +344,11 @@ const Shop = () => {
 
         {/* CTA */}
         <section className="mt-16 mb-8 bg-foreground text-background p-10 md:p-14 text-center">
-          <h2 className="text-2xl font-bold mb-3">Can't Find What You're Looking For?</h2>
+          <h2 className="text-2xl font-bold mb-3">Start Building Your Perfect Office</h2>
           <p className="text-sm mb-6 max-w-xl mx-auto opacity-80">
-            We offer custom furniture solutions tailored to your specific needs. Get a free consultation today.
+            Can't find what you're looking for? Our team can help you find the perfect furniture or create custom solutions tailored to your space and budget.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
             <Link to="/e-quotation">
               <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-none font-bold">
                 Request Custom Quote
@@ -350,9 +356,18 @@ const Shop = () => {
             </Link>
             <Link to="/contact">
               <Button size="lg" variant="outline" className="rounded-none font-bold border-background text-background hover:bg-background hover:text-foreground">
-                Contact Design Team
+                Contact Sales Team
               </Button>
             </Link>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4 text-xs opacity-60">
+            <span>Popular: Ergonomic Chairs</span>
+            <span>•</span>
+            <span>Executive Desks</span>
+            <span>•</span>
+            <span>Conference Tables</span>
+            <span>•</span>
+            <span>Workstations</span>
           </div>
         </section>
       </div>
