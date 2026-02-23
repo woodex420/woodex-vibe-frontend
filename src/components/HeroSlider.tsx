@@ -1,61 +1,61 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Truck, Clock, BadgeCheck, ShieldCheck } from "lucide-react";
+import { Factory, Palette, Truck, ShieldCheck } from "lucide-react";
 
 import heroSofaImg from "@/assets/hero-sofa.jpg";
 import heroOfficeImg from "@/assets/hero-office.jpg";
-import chairExecutiveImg from "@/assets/chair-executive.jpg";
-import workstationImg from "@/assets/workstation.jpg";
+import loungeImg from "@/assets/lounge.jpg";
 
 interface Slide {
   id: number;
   subtitle: string;
   title: string;
-  buttonText: string;
-  buttonLink: string;
+  supportingText: string;
+  buttons: { text: string; link: string; variant: "primary" | "outline" }[];
   image: string;
 }
 
 const slides: Slide[] = [
   {
     id: 1,
-    subtitle: "Made in Pakistan",
-    title: "Best Seller\nSofa & Chair\nCollection",
-    buttonText: "SHOP NOW",
-    buttonLink: "/shop",
-    image: heroSofaImg,
+    subtitle: "Pakistan's Leading Office Furniture Manufacturer",
+    title: "Custom Office Furniture\n— Designed for Your Space,\nBuilt in Our Factory",
+    supportingText: "From concept to installation — we design, manufacture, and deliver premium office furniture tailored to your workspace, brand identity, and budget. No middlemen. No compromise.",
+    buttons: [
+      { text: "Explore Our Collection", link: "/shop", variant: "primary" },
+      { text: "Get Free 3D Design", link: "/e-quotation", variant: "outline" },
+    ],
+    image: heroOfficeImg,
   },
   {
     id: 2,
-    subtitle: "Premium Executive",
-    title: "Executive\nChair\nCollection",
-    buttonText: "SHOP NOW",
-    buttonLink: "/shop?category=executive",
-    image: chairExecutiveImg,
+    subtitle: "Complete Workspace Solutions",
+    title: "We Don't Just\nSell Furniture —\nWe Build Workspaces",
+    supportingText: "Free site visit. Free 3D layout. Free budget estimation. From a single executive desk to a 500-seat corporate office — Woodex handles everything.",
+    buttons: [
+      { text: "Request Free Consultation", link: "/contact", variant: "primary" },
+      { text: "View Our Projects", link: "/projects", variant: "outline" },
+    ],
+    image: heroSofaImg,
   },
   {
     id: 3,
-    subtitle: "Modern Workspace",
-    title: "Modern\nWorkstation\nSystems",
-    buttonText: "SHOP NOW",
-    buttonLink: "/shop?category=workstations",
-    image: workstationImg,
-  },
-  {
-    id: 4,
-    subtitle: "Transform Your Office",
-    title: "Complete\nOffice\nSolutions",
-    buttonText: "SHOP NOW",
-    buttonLink: "/e-quotation",
-    image: heroOfficeImg,
+    subtitle: "Introducing the Woodex Lounge Series",
+    title: "Luxury Meets\nFunctionality —\nItalian-Inspired Furniture",
+    supportingText: "Elevate your space with our premium lounge collection — handcrafted sofas, accent chairs, and coffee tables with imported materials and flawless finishing.",
+    buttons: [
+      { text: "Shop Lounge Series", link: "/shop", variant: "primary" },
+      { text: "Get E-Quote", link: "/e-quotation", variant: "outline" },
+    ],
+    image: loungeImg,
   },
 ];
 
 const trustBadges = [
-  { icon: Truck, title: "Fast, Free Shipping", desc: "On orders over PKR 50,000" },
-  { icon: Clock, title: "Next Day Delivery", desc: "Free — spend over PKR 99,000" },
-  { icon: BadgeCheck, title: "Low Price Guarantee", desc: "We offer competitive prices" },
-  { icon: ShieldCheck, title: "Quality Guarantee", desc: "We Guarantee Our Products" },
+  { icon: Factory, title: "Direct Factory Prices", desc: "No middlemen — buy straight from our Lahore manufacturing facility" },
+  { icon: Palette, title: "Free 3D Design", desc: "We create a photorealistic layout of your workspace before production" },
+  { icon: Truck, title: "Nationwide Delivery", desc: "Free delivery & professional installation across Pakistan" },
+  { icon: ShieldCheck, title: "Up to 3-Year Warranty", desc: "Structural warranty on all furniture — chairs, desks, and workstations" },
 ];
 
 const HeroSlider = () => {
@@ -86,15 +86,27 @@ const HeroSlider = () => {
           {/* Left: Text */}
           <div className="py-10 md:py-16">
             <p className="text-sm text-muted-foreground tracking-wide mb-3">{slide.subtitle}</p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground leading-[1.1] whitespace-pre-line mb-8">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground leading-[1.1] whitespace-pre-line mb-4">
               {slide.title}
             </h1>
-            <Link
-              to={slide.buttonLink}
-              className="inline-block border-2 border-foreground text-foreground text-sm font-semibold tracking-wider px-8 py-3 hover:bg-foreground hover:text-background transition-colors"
-            >
-              {slide.buttonText}
-            </Link>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-8 max-w-md">
+              {slide.supportingText}
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {slide.buttons.map((btn, i) => (
+                <Link
+                  key={i}
+                  to={btn.link}
+                  className={`inline-block text-sm font-semibold tracking-wider px-8 py-3 transition-colors ${
+                    btn.variant === "primary"
+                      ? "bg-foreground text-background hover:bg-foreground/90"
+                      : "border-2 border-foreground text-foreground hover:bg-foreground hover:text-background"
+                  }`}
+                >
+                  {btn.text}
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* Right: Image */}
