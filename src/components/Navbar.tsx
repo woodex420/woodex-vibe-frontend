@@ -17,18 +17,38 @@ const Navbar = () => {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
 
-  const shopCategories = [
-    { name: "All Products", path: "/shop" },
-    { name: "Executive Chairs", path: "/shop?category=executive" },
-    { name: "Manager Chairs", path: "/shop?category=manager" },
-    { name: "Staff Chairs", path: "/shop?category=staff" },
-    { name: "Visitor Chairs", path: "/shop?category=visitor" },
-    { name: "Office Desks", path: "/shop?category=desks" },
-    { name: "Workstations", path: "/shop?category=workstations" },
-    { name: "Office Sofas", path: "/shop?category=sofas" },
-    { name: "Meeting Tables", path: "/shop?category=meeting" },
-    { name: "Reception Desks", path: "/shop?category=reception" },
+  const shopSections = [
+    {
+      heading: "Office Chairs",
+      items: [
+        { name: "Executive Chairs", path: "/shop?category=executive" },
+        { name: "Manager Chairs", path: "/shop?category=manager" },
+        { name: "Staff Chairs", path: "/shop?category=staff" },
+        { name: "Visitor Chairs", path: "/shop?category=visitor" },
+      ],
+    },
+    {
+      heading: "Office Furniture",
+      items: [
+        { name: "Office Desks", path: "/shop?category=desks" },
+        { name: "Workstations", path: "/shop?category=workstations" },
+        { name: "Meeting Tables", path: "/shop?category=meeting" },
+        { name: "Reception Desks", path: "/shop?category=reception" },
+        { name: "Office Sofas", path: "/shop?category=sofas" },
+        { name: "Storage & Filing", path: "/shop?category=storage" },
+      ],
+    },
+    {
+      heading: "Home Furniture",
+      items: [
+        { name: "Bedroom", path: "/shop?category=bedroom" },
+        { name: "Living Room", path: "/shop?category=living" },
+        { name: "Dining", path: "/shop?category=dining" },
+      ],
+    },
   ];
+
+  const shopCategories = shopSections.flatMap(s => s.items);
 
   const servicesItems = [
     { name: "All Services", path: "/services" },
@@ -111,16 +131,26 @@ const Navbar = () => {
                       Chairs
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <div className="w-[280px] p-3 bg-background border border-border shadow-lg">
-                        <div className="grid gap-0.5">
-                          {shopCategories.map((item) => (
-                            <Link key={item.path} to={item.path}>
-                              <div className="block select-none px-3 py-2.5 text-sm leading-none no-underline outline-none transition-colors hover:bg-muted">
-                                {item.name}
-                              </div>
-                            </Link>
-                          ))}
-                        </div>
+                      <div className="w-[320px] p-3 bg-background border border-border shadow-lg">
+                        <Link to="/shop">
+                          <div className="block select-none px-3 py-2.5 text-sm font-semibold leading-none no-underline outline-none transition-colors hover:bg-muted mb-1">
+                            All Products
+                          </div>
+                        </Link>
+                        {shopSections.map((section) => (
+                          <div key={section.heading} className="mt-2">
+                            <p className="px-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60 mb-1">
+                              {section.heading}
+                            </p>
+                            {section.items.map((item) => (
+                              <Link key={item.path} to={item.path}>
+                                <div className="block select-none px-3 py-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-muted">
+                                  {item.name}
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                        ))}
                       </div>
                     </NavigationMenuContent>
                   </NavigationMenuItem>
@@ -206,11 +236,19 @@ const Navbar = () => {
                         <ChevronDown className={`h-4 w-4 transition-transform ${shopOpen ? 'rotate-180' : ''}`} />
                       </CollapsibleTrigger>
                       <CollapsibleContent>
-                        <div className="flex flex-col gap-3 mt-2 ml-4">
-                          {shopCategories.map((item) => (
-                            <Link key={item.path} to={item.path} onClick={() => { setIsOpen(false); setShopOpen(false); }} className="text-base hover:text-accent transition-colors">
-                              {item.name}
-                            </Link>
+                        <div className="flex flex-col gap-2 mt-2 ml-4">
+                          <Link to="/shop" onClick={() => { setIsOpen(false); setShopOpen(false); }} className="text-base font-semibold hover:text-accent transition-colors">
+                            All Products
+                          </Link>
+                          {shopSections.map((section) => (
+                            <div key={section.heading} className="mt-1">
+                              <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60 mb-1">{section.heading}</p>
+                              {section.items.map((item) => (
+                                <Link key={item.path} to={item.path} onClick={() => { setIsOpen(false); setShopOpen(false); }} className="block text-sm py-1 hover:text-accent transition-colors">
+                                  {item.name}
+                                </Link>
+                              ))}
+                            </div>
                           ))}
                         </div>
                       </CollapsibleContent>

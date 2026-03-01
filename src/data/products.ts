@@ -1040,16 +1040,623 @@ export const visitorChairs: Product[] = [
   },
 ];
 
+// ============ OFFICE FURNITURE ============
+
+// Import placeholder images for non-chair products
+import deskExecutiveImg from "@/assets/desk-executive.jpg";
+import deskStandingImg from "@/assets/desk-standing.jpg";
+import workstationImg from "@/assets/workstation.jpg";
+import loungeImg from "@/assets/lounge.jpg";
+import meetingRoomImg from "@/assets/meeting-room.jpg";
+import receptionDeskImg from "@/assets/reception-desk.jpg";
+import bookshelfImg from "@/assets/bookshelf.jpg";
+import storageImg from "@/assets/storage.jpg";
+import heroSofaImg from "@/assets/hero-sofa.jpg";
+import officeIsometricImg from "@/assets/office-isometric.jpg";
+
+// Office Desks
+export const officeDesks: Product[] = [
+  {
+    id: "desk-executive",
+    name: "Executive Director Desk",
+    category: "Office Desks",
+    subcategory: "Executive Desks",
+    price: 95000,
+    image: deskExecutiveImg,
+    badge: "Premium",
+    featured: true,
+    description: "Commanding executive desk crafted from premium MDF with melamine finish and integrated cable management. Designed for corner offices and boardrooms.",
+    features: { Material: "MDF with Melamine Finish", Size: "180cm x 80cm x 75cm", "Cable Management": "Integrated wire tray", Edge: "PVC Edge Banding", Drawers: "3-Drawer Pedestal", Frame: "18-Gauge MS Powder-Coated" },
+  },
+  {
+    id: "desk-l-shape",
+    name: "L-Shape Manager Desk",
+    category: "Office Desks",
+    subcategory: "L-Shape Desks",
+    price: 78000,
+    image: deskExecutiveImg,
+    description: "Spacious L-shaped desk with return unit providing ample workspace for multitasking managers. Features modesty panel and lockable drawers.",
+    features: { Material: "MDF with Melamine Finish", Size: "160cm + 120cm Return", "Cable Management": "Grommet holes", Edge: "PVC Edge Banding", Drawers: "3-Drawer Pedestal with Lock", Frame: "18-Gauge MS Powder-Coated" },
+  },
+  {
+    id: "desk-standing",
+    name: "Height-Adjustable Standing Desk",
+    category: "Office Desks",
+    subcategory: "Standing Desks",
+    price: 65000,
+    image: deskStandingImg,
+    badge: "Ergonomic",
+    description: "Modern sit-stand desk with manual height adjustment for healthier working. Anti-collision technology and memory presets for quick transitions.",
+    features: { Material: "MDF Melamine Top", "Height Range": "72cm–120cm", Mechanism: "Manual Crank Adjustment", "Weight Capacity": "80kg", Edge: "PVC Edge Banding", Frame: "Heavy-Duty Steel" },
+  },
+  {
+    id: "desk-computer",
+    name: "Computer Workstation Desk",
+    category: "Office Desks",
+    subcategory: "Computer Desks",
+    price: 35000,
+    image: workstationImg,
+    description: "Compact computer desk with keyboard tray, CPU holder, and cable routing. Ideal for IT departments and data entry teams.",
+    features: { Material: "MDF with Melamine Finish", Size: "120cm x 60cm x 75cm", "Keyboard Tray": "Slide-out", "CPU Holder": "Side-mounted", Edge: "PVC Edge Banding", Frame: "18-Gauge MS Powder-Coated" },
+  },
+  {
+    id: "desk-manager",
+    name: "Manager Office Desk",
+    category: "Office Desks",
+    subcategory: "Manager Desks",
+    price: 55000,
+    image: deskExecutiveImg,
+    description: "Professional manager desk with front modesty panel, integrated drawers, and clean minimalist design. Perfect for mid-level management offices.",
+    features: { Material: "MDF with Melamine Finish", Size: "150cm x 75cm x 75cm", Drawers: "2-Drawer Pedestal", Edge: "PVC Edge Banding", "Modesty Panel": "Full front panel", Frame: "18-Gauge MS Powder-Coated" },
+  },
+  {
+    id: "desk-director",
+    name: "Director Suite Desk",
+    category: "Office Desks",
+    subcategory: "Director Desks",
+    price: 125000,
+    image: deskExecutiveImg,
+    badge: "Luxury",
+    description: "Flagship director desk with veneer finish, brass accents, and integrated side credenza. The ultimate statement piece for senior leadership offices.",
+    features: { Material: "Natural Wood Veneer Finish", Size: "200cm x 90cm x 75cm", Drawers: "4-Drawer Pedestal with Lock", Edge: "Solid Wood Edging", "Side Return": "Credenza with storage", Frame: "Premium Hardwood" },
+  },
+];
+
+// Workstations
+export const workstations: Product[] = [
+  {
+    id: "ws-2-seater",
+    name: "2-Person Workstation Cluster",
+    category: "Workstations",
+    subcategory: "2-Seater",
+    price: 45000,
+    image: workstationImg,
+    description: "Face-to-face 2-person workstation with privacy divider and shared wire management tray. Ideal for small teams and startups.",
+    features: { Material: "MDF Melamine", Size: "240cm x 120cm", Divider: "Fabric Privacy Panel 30cm", "Wire Management": "Central cable tray", Edge: "PVC Edge Banding", Frame: "18-Gauge MS Powder-Coated" },
+  },
+  {
+    id: "ws-4-seater",
+    name: "4-Person Workstation Cluster",
+    category: "Workstations",
+    subcategory: "4-Seater",
+    price: 85000,
+    image: workstationImg,
+    badge: "Best Seller",
+    featured: true,
+    description: "Popular 4-person cluster workstation with fabric dividers and integrated power outlets. The go-to solution for IT companies and corporate offices across Pakistan.",
+    features: { Material: "MDF Melamine", Size: "240cm x 240cm", Divider: "Fabric Privacy Panel 30cm", "Wire Management": "Central cable tray", "Power Outlets": "4x integrated sockets", Frame: "18-Gauge MS Powder-Coated" },
+  },
+  {
+    id: "ws-6-seater",
+    name: "6-Person Workstation Cluster",
+    category: "Workstations",
+    subcategory: "6-Seater",
+    price: 120000,
+    image: workstationImg,
+    description: "High-density 6-person workstation for open-plan offices. Features acoustic panels, shared storage, and power modules for maximum team productivity.",
+    features: { Material: "MDF Melamine", Size: "360cm x 240cm", Divider: "Acoustic Fabric Panel", "Wire Management": "Dual cable trays", "Power Outlets": "6x integrated sockets", Frame: "18-Gauge MS Powder-Coated" },
+  },
+  {
+    id: "ws-linear",
+    name: "Linear Bench Workstation",
+    category: "Workstations",
+    subcategory: "Linear",
+    price: 38000,
+    image: workstationImg,
+    description: "Clean single-row bench desking for call centers and data-entry teams. Maximizes floor space while providing individual work zones with minimal dividers.",
+    features: { Material: "MDF Melamine", "Size per seat": "120cm x 60cm", Divider: "Desk-mounted screen 25cm", "Wire Management": "Under-desk cable basket", Edge: "PVC Edge Banding", Frame: "18-Gauge MS Powder-Coated" },
+  },
+  {
+    id: "ws-cubicle",
+    name: "Cubicle Workstation",
+    category: "Workstations",
+    subcategory: "Cubicle",
+    price: 55000,
+    image: workstationImg,
+    description: "Three-sided cubicle with overhead storage and pinboard panels. Perfect for focused work environments where privacy and concentration are paramount.",
+    features: { Material: "MDF Melamine", Size: "150cm x 150cm x 135cm", Panels: "3-sided fabric panels", Storage: "Overhead bin", "Pin Board": "Integrated fabric pinboard", Frame: "18-Gauge MS Powder-Coated" },
+  },
+  {
+    id: "ws-open-plan",
+    name: "Open Plan Desk System",
+    category: "Workstations",
+    subcategory: "Open Plan",
+    price: 32000,
+    image: workstationImg,
+    description: "Minimalist shared desk system with no dividers — designed for creative agencies and collaborative teams that thrive in open environments.",
+    features: { Material: "MDF Melamine", "Size per seat": "140cm x 70cm", "Wire Management": "Central trough", Edge: "PVC Edge Banding", Finish: "Multiple color options", Frame: "18-Gauge MS Powder-Coated" },
+  },
+];
+
+// Office Sofas
+export const officeSofas: Product[] = [
+  {
+    id: "sofa-3-seater",
+    name: "Executive 3-Seater Office Sofa",
+    category: "Office Sofas",
+    subcategory: "3-Seater",
+    price: 85000,
+    image: loungeImg,
+    badge: "Premium",
+    featured: true,
+    description: "Premium 3-seater office sofa upholstered in Italian-inspired leatherette with MoltyFoam cushioning. Designed for executive lounges and CEO waiting areas.",
+    features: { Material: "Premium Leatherette", Foam: "MoltyFoam High-Density", Frame: "Kiln-Dried Hardwood", Size: "200cm x 80cm x 85cm", Legs: "Chrome-Finish Metal", "Seat Depth": "55cm" },
+  },
+  {
+    id: "sofa-2-seater",
+    name: "Office 2-Seater Sofa",
+    category: "Office Sofas",
+    subcategory: "2-Seater",
+    price: 58000,
+    image: loungeImg,
+    description: "Compact 2-seater sofa for small reception areas and private offices. Premium leatherette with chrome legs and firm MoltyFoam cushions.",
+    features: { Material: "Premium Leatherette", Foam: "MoltyFoam High-Density", Frame: "Kiln-Dried Hardwood", Size: "150cm x 80cm x 85cm", Legs: "Chrome-Finish Metal", "Seat Depth": "55cm" },
+  },
+  {
+    id: "sofa-reception",
+    name: "Reception Sofa Set",
+    category: "Office Sofas",
+    subcategory: "Reception",
+    price: 120000,
+    image: heroSofaImg,
+    badge: "Best Seller",
+    description: "Complete reception sofa set (3+1+1) designed to create an impressive waiting area. Premium fabric upholstery with contemporary styling.",
+    features: { Material: "Premium Fabric Upholstery", Foam: "MoltyFoam", Configuration: "3-Seater + 2 Single Chairs", Frame: "Kiln-Dried Hardwood", Legs: "Brushed Steel", "Color Options": "Gray, Navy, Beige" },
+  },
+  {
+    id: "sofa-lounge-chair",
+    name: "Lounge Accent Chair",
+    category: "Office Sofas",
+    subcategory: "Lounge",
+    price: 42000,
+    image: loungeImg,
+    description: "Contemporary accent chair for executive lounges, breakout areas, and creative spaces. Velvet upholstery with gold-finish metal frame.",
+    features: { Material: "Velvet Upholstery", Foam: "MoltyFoam", Frame: "Powder-Coated Metal", Size: "75cm x 80cm x 85cm", Legs: "Gold-Finish Metal", "Color Options": "Emerald, Navy, Blush" },
+  },
+];
+
+// Meeting Tables
+export const meetingTables: Product[] = [
+  {
+    id: "mt-conference-8",
+    name: "Conference Table 8-Seater",
+    category: "Meeting Tables",
+    subcategory: "Conference",
+    price: 95000,
+    image: meetingRoomImg,
+    badge: "Popular",
+    featured: true,
+    description: "Professional 8-seater conference table with integrated power and data ports. MDF melamine top with powder-coated steel base for long-lasting durability.",
+    features: { Material: "MDF with Melamine Finish", Size: "240cm x 120cm x 75cm", "Power Integration": "4x power + 2x data ports", Edge: "PVC Edge Banding", "Wire Management": "Central cable box", Frame: "18-Gauge MS Powder-Coated" },
+  },
+  {
+    id: "mt-conference-12",
+    name: "Conference Table 12-Seater",
+    category: "Meeting Tables",
+    subcategory: "Conference",
+    price: 145000,
+    image: meetingRoomImg,
+    badge: "Premium",
+    description: "Large 12-seater boardroom table with wire management and AV integration points. Designed for corporate headquarters and large meeting rooms.",
+    features: { Material: "MDF with Melamine Finish", Size: "360cm x 140cm x 75cm", "Power Integration": "6x power + 4x data ports", Edge: "PVC Edge Banding", "AV Integration": "Central AV box", Frame: "Heavy-Duty Steel Base" },
+  },
+  {
+    id: "mt-round",
+    name: "Round Meeting Table",
+    category: "Meeting Tables",
+    subcategory: "Round",
+    price: 55000,
+    image: meetingRoomImg,
+    description: "4-6 person round meeting table that promotes equal participation and collaboration. Perfect for brainstorming sessions and team huddles.",
+    features: { Material: "MDF with Melamine Finish", Diameter: "120cm", Height: "75cm", Edge: "PVC Edge Banding", Base: "Central Column Base", Frame: "Chrome-Finish Steel" },
+  },
+  {
+    id: "mt-boardroom",
+    name: "Premium Boardroom Table",
+    category: "Meeting Tables",
+    subcategory: "Boardroom",
+    price: 225000,
+    image: meetingRoomImg,
+    badge: "Luxury",
+    description: "Flagship boardroom table with veneer finish, built-in microphone points, and power modules. A statement piece for Fortune-500-style boardrooms.",
+    features: { Material: "Natural Wood Veneer", Size: "480cm x 160cm x 75cm", "Power Integration": "8x power + 6x data", "AV Integration": "Motorized AV pop-up", Edge: "Solid Wood Edging", Base: "Premium Hardwood Pedestal" },
+  },
+];
+
+// Reception Desks
+export const receptionDesks: Product[] = [
+  {
+    id: "rd-modern",
+    name: "Modern Reception Counter",
+    category: "Reception Desks",
+    subcategory: "Modern",
+    price: 85000,
+    image: receptionDeskImg,
+    badge: "Popular",
+    featured: true,
+    description: "Sleek modern reception desk with high counter and built-in storage. MDF melamine finish with LED accent lighting option. First impression guaranteed.",
+    features: { Material: "MDF with Melamine Finish", Size: "200cm x 60cm x 110cm", Counter: "High reception counter", Storage: "Built-in shelving", "LED Option": "Accent lighting available", Frame: "18-Gauge MS Powder-Coated" },
+  },
+  {
+    id: "rd-l-shape",
+    name: "L-Shape Reception Desk",
+    category: "Reception Desks",
+    subcategory: "L-Shape",
+    price: 110000,
+    image: receptionDeskImg,
+    description: "Spacious L-shaped reception desk accommodating 2 receptionists. Features cable management, storage cabinets, and glass display panel.",
+    features: { Material: "MDF with Melamine Finish", Size: "240cm + 180cm Return", Counter: "Dual-level counter", Storage: "4-door base cabinet", Glass: "Tempered glass accent panel", Frame: "18-Gauge MS Powder-Coated" },
+  },
+  {
+    id: "rd-curved",
+    name: "Curved Reception Counter",
+    category: "Reception Desks",
+    subcategory: "Curved",
+    price: 135000,
+    image: receptionDeskImg,
+    badge: "Premium",
+    description: "Elegant curved reception desk that creates a welcoming first impression. Available in multiple finishes with optional backlit branding panel.",
+    features: { Material: "MDF with Laminate/Veneer", Size: "280cm Curved x 110cm Height", Counter: "Curved reception counter", Branding: "Backlit logo panel option", Storage: "Integrated filing", Frame: "Custom-Formed Steel" },
+  },
+  {
+    id: "rd-standing",
+    name: "Standing Reception Podium",
+    category: "Reception Desks",
+    subcategory: "Standing",
+    price: 45000,
+    image: receptionDeskImg,
+    description: "Compact standing reception podium for small offices and co-working spaces. Clean design with built-in shelf and cable routing.",
+    features: { Material: "MDF with Melamine Finish", Size: "100cm x 50cm x 110cm", Counter: "Single standing counter", Storage: "Internal shelf", Edge: "PVC Edge Banding", Frame: "18-Gauge MS Powder-Coated" },
+  },
+];
+
+// Storage
+export const storageFurniture: Product[] = [
+  {
+    id: "st-filing-3",
+    name: "3-Drawer Filing Cabinet",
+    category: "Storage",
+    subcategory: "Filing Cabinets",
+    price: 22000,
+    image: storageImg,
+    description: "Standard 3-drawer steel filing cabinet with central locking system. A4 and legal-size compatible for organized document storage.",
+    features: { Material: "Cold-Rolled Steel", Drawers: "3 Full-Extension", Lock: "Central Locking", Size: "45cm x 62cm x 103cm", "Weight Capacity": "30kg per drawer", Finish: "Powder-Coated" },
+  },
+  {
+    id: "st-bookshelf",
+    name: "Open Bookshelf Unit",
+    category: "Storage",
+    subcategory: "Bookshelves",
+    price: 28000,
+    image: bookshelfImg,
+    description: "5-tier open bookshelf for offices and libraries. MDF with melamine finish, adjustable shelf heights, and anti-tip wall bracket.",
+    features: { Material: "MDF with Melamine Finish", Shelves: "5 Adjustable Shelves", Size: "80cm x 35cm x 180cm", "Weight Capacity": "20kg per shelf", Edge: "PVC Edge Banding", Safety: "Anti-tip wall bracket" },
+  },
+  {
+    id: "st-locker-6",
+    name: "6-Door Staff Locker",
+    category: "Storage",
+    subcategory: "Lockers",
+    price: 35000,
+    image: storageImg,
+    description: "Heavy-duty 6-door staff locker with individual key locks. Ideal for offices, gyms, and factory facilities requiring personal storage.",
+    features: { Material: "Cold-Rolled Steel", Compartments: "6 Individual Doors", Lock: "Individual Key Locks", Size: "90cm x 45cm x 180cm", Ventilation: "Louvered doors", Finish: "Powder-Coated" },
+  },
+  {
+    id: "st-credenza",
+    name: "Office Credenza Unit",
+    category: "Storage",
+    subcategory: "Credenzas",
+    price: 48000,
+    image: bookshelfImg,
+    badge: "Popular",
+    description: "Low-profile office credenza with sliding doors and adjustable shelves. Perfect behind executive desks for accessible storage with a clean aesthetic.",
+    features: { Material: "MDF with Melamine Finish", Size: "160cm x 45cm x 75cm", Doors: "2 Sliding Doors", Shelves: "2 Adjustable", Edge: "PVC Edge Banding", Lock: "Central Lock" },
+  },
+];
+
+// ============ HOME FURNITURE ============
+
+// Bedroom Furniture
+export const bedroomFurniture: Product[] = [
+  {
+    id: "bed-set-royal",
+    name: "Royal Bedroom Set",
+    category: "Bedroom",
+    subcategory: "Bed Sets",
+    price: 185000,
+    image: deskExecutiveImg,
+    badge: "Premium",
+    featured: true,
+    description: "Complete bedroom set including king-size bed frame, 2 bedside tables, and dressing table. Crafted from premium MDF with high-gloss lacquer finish.",
+    features: { Material: "MDF with High-Gloss Lacquer", "Bed Size": "King (180cm x 200cm)", Includes: "Bed + 2 Side Tables + Dressing Table", Headboard: "Upholstered Tufted Panel", Finish: "Walnut / White / Gray", Assembly: "Professional installation included" },
+  },
+  {
+    id: "bed-set-modern",
+    name: "Modern Minimalist Bed Set",
+    category: "Bedroom",
+    subcategory: "Bed Sets",
+    price: 145000,
+    image: officeIsometricImg,
+    description: "Clean-line modern bed set with floating nightstands and low-profile platform frame. Scandinavian-inspired design with warm wood tones.",
+    features: { Material: "MDF with Wood Veneer", "Bed Size": "Queen (150cm x 200cm)", Includes: "Bed + 2 Floating Nightstands", Headboard: "Wooden slatted panel", Finish: "Oak / Ash / Charcoal", Storage: "Under-bed drawers optional" },
+  },
+  {
+    id: "bed-side-table-classic",
+    name: "Classic Bedside Table",
+    category: "Bedroom",
+    subcategory: "Bed Side Tables",
+    price: 18000,
+    image: bookshelfImg,
+    description: "Elegant bedside table with 2 drawers and soft-close mechanisms. Matches our Royal and Classic bedroom sets for a cohesive look.",
+    features: { Material: "MDF with Melamine", Size: "50cm x 40cm x 55cm", Drawers: "2 Soft-Close Drawers", Finish: "Walnut / White", Legs: "Tapered solid wood", Hardware: "Brushed gold handles" },
+  },
+  {
+    id: "bed-side-table-modern",
+    name: "Floating Bedside Shelf",
+    category: "Bedroom",
+    subcategory: "Bed Side Tables",
+    price: 12000,
+    image: officeIsometricImg,
+    description: "Wall-mounted floating nightstand with single drawer and open shelf. Space-saving design for modern bedrooms.",
+    features: { Material: "MDF with Laminate", Size: "45cm x 30cm x 20cm", Drawer: "1 Soft-Close Drawer", Shelf: "Open display shelf", Mounting: "Wall-mounted concealed bracket", Finish: "Oak / White / Black" },
+  },
+  {
+    id: "dressing-table-vanity",
+    name: "Vanity Dressing Table",
+    category: "Bedroom",
+    subcategory: "Dressing Tables",
+    price: 45000,
+    image: deskExecutiveImg,
+    badge: "Popular",
+    description: "Elegant vanity dressing table with LED-lit mirror, jewelry organizer drawers, and velvet-lined compartments. Every detail designed for luxury.",
+    features: { Material: "MDF with High-Gloss Finish", Size: "120cm x 45cm x 75cm", Mirror: "LED-backlit frameless mirror", Drawers: "5 organizer drawers", Stool: "Included (upholstered)", Finish: "White / Rose Gold accents" },
+  },
+  {
+    id: "dressing-table-compact",
+    name: "Compact Dressing Console",
+    category: "Bedroom",
+    subcategory: "Dressing Tables",
+    price: 32000,
+    image: officeIsometricImg,
+    description: "Space-efficient dressing console with flip-up mirror and hidden storage. Perfect for apartments and smaller bedrooms.",
+    features: { Material: "MDF with Melamine", Size: "100cm x 40cm x 75cm", Mirror: "Flip-up concealed mirror", Storage: "Hidden compartments", Drawers: "2 Side drawers", Finish: "Walnut / White" },
+  },
+  {
+    id: "bedroom-mirror",
+    name: "Full-Length Standing Mirror",
+    category: "Bedroom",
+    subcategory: "Mirrors",
+    price: 22000,
+    image: officeIsometricImg,
+    description: "Elegant full-length standing mirror with wooden frame and anti-tip support. Available in multiple frame finishes to match any bedroom décor.",
+    features: { Mirror: "Full-length 180cm x 60cm", Frame: "Solid Wood Frame", Stand: "Freestanding with anti-tip", Finish: "Oak / Walnut / Black / Gold", Glass: "5mm HD clarity glass", Weight: "12kg" },
+  },
+  {
+    id: "bedroom-bench",
+    name: "Bedroom Bench & Settee",
+    category: "Bedroom",
+    subcategory: "Bench & Settee",
+    price: 28000,
+    image: loungeImg,
+    description: "Upholstered bedroom bench with storage compartment beneath the seat. Perfect at the foot of the bed for both seating and linen storage.",
+    features: { Material: "Velvet / Linen Upholstery", Foam: "High-Density Foam", Size: "120cm x 45cm x 50cm", Storage: "Lift-top hidden storage", Frame: "Kiln-Dried Hardwood", Legs: "Tapered solid wood" },
+  },
+];
+
+// Living Room Furniture
+export const livingRoomFurniture: Product[] = [
+  {
+    id: "home-sofa-3seater",
+    name: "Luxury 3-Seater Home Sofa",
+    category: "Living Room",
+    subcategory: "Home Sofa",
+    price: 125000,
+    image: heroSofaImg,
+    badge: "Premium",
+    featured: true,
+    description: "Premium 3-seater home sofa with deep-seated comfort, MoltyFoam cushioning, and stain-resistant fabric. A centerpiece for modern Pakistani living rooms.",
+    features: { Material: "Premium Fabric / Leatherette", Foam: "MoltyFoam High-Density", Size: "220cm x 90cm x 85cm", Frame: "Kiln-Dried Hardwood", Cushions: "Reversible back cushions", "Color Options": "Gray, Navy, Beige, Olive" },
+  },
+  {
+    id: "home-sofa-sectional",
+    name: "L-Shape Sectional Sofa",
+    category: "Living Room",
+    subcategory: "Home Sofa",
+    price: 175000,
+    image: heroSofaImg,
+    badge: "Best Seller",
+    description: "Spacious L-shape sectional sofa that seats 5-6 comfortably. Modular design allows flexible configuration. Ottoman doubles as hidden storage.",
+    features: { Material: "Premium Fabric", Foam: "MoltyFoam", Configuration: "L-Shape (left or right)", Frame: "Kiln-Dried Hardwood", Ottoman: "Storage ottoman included", Size: "280cm x 180cm x 85cm" },
+  },
+  {
+    id: "home-center-table",
+    name: "Center Table with Storage",
+    category: "Living Room",
+    subcategory: "Center & Side Tables",
+    price: 35000,
+    image: meetingRoomImg,
+    description: "Contemporary center table with lower shelf and hidden drawer. Tempered glass top with wooden base for a modern living room aesthetic.",
+    features: { Material: "MDF + Tempered Glass", Size: "120cm x 60cm x 45cm", Storage: "1 Hidden drawer + open shelf", Glass: "8mm Tempered Glass Top", Base: "Solid wood legs", Finish: "Walnut / Oak / White" },
+  },
+  {
+    id: "home-side-table",
+    name: "Accent Side Table Set",
+    category: "Living Room",
+    subcategory: "Center & Side Tables",
+    price: 18000,
+    image: bookshelfImg,
+    description: "Set of 2 nesting side tables with gold-finish metal frames. Perfect beside sofas or as decorative accent pieces in any living space.",
+    features: { Material: "MDF top + Metal frame", "Set Contents": "2 Nesting Tables", Sizes: "50cm + 40cm diameter", Height: "55cm + 45cm", Frame: "Gold / Black metal", Finish: "Marble effect / Wood grain" },
+  },
+  {
+    id: "home-coffee-table-round",
+    name: "Round Coffee Table",
+    category: "Living Room",
+    subcategory: "Coffee Tables",
+    price: 28000,
+    image: meetingRoomImg,
+    description: "Elegant round coffee table with marble-effect top and brushed brass base. A statement piece for sophisticated living rooms.",
+    features: { Material: "Engineered Stone / MDF", Diameter: "90cm", Height: "42cm", Base: "Brushed Brass Metal", "Weight Capacity": "25kg", Finish: "White Marble / Black Marble" },
+  },
+  {
+    id: "home-coffee-table-rect",
+    name: "Rectangular Coffee Table",
+    category: "Living Room",
+    subcategory: "Coffee Tables",
+    price: 32000,
+    image: meetingRoomImg,
+    description: "Sleek rectangular coffee table with tempered glass top and wooden shelf beneath. Functional design with ample display and storage space.",
+    features: { Material: "Tempered Glass + MDF", Size: "110cm x 60cm x 42cm", Shelf: "Lower wooden shelf", Glass: "8mm Tempered", Base: "Solid wood legs", Finish: "Oak / Walnut" },
+  },
+  {
+    id: "home-console",
+    name: "Entryway Console Table",
+    category: "Living Room",
+    subcategory: "Console",
+    price: 38000,
+    image: receptionDeskImg,
+    description: "Narrow console table for entryways, hallways, and behind-sofa placement. Features 2 drawers and open shelf for keys, decor, and daily essentials.",
+    features: { Material: "MDF with Veneer", Size: "120cm x 35cm x 80cm", Drawers: "2 Soft-Close Drawers", Shelf: "Open lower shelf", Legs: "Tapered solid wood", Finish: "Walnut / White / Black" },
+  },
+  {
+    id: "home-tv-unit",
+    name: "Modern TV Console Unit",
+    category: "Living Room",
+    subcategory: "TV Units",
+    price: 55000,
+    image: bookshelfImg,
+    badge: "Popular",
+    description: "Wall-mounted TV console with floating design, LED backlighting, and concealed cable management. Supports TVs up to 65 inches.",
+    features: { Material: "MDF with High-Gloss/Matte", Size: "180cm x 40cm x 35cm", "TV Support": "Up to 65-inch TV", Storage: "4 compartments + 2 drawers", Cable: "Concealed cable management", LED: "RGB LED backlighting included" },
+  },
+];
+
+// Dining Furniture
+export const diningFurniture: Product[] = [
+  {
+    id: "dining-set-6",
+    name: "6-Seater Dining Set",
+    category: "Dining",
+    subcategory: "Dining Sets",
+    price: 125000,
+    image: meetingRoomImg,
+    badge: "Premium",
+    featured: true,
+    description: "Complete 6-seater dining set with solid wood table and upholstered chairs. Perfect for family dinners and entertaining guests in style.",
+    features: { Material: "Solid Sheesham Wood", "Table Size": "180cm x 90cm x 75cm", Chairs: "6 Upholstered Dining Chairs", Finish: "Natural / Dark Walnut", Seats: "MoltyFoam cushioned", Assembly: "Professional installation included" },
+  },
+  {
+    id: "dining-set-4",
+    name: "4-Seater Compact Dining Set",
+    category: "Dining",
+    subcategory: "Dining Sets",
+    price: 85000,
+    image: meetingRoomImg,
+    description: "Space-efficient 4-seater dining set ideal for apartments and small dining areas. Clean modern design with cushioned chairs.",
+    features: { Material: "MDF with Veneer", "Table Size": "120cm x 80cm x 75cm", Chairs: "4 Upholstered Chairs", Finish: "Oak / Walnut / White", Seats: "Foam cushioned", Style: "Scandinavian Modern" },
+  },
+  {
+    id: "dining-chair-upholstered",
+    name: "Upholstered Dining Chair",
+    category: "Dining",
+    subcategory: "Dining Chairs",
+    price: 15000,
+    image: loungeImg,
+    description: "Elegant upholstered dining chair with solid wood legs and stain-resistant fabric. Sold individually — mix and match with any dining table.",
+    features: { Material: "Fabric Upholstery", Frame: "Solid Wood", Foam: "High-Density Foam", Size: "45cm x 55cm x 90cm", "Weight Capacity": "120kg", "Color Options": "Gray, Beige, Navy, Green" },
+  },
+  {
+    id: "dining-chair-wooden",
+    name: "Solid Wood Dining Chair",
+    category: "Dining",
+    subcategory: "Dining Chairs",
+    price: 12000,
+    image: bookshelfImg,
+    description: "Classic solid Sheesham wood dining chair with contoured seat. Durable, low-maintenance, and perfect for everyday family dining.",
+    features: { Material: "Solid Sheesham Wood", Finish: "Lacquered Natural / Dark", Size: "43cm x 50cm x 88cm", "Weight Capacity": "130kg", Maintenance: "Wipe clean", Style: "Classic / Farmhouse" },
+  },
+  {
+    id: "dining-table-extendable",
+    name: "Extendable Dining Table",
+    category: "Dining",
+    subcategory: "Dining Tables",
+    price: 95000,
+    image: meetingRoomImg,
+    badge: "Versatile",
+    description: "Ingenious extendable dining table that goes from 4-seater to 8-seater with a simple butterfly leaf mechanism. Solid wood construction.",
+    features: { Material: "Solid Sheesham Wood", "Size Compact": "140cm x 90cm", "Size Extended": "200cm x 90cm", Mechanism: "Butterfly leaf extension", Seats: "4 to 8 persons", Finish: "Natural / Dark Walnut" },
+  },
+  {
+    id: "dining-table-glass",
+    name: "Glass Top Dining Table",
+    category: "Dining",
+    subcategory: "Dining Tables",
+    price: 72000,
+    image: meetingRoomImg,
+    description: "Contemporary glass-top dining table with sculptural metal base. 10mm tempered safety glass top seats 6 comfortably.",
+    features: { Material: "10mm Tempered Glass", Size: "160cm x 90cm x 75cm", Base: "Sculptural Metal Base", Seats: "6 persons", Glass: "Beveled edges, safety tempered", Finish: "Chrome / Matte Black base" },
+  },
+];
+
+// ============ COMBINED EXPORTS ============
+
 // All products combined
 export const allProducts: Product[] = [
   ...executiveChairs,
   ...managerChairs,
   ...staffChairs,
   ...visitorChairs,
+  ...officeDesks,
+  ...workstations,
+  ...officeSofas,
+  ...meetingTables,
+  ...receptionDesks,
+  ...storageFurniture,
+  ...bedroomFurniture,
+  ...livingRoomFurniture,
+  ...diningFurniture,
 ];
 
 // Featured products for homepage
 export const featuredProducts: Product[] = allProducts.filter((p) => p.featured);
+
+// Home furniture combined
+export const homeFurnitureProducts: Product[] = [
+  ...bedroomFurniture,
+  ...livingRoomFurniture,
+  ...diningFurniture,
+];
+
+// Office furniture (non-chair)
+export const officeFurnitureProducts: Product[] = [
+  ...officeDesks,
+  ...workstations,
+  ...officeSofas,
+  ...meetingTables,
+  ...receptionDesks,
+  ...storageFurniture,
+];
 
 // Categories
 export const categories: Category[] = [
@@ -1081,21 +1688,88 @@ export const categories: Category[] = [
     productCount: visitorChairs.length,
     image: swanExecutiveVisitorImg,
   },
+  {
+    id: "office-desks",
+    name: "Office Desks",
+    description: "Executive, manager, and standing desks in MDF melamine and veneer finishes. Complete range from compact computer desks to director suite desks.",
+    productCount: officeDesks.length,
+    image: deskExecutiveImg,
+  },
+  {
+    id: "workstations",
+    name: "Workstations",
+    description: "Modular 2, 4, 6-person clusters, linear benching, cubicles, and open-plan desk systems for teams of any size.",
+    productCount: workstations.length,
+    image: workstationImg,
+  },
+  {
+    id: "office-sofas",
+    name: "Office Sofas",
+    description: "Reception sofas, executive lounge seating, and accent chairs for waiting areas and breakout zones.",
+    productCount: officeSofas.length,
+    image: loungeImg,
+  },
+  {
+    id: "meeting-tables",
+    name: "Meeting Tables",
+    description: "Conference tables from 8-seater to boardroom size with integrated power, data ports, and AV provisions.",
+    productCount: meetingTables.length,
+    image: meetingRoomImg,
+  },
+  {
+    id: "reception-desks",
+    name: "Reception Desks",
+    description: "Custom reception counters, L-shape desks, curved counters, and standing podiums to create impressive first impressions.",
+    productCount: receptionDesks.length,
+    image: receptionDeskImg,
+  },
+  {
+    id: "storage",
+    name: "Storage & Filing",
+    description: "Filing cabinets, bookshelves, lockers, and credenza units for organized, efficient workspaces.",
+    productCount: storageFurniture.length,
+    image: storageImg,
+  },
+  {
+    id: "bedroom",
+    name: "Bedroom Furniture",
+    description: "Bed sets, bedside tables, dressing tables, mirrors, and bedroom benches for luxurious home bedrooms.",
+    productCount: bedroomFurniture.length,
+    image: deskExecutiveImg,
+  },
+  {
+    id: "living-room",
+    name: "Living Room",
+    description: "Home sofas, coffee tables, side tables, consoles, and TV units for modern Pakistani living rooms.",
+    productCount: livingRoomFurniture.length,
+    image: heroSofaImg,
+  },
+  {
+    id: "dining",
+    name: "Dining Furniture",
+    description: "Dining sets, dining chairs, and dining tables in solid wood, glass, and modern finishes.",
+    productCount: diningFurniture.length,
+    image: meetingRoomImg,
+  },
 ];
 
 // Get products by category
 export const getProductsByCategory = (categoryId: string): Product[] => {
   switch (categoryId) {
-    case "executive-chairs":
-      return executiveChairs;
-    case "manager-chairs":
-      return managerChairs;
-    case "staff-chairs":
-      return staffChairs;
-    case "visitor-chairs":
-      return visitorChairs;
-    default:
-      return allProducts;
+    case "executive-chairs": return executiveChairs;
+    case "manager-chairs": return managerChairs;
+    case "staff-chairs": return staffChairs;
+    case "visitor-chairs": return visitorChairs;
+    case "office-desks": return officeDesks;
+    case "workstations": return workstations;
+    case "office-sofas": return officeSofas;
+    case "meeting-tables": return meetingTables;
+    case "reception-desks": return receptionDesks;
+    case "storage": return storageFurniture;
+    case "bedroom": return bedroomFurniture;
+    case "living-room": return livingRoomFurniture;
+    case "dining": return diningFurniture;
+    default: return allProducts;
   }
 };
 

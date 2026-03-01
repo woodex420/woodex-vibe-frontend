@@ -55,16 +55,16 @@ const About = () => {
     number: "1,200+",
     label: "Satisfied Clients"
   }, {
-    number: "56",
+    number: "100+",
     label: "Premium Products"
   }, {
-    number: "11",
+    number: "13",
     label: "Product Categories"
   }, {
-    number: "5-7 Years",
+    number: "Up to 3 Years",
     label: "Warranty Coverage"
   }, {
-    number: "15+",
+    number: "7+",
     label: "Years Experience"
   }, {
     number: "95%",
@@ -74,10 +74,10 @@ const About = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="About WOODEX - Pakistan's #1 B2B Furniture Manufacturer"
-        description="Learn about WOODEX, Pakistan's leading B2B office furniture manufacturer. 1,200+ satisfied clients, 15+ years experience, factory-direct quality with 5-7 year warranty."
-        keywords="about WOODEX, office furniture manufacturer Pakistan, B2B furniture company, furniture factory Lahore"
-        canonical="https://woodex.pk/about"
+        title="About Woodex - Pakistan's Leading Office & Home Furniture Manufacturer"
+        description="Learn about Woodex Furniture, Pakistan's leading office & home furniture manufacturer. 1,200+ satisfied clients, 7+ years experience, factory-direct quality with up to 3-year warranty."
+        keywords="about Woodex, office furniture manufacturer Pakistan, home furniture company, furniture factory Lahore"
+        canonical="https://woodexfurniture.pk/about"
         structuredData={generateOrganizationSchema()}
       />
       <Navbar />
@@ -199,8 +199,8 @@ const About = () => {
             desc: "No middlemen means better prices and quality control"
           }, {
             icon: Shield,
-            title: "5-7 Year Warranty",
-            desc: "Industry-leading warranty coverage on all products"
+            title: "Up to 3-Year Warranty",
+            desc: "Structural warranty on desks, tables, and workstations"
           }, {
             icon: Truck,
             title: "Nationwide Delivery",

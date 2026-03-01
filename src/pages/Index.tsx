@@ -86,14 +86,14 @@ const faqs = [
 ];
 
 const categories = [
-  { name: "Executive Tables", desc: "Command attention with premium executive desks in MDF melamine, veneer, and glass finishes.", image: deskExecutiveImg, link: "/shop?category=executive" },
-  { name: "Office Chairs", desc: "Ergonomic chairs with Master MoltyFoam cushioning, lumbar support, and alloy steel frames.", image: chairExecutiveImg, link: "/shop?category=chairs" },
-  { name: "Workstations", desc: "Modular 2, 4, 6, and 8-person workstation clusters with privacy panels and wire management.", image: workstationImg, link: "/shop?category=workstations" },
-  { name: "Conference Tables", desc: "Premium conference tables from 6-seat to 20-seat configurations with power/data integration.", image: meetingRoomImg, link: "/shop?category=conference" },
-  { name: "Reception & Front Desk", desc: "Custom reception counters designed to reflect your brand identity.", image: receptionDeskImg, link: "/shop?category=reception" },
-  { name: "Storage & Filing", desc: "Filing cabinets, bookshelves, lockers, and rack systems for organized workspaces.", image: bookshelfImg, link: "/shop?category=storage" },
-  { name: "Office Sofas & Lounge", desc: "Italian-inspired sofa sets, waiting area seating, and café furniture.", image: loungeImg, link: "/shop?category=lounge" },
-  { name: "Home Office", desc: "Work-from-home desks, compact bookshelves, and ergonomic chairs for small spaces.", image: officeIsometricImg, link: "/shop?category=home-office" },
+  { name: "Office Chairs", desc: "Ergonomic chairs with MoltyFoam cushioning, lumbar support, and alloy steel frames.", image: chairExecutiveImg, link: "/shop?category=executive" },
+  { name: "Office Desks", desc: "Executive, manager, and standing desks in MDF melamine and veneer finishes.", image: deskExecutiveImg, link: "/shop?category=desks" },
+  { name: "Workstations", desc: "Modular 2, 4, 6-person clusters with privacy panels and wire management.", image: workstationImg, link: "/shop?category=workstations" },
+  { name: "Meeting Tables", desc: "Conference tables from 8-seat to boardroom size with integrated power and data.", image: meetingRoomImg, link: "/shop?category=meeting" },
+  { name: "Reception Desks", desc: "Custom reception counters designed to reflect your brand identity.", image: receptionDeskImg, link: "/shop?category=reception" },
+  { name: "Storage & Filing", desc: "Filing cabinets, bookshelves, lockers, and credenza units.", image: bookshelfImg, link: "/shop?category=storage" },
+  { name: "Bedroom Furniture", desc: "Bed sets, dressing tables, mirrors, and bedroom benches for luxurious homes.", image: officeIsometricImg, link: "/shop?category=bedroom" },
+  { name: "Living & Dining", desc: "Sofas, coffee tables, TV units, dining sets, and more for modern homes.", image: loungeImg, link: "/shop?category=living" },
 ];
 
 const uspCards = [
