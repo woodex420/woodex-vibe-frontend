@@ -1,75 +1,84 @@
 
 
-# Content Update Plan — Keep Current Design, Update Content Only
+# Master Plan: Expand Shop with New Categories, Products & Home Furniture
 
-No changes to theme colors, Navbar, Footer, or overall design style. Only content (text, data, sections) will be updated.
+## Current State Analysis
 
----
-
-## Phase 1: Hero Slider Content Update (HeroSlider.tsx)
-
-**Update slide text and CTAs only** (keep split layout, dots, trust badges style):
-- Slide 1: "Custom Office Furniture -- Designed for Your Space, Built in Our Factory" with dual CTAs (Shop Now + Free Consultation)
-- Slide 2: "We Don't Just Sell Furniture -- We Build Workspaces" with consultation CTA
-- Slide 3: "Luxury Meets Functionality -- Italian-Inspired Office & Home Furniture" with shop CTA
-- Update trust badges text: Factory Direct Prices, Free 3D Design, Nationwide Delivery, Up to 3-Year Warranty
+- **56 products** — all chairs (Executive 12, Manager 17, Staff 12, Visitor 15)
+- **Navbar lists 5 dead categories** (Office Desks, Workstations, Office Sofas, Meeting Tables, Reception Desks) — clicking them shows 0 products
+- **No Home Furniture** exists anywhere in the codebase
+- **No product images** exist for non-chair items — will use placeholder images from existing assets
 
 ---
 
-## Phase 2: Homepage Content Rebuild (Index.tsx)
+## Task Breakdown (10 Tasks)
 
-Keep existing section styling patterns, update/add content sections in this order:
+### Task 1 — Add Office Furniture Product Data
+Add placeholder products to `src/data/products.ts` for the 5 existing-but-empty Navbar categories:
+- **Office Desks** (6 products): Executive Desk, L-Shape Desk, Standing Desk, Computer Desk, Manager Desk, Director Desk
+- **Workstations** (6 products): 2-Seater, 4-Seater, 6-Seater, Linear, Cubicle, Open Plan
+- **Office Sofas** (4 products): 3-Seater, 2-Seater, Reception Sofa, Lounge Chair
+- **Meeting Tables** (4 products): Conference 8-Seater, Conference 12-Seater, Round Meeting, Boardroom Table
+- **Reception Desks** (4 products): Modern Reception, L-Shape Reception, Curved Reception, Standing Reception
 
-1. **Update SEO meta** -- new title, description, keywords from document
-2. **Replace Services Row** with "Who We Are" intro block -- "Pakistan's Most Trusted Office Furniture Brand", 1,200+ offices stat, Learn More CTA
-3. **Replace Materials Banner** with 8-Category Product Grid -- Executive Tables, Office Chairs, Workstations, Conference Tables, Reception, Storage, Office Sofas, Home Office (reuse existing images)
-4. **Update Bestsellers** -- new heading "Our Most Popular Products", subtext targeting cities, show 8 products
-5. **Add "Why Choose Woodex" section** -- 6 USP cards: Custom Design, Free 3D, Factory-Direct Pricing, Delivery & Installation, Warranty, Nationwide Coverage
-6. **Add "How It Works" section** -- 4 steps: Consultation, 3D Design, Manufacturing, Delivery
-7. **Add Portfolio Showcase** -- "Workspaces We've Transformed" grid using existing project images
-8. **Add Stats Counter** -- 1,200+ Offices, 7+ Years, 50+ Cities, 100% Custom-Made
-9. **Add Testimonials** -- 3 reviews (Ahmed R., Sara K., Usman T.)
-10. **Update SEO Content Block** -- ergonomic chairs long-form content from document
-11. **Add Furniture Series Showcase** -- Cubicle, Lounge, Executive, Home Office cards
-12. **Add CTA Banner** -- "Ready to Transform Your Workspace?" with Call Now, E-Quote, WhatsApp buttons
-13. **Replace FAQs** -- 10 new Q&As from document
+Each product gets: id, name, category, price, placeholder image (reuse existing assets like `desk-executive.jpg`, `workstation.jpg`, `lounge.jpg`, `meeting-room.jpg`, `reception-desk.jpg`), description, features.
+
+### Task 2 — Add Home Furniture Product Data
+Add new product arrays to `src/data/products.ts`:
+- **Bedroom Furniture** (8 products): Bed Sets (2), Bed Side Tables (2), Dressing Tables (2), Mirrors (1), Bench & Settee (1)
+- **Living Room** (8 products): Home Sofa (2), Center & Side Tables (2), Coffee Tables (2), Console (1), TV Unit (1)
+- **Dining** (6 products): Dining Sets (2), Dining Chairs (2), Dining Tables (2)
+
+Use existing images as placeholders. Add SEO descriptions and features for each.
+
+### Task 3 — Update Product Data Exports & Helpers
+Update `products.ts` bottom section:
+- Export all new arrays (officeDesks, workstations, officeSofas, meetingTables, receptionDesks, bedroomFurniture, livingRoom, diningFurniture)
+- Update `allProducts` to include everything
+- Update `categories` array with all new categories
+- Update `getProductsByCategory()` switch cases
+- Add `homeFurnitureProducts` combined array
+
+### Task 4 — Update Shop Page Sidebar & Filtering
+Update `src/pages/Shop.tsx`:
+- Add new category filters to sidebar with proper counts
+- Group sidebar into "Office Chairs", "Office Furniture", "Home Furniture" sections with subheadings
+- Update `filteredProducts` switch/case for all new category IDs
+- Update price range display dynamically
+
+### Task 5 — Update Navbar Shop Dropdown
+Update `src/components/Navbar.tsx` `shopCategories` array:
+- Group into 3 sections: Office Chairs, Office Furniture, Home Furniture
+- Add all new subcategories with correct `?category=` params
+- Style dropdown with section headers
+
+### Task 6 — Update Homepage Category Grid
+Update `src/pages/Index.tsx` category grid to show the new top-level categories (Office Chairs, Office Desks, Workstations, Meeting Tables, Reception, Storage, Home Bedroom, Home Living, Home Dining).
+
+### Task 7 — Update Shop Page SEO & Content
+Update `src/pages/Shop.tsx`:
+- Expand meta title/description to include "home furniture", "bedroom sets", "dining tables"
+- Update SEO content block with paragraphs about new categories
+- Update FAQs with home furniture questions (delivery, materials, customization for home items)
+
+### Task 8 — Add New Routes (if needed)
+No new routes needed — all filtering happens via `/shop?category=X` query params. Verify `ProductDetail` page handles new product IDs correctly.
+
+### Task 9 — Fix Pending Content Issues
+- Fix Contact page placeholder data (use real Woodex address: LG 89 Zainab Tower, phone: +92 322 4000 768)
+- Fix inconsistent warranty claims across pages (standardize to "Up to 3-Year Warranty")
+- Fix About page "15+ years" → "7+ years"
+
+### Task 10 — End-to-End Testing
+Test all category filters, product detail pages, navbar links, mobile responsiveness, and SEO meta tags.
 
 ---
 
-## Phase 3: Workspace Design Page (SpacePlanning.tsx)
+## Technical Approach
 
-Keep existing page structure and card/hero styles. Update content:
+- **No new dependencies** — all changes are data and content
+- **No design/theme changes** — same card styles, sidebar, grid/list views
+- **Placeholder images** — reuse `desk-executive.jpg`, `workstation.jpg`, `lounge.jpg`, `meeting-room.jpg`, `reception-desk.jpg`, `bookshelf.jpg`, `storage.jpg` for new products until real photos are available
+- **~46 new products** added (24 office furniture + 22 home furniture) bringing total from 56 to ~102
+- **Product interface unchanged** — uses existing `Product` type with optional `subcategory` field already defined
 
-1. **Hero text** -- update to document's workspace design headline and trust bar (500+ Offices Designed, Certified Designers, 48-Hour Turnaround)
-2. **Service intro** -- add productivity stats paragraph
-3. **Update 6 service cards** -- Space Planning, 3D Visualization, Ergonomic Assessment, Interior Design, MEP Coordination, Furniture Specification
-4. **Update process timeline** -- 5 steps from document
-5. **Add design philosophies section** -- ABW, Biophilic, Flexible Spaces, Cultural Sensitivity
-6. **Add industry specializations** -- IT, Banking, Healthcare, Education, Call Centers, Law Firms
-7. **Update pricing tiers** -- Basic PKR 50-75K, Professional PKR 100-150K, Enterprise PKR 200K+
-8. **Add 8 FAQs** from document
-9. **Update SEO meta tags**
-
----
-
-## Phase 4: Factory Direct Page (FactoryDirect.tsx)
-
-Keep existing page structure. Update content:
-
-1. **Update SEO meta** from document
-2. **Update hero text** with document's factory direct headline
-3. **Update stats** to match document data
-4. **Update benefits cards** text from document
-5. **Update comparison table** values
-6. **Update factory facility section** text
-7. **Update CTA text**
-
----
-
-## Technical Details
-
-- **Files modified**: `HeroSlider.tsx`, `Index.tsx`, `SpacePlanning.tsx`, `FactoryDirect.tsx`
-- **Files NOT modified**: `Navbar.tsx`, `Footer.tsx`, `index.css`, any UI components
-- **No new dependencies** required
-- **Existing images** from `src/assets/` reused throughout
-- All content sourced directly from the uploaded document
