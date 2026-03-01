@@ -17,7 +17,16 @@ import {
   executiveChairs, 
   managerChairs, 
   staffChairs, 
-  visitorChairs, 
+  visitorChairs,
+  officeDesks,
+  workstations,
+  officeSofas,
+  meetingTables,
+  receptionDesks,
+  storageFurniture,
+  bedroomFurniture,
+  livingRoomFurniture,
+  diningFurniture,
   formatPrice,
   Product 
 } from "@/data/products";
@@ -39,14 +48,16 @@ const Shop = () => {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
   const shopFaqs = [
-    { question: "Can I see products before buying?", answer: "Yes! Visit our Lahore showroom (Gulberg III) or Islamabad showroom to test any product in person. Walk-ins are welcome Mon-Sat 9AM-7PM, or book an appointment for a personalized consultation with our furniture experts." },
+    { question: "Can I see products before buying?", answer: "Yes! Visit our Lahore showroom at LG 89, Zainab Tower, Model Town Link Road, or contact us for a video walkthrough. Walk-ins welcome Mon-Sat 10:30AM-7:30PM." },
     { question: "Is online pricing the same as showroom pricing?", answer: "Yes, our online prices match showroom prices. In fact, online-exclusive deals and seasonal offers may give you additional savings. All prices are factory-direct with no middleman markups." },
-    { question: "Can I modify or customize products?", answer: "Absolutely! Most of our products can be customized — upholstery color, fabric type, arm style, base finish, and even logo embroidery. Visit our Custom Design page or contact our team for bespoke options." },
-    { question: "What about installation and assembly?", answer: "Professional installation is available nationwide. In Lahore, we offer free doorstep assembly. For other cities, assembly service is available at a nominal fee. Self-assembly instructions (Urdu/English) are also included." },
-    { question: "Do you offer bulk discounts for offices?", answer: "Yes! 10-25 units get 10% off with free delivery in Lahore. 26-50 units get 15% off with free nationwide delivery and professional installation. 51-100 units get 20% off with a dedicated project manager. For 100+ units, we offer custom pricing." },
-    { question: "What warranty do your chairs come with?", answer: "All chairs include: 5-year mechanism warranty (covers all moving parts and gas lift), 3-year structural warranty (frame, base, armrests), and 1-year upholstery warranty. Extended warranty options are available for executive chairs." },
-    { question: "How long does delivery take?", answer: "Lahore (city limits): 2-3 business days, free for orders above Rs. 50,000. Major cities (Karachi, Islamabad, Faisalabad): 4-6 business days. Rest of Pakistan: 6-10 business days with tracking provided. Express delivery available." },
-    { question: "What payment options are available?", answer: "We accept credit/debit cards, bank transfers, and easy installments. All transactions are SSL encrypted and PCI compliant. Corporate accounts with net-30 payment terms are available for verified businesses." },
+    { question: "Can I modify or customize products?", answer: "Absolutely! Most products can be customized — upholstery color, fabric type, dimensions, finish, and even logo embroidery. Visit our Custom Design page or call +92 322 4000 768." },
+    { question: "What about installation and assembly?", answer: "Professional installation is available nationwide. In Lahore, we offer free doorstep assembly. For other cities, assembly service is available at a nominal fee." },
+    { question: "Do you offer bulk discounts for offices?", answer: "Yes! 10-25 units get 10% off with free delivery in Lahore. 26-50 units get 15% off. 51-100 units get 20% off with a dedicated project manager. For 100+ units, custom pricing is available." },
+    { question: "What warranty do your products come with?", answer: "Up to 3-year structural warranty on desks, tables, and workstations. Office chairs include 1-year warranty on wheels, gas lift, and base mechanism. Home furniture carries a 2-year warranty." },
+    { question: "How long does delivery take?", answer: "Lahore: 3-5 business days. Major cities (Karachi, Islamabad, Faisalabad): 5-8 business days. Rest of Pakistan: 8-12 business days with tracking provided." },
+    { question: "Do you sell home furniture too?", answer: "Yes! We now offer a complete home furniture range including bedroom sets, living room sofas, coffee tables, TV units, dining sets, and more — all with the same factory-direct quality and pricing." },
+    { question: "What materials do you use?", answer: "High-quality MDF with melamine finish, imported PVC edge banding, 18-gauge MS powder-coated steel frames, MoltyFoam cushioning, premium upholstery fabrics, solid Sheesham wood, and tempered glass." },
+    { question: "What payment options are available?", answer: "We accept credit/debit cards, bank transfers, and easy installments. Corporate accounts with net-30 payment terms are available for verified businesses." },
   ];
 
   const breadcrumbSchema = generateBreadcrumbSchema([
@@ -66,6 +77,15 @@ const Shop = () => {
         case "manager": products = [...managerChairs]; break;
         case "staff": products = [...staffChairs]; break;
         case "visitor": products = [...visitorChairs]; break;
+        case "desks": products = [...officeDesks]; break;
+        case "workstations": products = [...workstations]; break;
+        case "sofas": products = [...officeSofas]; break;
+        case "meeting": products = [...meetingTables]; break;
+        case "reception": products = [...receptionDesks]; break;
+        case "storage": products = [...storageFurniture]; break;
+        case "bedroom": products = [...bedroomFurniture]; break;
+        case "living": products = [...livingRoomFurniture]; break;
+        case "dining": products = [...diningFurniture]; break;
         default: products = [...allProducts];
       }
     }
@@ -80,12 +100,35 @@ const Shop = () => {
     return products;
   }, [activeCategory, sortBy]);
 
-  const categoryFilters = [
-    { id: null, name: "All Products", count: allProducts.length },
-    { id: "executive", name: "Executive Chairs", count: executiveChairs.length },
-    { id: "manager", name: "Manager Chairs", count: managerChairs.length },
-    { id: "staff", name: "Staff Chairs", count: staffChairs.length },
-    { id: "visitor", name: "Visitor Chairs", count: visitorChairs.length },
+  const sidebarSections = [
+    {
+      heading: "Office Chairs",
+      filters: [
+        { id: "executive", name: "Executive Chairs", count: executiveChairs.length },
+        { id: "manager", name: "Manager Chairs", count: managerChairs.length },
+        { id: "staff", name: "Staff Chairs", count: staffChairs.length },
+        { id: "visitor", name: "Visitor Chairs", count: visitorChairs.length },
+      ],
+    },
+    {
+      heading: "Office Furniture",
+      filters: [
+        { id: "desks", name: "Office Desks", count: officeDesks.length },
+        { id: "workstations", name: "Workstations", count: workstations.length },
+        { id: "sofas", name: "Office Sofas", count: officeSofas.length },
+        { id: "meeting", name: "Meeting Tables", count: meetingTables.length },
+        { id: "reception", name: "Reception Desks", count: receptionDesks.length },
+        { id: "storage", name: "Storage & Filing", count: storageFurniture.length },
+      ],
+    },
+    {
+      heading: "Home Furniture",
+      filters: [
+        { id: "bedroom", name: "Bedroom", count: bedroomFurniture.length },
+        { id: "living", name: "Living Room", count: livingRoomFurniture.length },
+        { id: "dining", name: "Dining", count: diningFurniture.length },
+      ],
+    },
   ];
 
   const handleCategoryChange = (categoryId: string | null) => {
@@ -97,14 +140,22 @@ const Shop = () => {
     }
   };
 
-  const activeCategoryName = categoryFilters.find(c => c.id === activeCategory)?.name || "All Products";
+  const allFilters = sidebarSections.flatMap(s => s.filters);
+  const activeCategoryName = allFilters.find(c => c.id === activeCategory)?.name || "All Products";
+
+  // Dynamic price range
+  const priceRange = useMemo(() => {
+    const prices = filteredProducts.map(p => p.price);
+    if (prices.length === 0) return { min: 0, max: 0 };
+    return { min: Math.min(...prices), max: Math.max(...prices) };
+  }, [filteredProducts]);
 
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title={`${activeCategoryName} - Shop Office Furniture Online | WoodEx Pakistan`}
-        description="Shop 56+ premium office chairs in Pakistan. Executive leather chairs, ergonomic mesh seating, staff chairs, visitor chairs. 5-year warranty, BIFMA certified, factory-direct prices. Free delivery nationwide."
-        keywords="buy office furniture Pakistan, office chairs online, executive chairs Lahore, ergonomic mesh chairs, office furniture factory direct, buy office chair Karachi, office seating Islamabad"
+        title={`${activeCategoryName} - Shop Office & Home Furniture Online | WoodEx Pakistan`}
+        description="Shop 100+ premium office chairs, desks, workstations, meeting tables, reception desks, bedroom sets, dining tables & living room furniture. Factory-direct prices, up to 3-year warranty, free delivery nationwide."
+        keywords="buy office furniture Pakistan, office chairs online, executive desks Lahore, workstations, meeting tables, reception desks, bedroom furniture Pakistan, dining sets, home sofa, TV units, coffee tables"
         canonical="https://woodex.pk/shop"
         structuredData={[breadcrumbSchema, faqSchema]}
       />
@@ -133,7 +184,7 @@ const Shop = () => {
           <div className="flex flex-wrap justify-center gap-8 text-xs text-accent-foreground">
             <div className="flex items-center gap-1.5">
               <Shield className="h-4 w-4" />
-              <span className="font-medium">5-7 Year Warranty</span>
+              <span className="font-medium">Up to 3-Year Warranty</span>
             </div>
             <div className="flex items-center gap-1.5">
               <Truck className="h-4 w-4" />
@@ -160,31 +211,55 @@ const Shop = () => {
                   <SlidersHorizontal className="h-4 w-4" />
                   <h3 className="text-sm font-bold uppercase tracking-wider">Categories</h3>
                 </div>
-                <div className="space-y-1">
-                  {categoryFilters.map((filter) => (
-                    <button
-                      key={filter.id || "all"}
-                      onClick={() => handleCategoryChange(filter.id)}
-                      className={`w-full flex items-center justify-between px-3 py-2.5 text-sm rounded-none transition-colors ${
-                        activeCategory === filter.id
-                          ? "bg-foreground text-background font-semibold"
-                          : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                      }`}
-                    >
-                      <span>{filter.name}</span>
-                      <span className={`text-xs ${activeCategory === filter.id ? 'text-background/70' : 'text-muted-foreground/50'}`}>
-                        ({filter.count})
-                      </span>
-                    </button>
-                  ))}
-                </div>
+
+                {/* All Products */}
+                <button
+                  onClick={() => handleCategoryChange(null)}
+                  className={`w-full flex items-center justify-between px-3 py-2.5 text-sm transition-colors ${
+                    activeCategory === null
+                      ? "bg-foreground text-background font-semibold"
+                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  }`}
+                >
+                  <span>All Products</span>
+                  <span className={`text-xs ${activeCategory === null ? 'text-background/70' : 'text-muted-foreground/50'}`}>
+                    ({allProducts.length})
+                  </span>
+                </button>
+
+                {/* Grouped sections */}
+                {sidebarSections.map((section) => (
+                  <div key={section.heading} className="mt-4">
+                    <p className="px-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60 mb-1">
+                      {section.heading}
+                    </p>
+                    <div className="space-y-0.5">
+                      {section.filters.map((filter) => (
+                        <button
+                          key={filter.id}
+                          onClick={() => handleCategoryChange(filter.id)}
+                          className={`w-full flex items-center justify-between px-3 py-2 text-sm transition-colors ${
+                            activeCategory === filter.id
+                              ? "bg-foreground text-background font-semibold"
+                              : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                          }`}
+                        >
+                          <span>{filter.name}</span>
+                          <span className={`text-xs ${activeCategory === filter.id ? 'text-background/70' : 'text-muted-foreground/50'}`}>
+                            ({filter.count})
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
 
               {/* Price Range Info */}
               <div className="mb-8 p-4 bg-muted/50 border border-border">
                 <h3 className="text-xs font-bold uppercase tracking-wider mb-3">Price Range</h3>
                 <p className="text-sm text-muted-foreground">
-                  Rs. 8,500 – Rs. 82,000
+                  {formatPrice(priceRange.min)} – {formatPrice(priceRange.max)}
                 </p>
                 <p className="text-[10px] text-muted-foreground mt-1">Factory-direct pricing</p>
               </div>
@@ -344,7 +419,7 @@ const Shop = () => {
 
         {/* CTA */}
         <section className="mt-16 mb-8 bg-foreground text-background p-10 md:p-14 text-center">
-          <h2 className="text-2xl font-bold mb-3">Start Building Your Perfect Office</h2>
+          <h2 className="text-2xl font-bold mb-3">Start Building Your Perfect Space</h2>
           <p className="text-sm mb-6 max-w-xl mx-auto opacity-80">
             Can't find what you're looking for? Our team can help you find the perfect furniture or create custom solutions tailored to your space and budget.
           </p>
@@ -368,6 +443,10 @@ const Shop = () => {
             <span>Conference Tables</span>
             <span>•</span>
             <span>Workstations</span>
+            <span>•</span>
+            <span>Bedroom Sets</span>
+            <span>•</span>
+            <span>Dining Tables</span>
           </div>
         </section>
       </div>
@@ -403,19 +482,19 @@ const Shop = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-2xl font-bold mb-4">
-              Buy Office Furniture Online in Pakistan – WoodEx Shop
+              Buy Office & Home Furniture Online in Pakistan – WoodEx Shop
             </h2>
             <p className="text-muted-foreground mb-3 text-sm leading-relaxed">
-              Welcome to <strong>WoodEx</strong>, Pakistan's premier destination for premium office furniture. Browse our collection of <strong>56+ ergonomic office chairs</strong>, executive desks, workstations, and storage solutions — all at factory-direct prices with nationwide free delivery.
+              Welcome to <strong>WoodEx</strong>, Pakistan's premier destination for premium office and home furniture. Browse our collection of <strong>100+ products</strong> — from ergonomic office chairs and executive desks to bedroom sets, dining tables, and living room furniture — all at factory-direct prices with nationwide free delivery.
             </p>
             <p className="text-muted-foreground mb-3 text-sm leading-relaxed">
-              Our <strong>Executive Chairs</strong> feature Italian leather, adjustable lumbar support, and premium finishes starting from Rs. 35,000. <strong>Manager Chairs</strong> offer the perfect balance of comfort and value for mid-level professionals. <strong>Staff Chairs</strong> provide ergonomic support at budget-friendly prices, and our <strong>Visitor Chairs</strong> ensure a great first impression for clients and guests.
+              Our <strong>Office Chairs</strong> range includes Executive leather chairs (from Rs. 35,000), Manager mesh chairs with lumbar support, ergonomic Staff chairs, and professional Visitor seating. <strong>Office Desks</strong> span compact computer desks to premium director suites with veneer finishes. <strong>Workstations</strong> are available in 2, 4, 6-person clusters, cubicles, and open-plan configurations — ideal for IT companies, call centers, and corporate offices.
             </p>
             <p className="text-muted-foreground mb-3 text-sm leading-relaxed">
-              Every WoodEx product comes with a <strong>5-7 year structural warranty</strong>, free professional assembly, and expert consultation. Whether you're furnishing a single home office or a 500-seat corporate headquarters, we offer bulk pricing, customization options, and dedicated project management.
+              New to WoodEx: our <strong>Home Furniture</strong> collection. Explore <strong>Bedroom Sets</strong> with king and queen-size beds, dressing tables, and mirrors. Furnish your living room with premium <strong>sofas, coffee tables, TV units, and console tables</strong>. Complete your dining area with solid Sheesham wood <strong>dining sets</strong>, upholstered chairs, and extendable tables.
             </p>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Shop online or visit our showrooms in <strong>Lahore</strong> and <strong>Islamabad</strong>. We deliver across Pakistan including Karachi, Faisalabad, Rawalpindi, Multan, and Peshawar. Request a free e-quotation or book a consultation with our office design experts today.
+              Every WoodEx product comes with <strong>up to 3-year structural warranty</strong>, free professional assembly, and expert consultation. Whether you're furnishing a single home office or a 500-seat corporate headquarters, we offer bulk pricing, customization options, and dedicated project management. Shop online or visit our showroom in <strong>Lahore</strong>. We deliver across Pakistan including Karachi, Islamabad, Faisalabad, Rawalpindi, Multan, and Peshawar.
             </p>
           </div>
         </div>

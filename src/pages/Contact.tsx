@@ -15,9 +15,9 @@ import heroImage from "@/assets/hero-office.jpg";
 const Contact = () => {
   const faqSchema = generateFAQSchema([
     { question: "What areas do you deliver to?", answer: "We deliver nationwide across Pakistan including all major cities and remote areas." },
-    { question: "How long does delivery take?", answer: "Standard delivery is 7-14 business days. Express options available for urgent orders." },
-    { question: "Do you offer installation services?", answer: "Yes, professional installation is included free with all furniture orders." },
-    { question: "What warranty do you provide?", answer: "All products come with 5-7 year warranty covering manufacturing defects." },
+    { question: "How long does delivery take?", answer: "Lahore: 3-5 business days. Major cities: 5-8 business days. Rest of Pakistan: 8-12 business days." },
+    { question: "Do you offer installation services?", answer: "Yes, professional installation is included free with all furniture orders in Lahore. Nominal fee for other cities." },
+    { question: "What warranty do you provide?", answer: "Up to 3-year structural warranty on furniture. 1-year warranty on chair mechanisms. Terms vary by product." },
   ]);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,66 +28,52 @@ const Contact = () => {
     { 
       icon: Phone, 
       title: "Phone", 
-      content: "+92 42 3578 9012",
-      subtext: "Mon-Sat: 9AM-7PM"
+      content: "+92 322 4000 768",
+      subtext: "Mon-Fri: 10:30AM-7:30PM"
     },
     { 
       icon: MessageCircle, 
       title: "WhatsApp", 
-      content: "+92 300 1234567",
+      content: "+92 322 4000 768",
       subtext: "Quick responses 24/7"
     },
     { 
       icon: Mail, 
       title: "Email", 
-      content: "info@woodex.pk",
-      subtext: "sales@woodex.pk"
+      content: "info@woodexfurniture.pk",
+      subtext: "sales@woodexfurniture.pk"
     },
     { 
       icon: MapPin, 
       title: "Head Office", 
-      content: "Gulberg III, Lahore",
-      subtext: "Punjab, Pakistan"
+      content: "LG 89, Zainab Tower",
+      subtext: "Model Town Link Road, Lahore"
     },
     { 
       icon: Clock, 
       title: "Working Hours", 
-      content: "Mon-Sat: 9AM-7PM",
-      subtext: "Sunday: Closed"
+      content: "Mon-Fri: 10:30AM-7:30PM",
+      subtext: "Saturday: By appointment"
     },
   ];
 
   const locations = [
     { 
       city: "Lahore", 
-      address: "45-A Industrial Area, Gulberg III", 
-      status: "Headquarters",
-      phone: "+92 42 3578 9012",
-      email: "lahore@woodex.pk"
-    },
-    { 
-      city: "Karachi", 
-      address: "Plot 12, SITE Industrial Area", 
-      status: "Sales Office",
-      phone: "+92 21 3456 7890",
-      email: "karachi@woodex.pk"
-    },
-    { 
-      city: "Islamabad", 
-      address: "Blue Area, Jinnah Avenue", 
-      status: "Sales Office",
-      phone: "+92 51 2345 6789",
-      email: "islamabad@woodex.pk"
+      address: "LG 89, Zainab Tower, Model Town Link Road", 
+      status: "Headquarters & Showroom",
+      phone: "+92 322 4000 768",
+      email: "info@woodexfurniture.pk"
     },
   ];
 
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Contact Us - Office Furniture Inquiries"
-        description="Contact WOODEX for office furniture quotes, design consultations, and B2B inquiries. Offices in Lahore, Karachi, Islamabad. WhatsApp: +92 300 1234567"
-        keywords="contact WOODEX, office furniture Lahore, furniture quote Pakistan, B2B furniture inquiry"
-        canonical="https://woodex.pk/contact"
+        title="Contact Us - Office & Home Furniture Inquiries"
+        description="Contact Woodex Furniture for office & home furniture quotes, design consultations, and B2B inquiries. Showroom: LG 89 Zainab Tower, Lahore. WhatsApp: +92 322 4000 768"
+        keywords="contact Woodex, office furniture Lahore, furniture quote Pakistan, B2B furniture inquiry, home furniture Lahore"
+        canonical="https://woodexfurniture.pk/contact"
         structuredData={[generateLocalBusinessSchema(), faqSchema]}
       />
       <Navbar />
@@ -115,17 +101,17 @@ const Contact = () => {
       <section className="py-4 bg-accent">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-8 text-sm text-accent-foreground">
-            <a href="tel:+923001234567" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <a href="tel:+923224000768" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
               <Phone className="h-5 w-5" />
-              <span>+92 300 1234567</span>
+              <span>+92 322 4000 768</span>
             </a>
-            <a href="https://wa.me/923001234567" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <a href="https://wa.me/923224000768" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
               <MessageCircle className="h-5 w-5" />
               <span>WhatsApp Us</span>
             </a>
-            <a href="mailto:info@woodex.pk" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <a href="mailto:info@woodexfurniture.pk" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
               <Mail className="h-5 w-5" />
-              <span>info@woodex.pk</span>
+              <span>info@woodexfurniture.pk</span>
             </a>
           </div>
         </div>
@@ -232,7 +218,7 @@ const Contact = () => {
                     <p className="text-muted-foreground mb-4">
                       For urgent inquiries, reach us on WhatsApp for immediate assistance with quotes, consultations, and questions.
                     </p>
-                    <a href="https://wa.me/923001234567">
+                    <a href="https://wa.me/923224000768">
                       <Button>
                         <MessageCircle className="h-4 w-4 mr-2" />
                         WhatsApp Us Now
@@ -299,9 +285,9 @@ const Contact = () => {
           <div className="max-w-3xl mx-auto grid gap-4">
             {[
               { q: "What areas do you deliver to?", a: "We deliver nationwide across Pakistan including all major cities and remote areas." },
-              { q: "How long does delivery take?", a: "Standard delivery is 7-14 business days. Express options available for urgent orders." },
-              { q: "Do you offer installation services?", a: "Yes, professional installation is included free with all furniture orders." },
-              { q: "What warranty do you provide?", a: "All products come with 5-7 year warranty covering manufacturing defects." },
+              { q: "How long does delivery take?", a: "Lahore: 3-5 business days. Major cities: 5-8 business days. Rest of Pakistan: 8-12 business days." },
+              { q: "Do you offer installation services?", a: "Yes, professional installation is included free with all furniture orders in Lahore." },
+              { q: "What warranty do you provide?", a: "Up to 3-year structural warranty on furniture. 1-year warranty on chair mechanisms." },
             ].map((item, i) => (
               <Card key={i}>
                 <CardContent className="p-6">
