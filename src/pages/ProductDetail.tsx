@@ -117,9 +117,6 @@ const ProductDetail = () => {
       {/* Product Hero Section */}
       <section className="py-12">
         <div className="container mx-auto px-4">
-          <Link to="/shop" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6">
-            <ArrowLeft className="h-4 w-4" /> Back to Shop
-          </Link>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* 4-Image Gallery */}
