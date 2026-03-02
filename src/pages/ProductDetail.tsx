@@ -13,9 +13,26 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
-  Shield, Truck, Phone, ChevronRight, ArrowLeft, Check,
-  Star, ArrowRight, Package, RotateCcw, MessageSquare
+  Shield, Truck, Phone, ChevronRight, ArrowLeft,
+  Star, ArrowRight, MessageSquare
 } from "lucide-react";
+import ProductImageGallery from "@/components/product/ProductImageGallery";
+import ProductTabs from "@/components/product/ProductTabs";
+import ProductPolicies from "@/components/product/ProductPolicies";
+
+/** Build a 4-image array for any product by reusing same-category images */
+const getProductImages = (product: Product): string[] => {
+  const sameCategory = allProducts.filter(
+    (p) => p.category === product.category && p.id !== product.id
+  );
+  const images = [product.image];
+  for (let i = 0; i < 3 && i < sameCategory.length; i++) {
+    images.push(sameCategory[i].image);
+  }
+  // Fill remaining slots with the main image if not enough
+  while (images.length < 4) images.push(product.image);
+  return images;
+};
 
 const ProductDetail = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -35,6 +52,8 @@ const ProductDetail = () => {
     );
   }
 
+  const productImages = getProductImages(product);
+
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "https://woodex.pk" },
     { name: "Shop", url: "https://woodex.pk/shop" },
@@ -51,11 +70,13 @@ const ProductDetail = () => {
   });
 
   const productFaqs = [
-    { question: `What is the warranty on the ${product.name}?`, answer: `The ${product.name} comes with a 5-7 year structural warranty covering the frame, base, and mechanism. Upholstery and fabric are covered for 3 years. Extended warranty options are available.` },
-    { question: `Is the ${product.name} available for customization?`, answer: "Yes! You can customize the upholstery color, fabric type, arm style, and base finish. Visit our Custom Design page or contact our team for bespoke options." },
-    { question: "What is the delivery timeline?", answer: "Standard delivery within Lahore takes 3-5 business days. Nationwide delivery typically takes 5-10 business days. Express delivery options are available for urgent orders." },
-    { question: "Can I see this product in a showroom?", answer: "Yes, you can visit our showrooms in Lahore (Gulberg III) and Islamabad to see and test this product. Book an appointment for a personalized walkthrough." },
-    { question: "Do you offer bulk pricing for offices?", answer: "Absolutely! We offer tiered discounts for bulk orders: 10% off for 10+ units, 15% off for 25+ units, and custom project pricing for 50+ units. Contact our B2B team for details." },
+    { question: `What is the warranty on the ${product.name}?`, answer: `The ${product.name} comes with a 2-year manufacturer's warranty covering the frame, base, and mechanism. Upholstery and fabric are covered for 1 year. Extended warranty options are available for corporate clients.` },
+    { question: `Is the ${product.name} available for customization?`, answer: "Yes! You can customize the upholstery color, fabric type, arm style, and base finish. Visit our Custom Design page or contact our team for bespoke options tailored to your brand identity." },
+    { question: "What is the delivery timeline?", answer: "Standard delivery within Lahore takes 3-5 business days. Islamabad/Rawalpindi 5-7 days. Nationwide delivery typically takes 7-10 business days. Express delivery options are available for urgent orders." },
+    { question: "What payment methods do you accept?", answer: "We accept bank transfers (HBL, Meezan, UBL, Allied Bank), JazzCash, EasyPaisa, cash on delivery (Lahore only), and cheque payments for corporate orders. 50-75% advance is required to confirm." },
+    { question: "Can I see this product in a showroom?", answer: "Yes, visit our showroom at LG 89 Zainab Tower, Lahore to see and test this product. Book an appointment at +92 322 4000 768 for a personalized walkthrough." },
+    { question: "Do you offer bulk pricing for offices?", answer: "Absolutely! We offer tiered discounts: 10% off for 10+ units, 15% off for 25+ units, and custom project pricing for 50+ units. Contact our B2B team for details." },
+    { question: "What is the return policy?", answer: "We offer a 7-day return policy for manufacturing defects. Products must be in original packaging and unused condition. Custom-made orders are non-refundable. Refunds processed within 7-10 business days." },
   ];
 
   const faqSchema = generateFAQSchema(productFaqs);
@@ -68,8 +89,8 @@ const ProductDetail = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title={`${product.name} - ${product.category} | WoodEx Pakistan`}
-        description={product.description || `Buy ${product.name} - Premium ${product.category} at factory-direct price ${formatPrice(product.price)}. 5-7 year warranty, free delivery across Pakistan.`}
-        keywords={`${product.name}, ${product.category}, office chair Pakistan, buy office furniture online, ergonomic chair Lahore`}
+        description={product.description || `Buy ${product.name} - Premium ${product.category} at factory-direct price ${formatPrice(product.price)}. 2-year warranty, free delivery across Pakistan.`}
+        keywords={`${product.name}, ${product.category}, office furniture Pakistan, buy office furniture online, ${product.category.toLowerCase()} Lahore`}
         canonical={`https://woodex.pk/product/${product.id}`}
         ogType="product"
         structuredData={[breadcrumbSchema, productSchema, faqSchema]}
@@ -93,7 +114,7 @@ const ProductDetail = () => {
         </div>
       </div>
 
-      {/* Product Details */}
+      {/* Product Hero Section */}
       <section className="py-12">
         <div className="container mx-auto px-4">
           <Link to="/shop" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6">
@@ -101,27 +122,13 @@ const ProductDetail = () => {
           </Link>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Product Image */}
-            <div className="relative">
-              {product.badge && (
-                <Badge className="absolute top-4 left-4 z-10 bg-accent text-accent-foreground">
-                  {product.badge}
-                </Badge>
-              )}
-              <div className="aspect-square bg-muted rounded-2xl overflow-hidden">
-                <img
-                  src={product.image}
-                  alt={`${product.name} - ${product.category} by WoodEx Pakistan`}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              {/* Mini trust badges below image */}
-              <div className="flex items-center justify-center gap-6 mt-4 text-xs text-muted-foreground">
-                <span className="flex items-center gap-1"><RotateCcw className="h-3 w-3" /> Easy Returns</span>
-                <span className="flex items-center gap-1"><Package className="h-3 w-3" /> Secure Packaging</span>
-                <span className="flex items-center gap-1"><Shield className="h-3 w-3" /> Quality Assured</span>
-              </div>
-            </div>
+            {/* 4-Image Gallery */}
+            <ProductImageGallery
+              images={productImages}
+              productName={product.name}
+              category={product.category}
+              badge={product.badge}
+            />
 
             {/* Product Info */}
             <div>
@@ -148,26 +155,8 @@ const ProductDetail = () => {
               <p className="text-xs text-muted-foreground mb-6">Inclusive of all taxes • Factory-direct pricing</p>
 
               <p className="text-muted-foreground mb-8 leading-relaxed">
-                {product.description || `Premium ${product.category.toLowerCase()} designed for maximum comfort and durability. Built with high-quality materials and backed by our 5-7 year warranty. Ideal for modern offices in Pakistan.`}
+                {product.description || `Premium ${product.category.toLowerCase()} designed for maximum comfort and durability. Built with high-quality materials and backed by our 2-year warranty. Ideal for modern offices in Pakistan.`}
               </p>
-
-              {/* Features */}
-              {product.features && (
-                <div className="mb-8">
-                  <h3 className="font-bold mb-4">Specifications</h3>
-                  <div className="grid grid-cols-1 gap-3">
-                    {Object.entries(product.features).map(([key, value]) => (
-                      <div key={key} className="flex items-start gap-3">
-                        <Check className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
-                        <div>
-                          <span className="font-medium">{key}:</span>{" "}
-                          <span className="text-muted-foreground">{value}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
 
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
@@ -183,15 +172,18 @@ const ProductDetail = () => {
                 </Link>
               </div>
 
+              {/* Policy Accordions */}
+              <ProductPolicies />
+
               {/* Trust Badges */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 bg-muted/30 rounded-xl border border-border">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 bg-muted/30 rounded-xl border border-border mt-6">
                 <div className="flex items-center gap-3">
                   <div className="h-10 w-10 rounded-full bg-accent/10 flex items-center justify-center">
                     <Shield className="h-5 w-5 text-accent" />
                   </div>
                   <div>
-                    <span className="text-sm font-medium block">5-7 Year Warranty</span>
-                    <span className="text-xs text-muted-foreground">Structural guarantee</span>
+                    <span className="text-sm font-medium block">2-Year Warranty</span>
+                    <span className="text-xs text-muted-foreground">Manufacturer guarantee</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -218,8 +210,17 @@ const ProductDetail = () => {
         </div>
       </section>
 
+      {/* Description / Specifications / Reviews Tabs */}
+      <section className="py-16 bg-secondary/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <ProductTabs product={product} />
+          </div>
+        </div>
+      </section>
+
       {/* Product FAQ Accordion */}
-      <section className="bg-secondary/30 py-16">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-10">
@@ -240,26 +241,6 @@ const ProductDetail = () => {
                 </AccordionItem>
               ))}
             </Accordion>
-          </div>
-        </div>
-      </section>
-
-      {/* SEO Content Block */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-xl font-bold mb-4">
-              Buy {product.name} Online in Pakistan – WoodEx
-            </h2>
-            <p className="text-muted-foreground mb-3 text-sm leading-relaxed">
-              The <strong>{product.name}</strong> is a premium {product.category.toLowerCase()} from WoodEx, Pakistan's leading office furniture manufacturer. Designed for modern offices, this chair combines ergonomic support with professional aesthetics, making it perfect for long working hours.
-            </p>
-            <p className="text-muted-foreground mb-3 text-sm leading-relaxed">
-              Priced at <strong>{formatPrice(product.price)}</strong> with factory-direct savings, this {product.category.toLowerCase()} comes with a 5-7 year structural warranty and free nationwide delivery across Pakistan including Lahore, Islamabad, Karachi, Faisalabad, and Rawalpindi.
-            </p>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Whether you're furnishing a single office or an entire corporate headquarters, WoodEx offers bulk pricing, customization options, and expert consultation. Visit our showrooms or request an e-quotation to get started. All WoodEx products are manufactured at our state-of-the-art facility, ensuring consistent quality and fast delivery times.
-            </p>
           </div>
         </div>
       </section>
