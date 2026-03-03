@@ -15,9 +15,10 @@ import { useState } from "react";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const [shopOpen, setShopOpen] = useState(false);
+  const [officeFurnitureOpen, setOfficeFurnitureOpen] = useState(false);
+  const [homeFurnitureOpen, setHomeFurnitureOpen] = useState(false);
 
-  const shopSections = [
+  const officeFurnitureSections = [
     {
       heading: "Office Chairs",
       items: [
@@ -28,27 +29,55 @@ const Navbar = () => {
       ],
     },
     {
-      heading: "Office Furniture",
+      heading: "Office Tables",
       items: [
-        { name: "Office Desks", path: "/shop?category=desks" },
-        { name: "Workstations", path: "/shop?category=workstations" },
-        { name: "Meeting Tables", path: "/shop?category=meeting" },
-        { name: "Reception Desks", path: "/shop?category=reception" },
-        { name: "Office Sofas", path: "/shop?category=sofas" },
-        { name: "Storage & Filing", path: "/shop?category=storage" },
+        { name: "CEO Tables", path: "/shop?category=ceo-tables" },
+        { name: "Executive Tables", path: "/shop?category=executive-tables" },
+        { name: "Manager Tables", path: "/shop?category=manager-tables" },
       ],
     },
     {
-      heading: "Home Furniture",
+      heading: "More Office Furniture",
       items: [
-        { name: "Bedroom", path: "/shop?category=bedroom" },
-        { name: "Living Room", path: "/shop?category=living" },
-        { name: "Dining", path: "/shop?category=dining" },
+        { name: "Workstations", path: "/shop?category=workstations" },
+        { name: "Meeting & Conference Tables", path: "/shop?category=meeting" },
+        { name: "Office Sofas", path: "/shop?category=sofas" },
+        { name: "Reception Desks", path: "/shop?category=reception" },
+        { name: "Storage & Filing", path: "/shop?category=storage" },
       ],
     },
   ];
 
-  const shopCategories = shopSections.flatMap(s => s.items);
+  const homeFurnitureSections = [
+    {
+      heading: "Bedroom",
+      items: [
+        { name: "Bed Sets", path: "/shop?category=bedroom" },
+        { name: "Bedside Tables", path: "/shop?category=bedroom" },
+        { name: "Dressing Tables", path: "/shop?category=bedroom" },
+        { name: "Mirrors", path: "/shop?category=bedroom" },
+        { name: "Bench & Settee", path: "/shop?category=bedroom" },
+      ],
+    },
+    {
+      heading: "Living",
+      items: [
+        { name: "Home Sofa", path: "/shop?category=living" },
+        { name: "Center & Side Tables", path: "/shop?category=living" },
+        { name: "Coffee Tables", path: "/shop?category=living" },
+        { name: "Console Tables", path: "/shop?category=living" },
+        { name: "TV Units", path: "/shop?category=living" },
+      ],
+    },
+    {
+      heading: "Dining",
+      items: [
+        { name: "Dining Sets", path: "/shop?category=dining" },
+        { name: "Dining Chairs", path: "/shop?category=dining" },
+        { name: "Dining Tables", path: "/shop?category=dining" },
+      ],
+    },
+  ];
 
   const servicesItems = [
     { name: "All Services", path: "/services" },
@@ -57,13 +86,6 @@ const Navbar = () => {
     { name: "Project Based Quoting", path: "/services/project-quoting" },
     { name: "Custom Design", path: "/services/custom-design" },
     { name: "Space Planning", path: "/services/space-planning" },
-  ];
-
-  const mainNavItems = [
-    { name: "Series", path: "/series" },
-    { name: "Projects", path: "/projects" },
-    { name: "About", path: "/about" },
-    { name: "Contact", path: "/contact" },
   ];
 
   return (
@@ -123,50 +145,86 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-11">
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center h-full">
-              {/* Shop Dropdown */}
+              {/* Home */}
+              <Link to="/" className="text-sm font-medium px-5 h-11 flex items-center border-r border-border hover:bg-muted transition-colors">
+                Home
+              </Link>
+
+              {/* Office Furniture Dropdown */}
               <NavigationMenu>
                 <NavigationMenuList>
                   <NavigationMenuItem>
                     <NavigationMenuTrigger className="text-sm font-medium px-5 h-11 rounded-none bg-transparent hover:bg-muted transition-colors data-[state=open]:bg-muted border-r border-border">
-                      Chairs
+                      Office Furniture
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      <div className="w-[320px] p-3 bg-background border border-border shadow-lg">
+                      <div className="w-[520px] p-4 bg-background border border-border shadow-lg">
                         <Link to="/shop">
-                          <div className="block select-none px-3 py-2.5 text-sm font-semibold leading-none no-underline outline-none transition-colors hover:bg-muted mb-1">
-                            All Products
+                          <div className="block select-none px-3 py-2.5 text-sm font-semibold leading-none no-underline outline-none transition-colors hover:bg-muted mb-2">
+                            All Office Furniture
                           </div>
                         </Link>
-                        {shopSections.map((section) => (
-                          <div key={section.heading} className="mt-2">
-                            <p className="px-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60 mb-1">
-                              {section.heading}
-                            </p>
-                            {section.items.map((item) => (
-                              <Link key={item.path} to={item.path}>
-                                <div className="block select-none px-3 py-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-muted">
-                                  {item.name}
-                                </div>
-                              </Link>
-                            ))}
-                          </div>
-                        ))}
+                        <div className="grid grid-cols-3 gap-4">
+                          {officeFurnitureSections.map((section) => (
+                            <div key={section.heading}>
+                              <p className="px-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60 mb-1">
+                                {section.heading}
+                              </p>
+                              {section.items.map((item) => (
+                                <Link key={item.path + item.name} to={item.path}>
+                                  <div className="block select-none px-3 py-1.5 text-sm leading-none no-underline outline-none transition-colors hover:bg-muted">
+                                    {item.name}
+                                  </div>
+                                </Link>
+                              ))}
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     </NavigationMenuContent>
                   </NavigationMenuItem>
                 </NavigationMenuList>
               </NavigationMenu>
 
-              <Link to="/shop?category=desks" className="text-sm font-medium px-5 h-11 flex items-center border-r border-border hover:bg-muted transition-colors">
-                Desks
-              </Link>
+              {/* Home Furniture Dropdown */}
+              <NavigationMenu>
+                <NavigationMenuList>
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger className="text-sm font-medium px-5 h-11 rounded-none bg-transparent hover:bg-muted transition-colors data-[state=open]:bg-muted border-r border-border">
+                      Home Furniture
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <div className="w-[420px] p-4 bg-background border border-border shadow-lg">
+                        <Link to="/shop?category=bedroom">
+                          <div className="block select-none px-3 py-2.5 text-sm font-semibold leading-none no-underline outline-none transition-colors hover:bg-muted mb-2">
+                            All Home Furniture
+                          </div>
+                        </Link>
+                        <div className="grid grid-cols-3 gap-4">
+                          {homeFurnitureSections.map((section) => (
+                            <div key={section.heading}>
+                              <p className="px-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60 mb-1">
+                                {section.heading}
+                              </p>
+                              {section.items.map((item) => (
+                                <Link key={item.path + item.name} to={item.path}>
+                                  <div className="block select-none px-3 py-1.5 text-sm leading-none no-underline outline-none transition-colors hover:bg-muted">
+                                    {item.name}
+                                  </div>
+                                </Link>
+                              ))}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
 
-              <Link to="/shop?category=storage" className="text-sm font-medium px-5 h-11 flex items-center border-r border-border hover:bg-muted transition-colors">
-                Storage
-              </Link>
-
-              <Link to="/shop?category=sofas" className="text-sm font-medium px-5 h-11 flex items-center border-r border-border hover:bg-muted transition-colors">
-                Lounge
+              {/* Series */}
+              <Link to="/series" className="text-sm font-medium px-5 h-11 flex items-center border-r border-border hover:bg-muted transition-colors">
+                Series
               </Link>
 
               {/* Services Dropdown */}
@@ -193,22 +251,29 @@ const Navbar = () => {
                 </NavigationMenuList>
               </NavigationMenu>
 
-              {mainNavItems.map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className="text-sm font-medium px-5 h-11 flex items-center border-r border-border hover:bg-muted transition-colors"
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {/* Projects */}
+              <Link to="/projects" className="text-sm font-medium px-5 h-11 flex items-center border-r border-border hover:bg-muted transition-colors">
+                Projects
+              </Link>
+
+              {/* About Us */}
+              <Link to="/about" className="text-sm font-medium px-5 h-11 flex items-center border-r border-border hover:bg-muted transition-colors">
+                About Us
+              </Link>
+
+              {/* Contact Us */}
+              <Link to="/contact" className="text-sm font-medium px-5 h-11 flex items-center border-r border-border hover:bg-muted transition-colors">
+                Contact Us
+              </Link>
+
+              {/* Blog */}
+              <Link to="/blog" className="text-sm font-medium px-5 h-11 flex items-center border-r border-border hover:bg-muted transition-colors">
+                Blog
+              </Link>
             </div>
 
-            {/* Right Side - Inspirations + E-Quotation */}
+            {/* Right Side - E-Quotation */}
             <div className="hidden lg:flex items-center gap-0 ml-auto h-full">
-              <Link to="/blog" className="text-sm font-medium px-5 h-11 flex items-center border-l border-border hover:bg-muted transition-colors">
-                Inspirations
-              </Link>
               <Link to="/e-quotation" className="text-sm font-medium px-5 h-11 flex items-center gap-2 border-l border-border hover:bg-muted transition-colors">
                 <FileText className="h-4 w-4" />
                 E-Quotation
@@ -230,21 +295,22 @@ const Navbar = () => {
                       Home
                     </Link>
 
-                    <Collapsible open={shopOpen} onOpenChange={setShopOpen}>
+                    {/* Office Furniture Mobile */}
+                    <Collapsible open={officeFurnitureOpen} onOpenChange={setOfficeFurnitureOpen}>
                       <CollapsibleTrigger className="flex items-center justify-between w-full text-lg font-medium hover:text-accent transition-colors">
-                        Shop
-                        <ChevronDown className={`h-4 w-4 transition-transform ${shopOpen ? 'rotate-180' : ''}`} />
+                        Office Furniture
+                        <ChevronDown className={`h-4 w-4 transition-transform ${officeFurnitureOpen ? 'rotate-180' : ''}`} />
                       </CollapsibleTrigger>
                       <CollapsibleContent>
                         <div className="flex flex-col gap-2 mt-2 ml-4">
-                          <Link to="/shop" onClick={() => { setIsOpen(false); setShopOpen(false); }} className="text-base font-semibold hover:text-accent transition-colors">
-                            All Products
+                          <Link to="/shop" onClick={() => { setIsOpen(false); setOfficeFurnitureOpen(false); }} className="text-base font-semibold hover:text-accent transition-colors">
+                            All Office Furniture
                           </Link>
-                          {shopSections.map((section) => (
+                          {officeFurnitureSections.map((section) => (
                             <div key={section.heading} className="mt-1">
                               <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60 mb-1">{section.heading}</p>
                               {section.items.map((item) => (
-                                <Link key={item.path} to={item.path} onClick={() => { setIsOpen(false); setShopOpen(false); }} className="block text-sm py-1 hover:text-accent transition-colors">
+                                <Link key={item.path + item.name} to={item.path} onClick={() => { setIsOpen(false); setOfficeFurnitureOpen(false); }} className="block text-sm py-1 hover:text-accent transition-colors">
                                   {item.name}
                                 </Link>
                               ))}
@@ -253,6 +319,32 @@ const Navbar = () => {
                         </div>
                       </CollapsibleContent>
                     </Collapsible>
+
+                    {/* Home Furniture Mobile */}
+                    <Collapsible open={homeFurnitureOpen} onOpenChange={setHomeFurnitureOpen}>
+                      <CollapsibleTrigger className="flex items-center justify-between w-full text-lg font-medium hover:text-accent transition-colors">
+                        Home Furniture
+                        <ChevronDown className={`h-4 w-4 transition-transform ${homeFurnitureOpen ? 'rotate-180' : ''}`} />
+                      </CollapsibleTrigger>
+                      <CollapsibleContent>
+                        <div className="flex flex-col gap-2 mt-2 ml-4">
+                          {homeFurnitureSections.map((section) => (
+                            <div key={section.heading} className="mt-1">
+                              <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60 mb-1">{section.heading}</p>
+                              {section.items.map((item) => (
+                                <Link key={item.path + item.name} to={item.path} onClick={() => { setIsOpen(false); setHomeFurnitureOpen(false); }} className="block text-sm py-1 hover:text-accent transition-colors">
+                                  {item.name}
+                                </Link>
+                              ))}
+                            </div>
+                          ))}
+                        </div>
+                      </CollapsibleContent>
+                    </Collapsible>
+
+                    <Link to="/series" onClick={() => setIsOpen(false)} className="text-lg font-medium hover:text-accent transition-colors">
+                      Series
+                    </Link>
 
                     <Collapsible open={servicesOpen} onOpenChange={setServicesOpen}>
                       <CollapsibleTrigger className="flex items-center justify-between w-full text-lg font-medium hover:text-accent transition-colors">
@@ -270,17 +362,17 @@ const Navbar = () => {
                       </CollapsibleContent>
                     </Collapsible>
 
-                    {mainNavItems.map((item) => (
-                      <Link key={item.path} to={item.path} onClick={() => setIsOpen(false)} className="text-lg font-medium hover:text-accent transition-colors">
-                        {item.name}
-                      </Link>
-                    ))}
-
-                    <Link to="/blog" onClick={() => setIsOpen(false)} className="text-lg font-medium hover:text-accent">
-                      Inspirations
+                    <Link to="/projects" onClick={() => setIsOpen(false)} className="text-lg font-medium hover:text-accent transition-colors">
+                      Projects
                     </Link>
-                    <Link to="/b2b" onClick={() => setIsOpen(false)} className="text-lg font-medium hover:text-accent">
-                      B2B
+                    <Link to="/about" onClick={() => setIsOpen(false)} className="text-lg font-medium hover:text-accent transition-colors">
+                      About Us
+                    </Link>
+                    <Link to="/contact" onClick={() => setIsOpen(false)} className="text-lg font-medium hover:text-accent transition-colors">
+                      Contact Us
+                    </Link>
+                    <Link to="/blog" onClick={() => setIsOpen(false)} className="text-lg font-medium hover:text-accent transition-colors">
+                      Blog
                     </Link>
                     <Link to="/e-quotation" onClick={() => setIsOpen(false)}>
                       <Button className="w-full mt-4">E-Quotation</Button>
