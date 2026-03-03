@@ -1,84 +1,103 @@
 
 
-# Master Plan: Expand Shop with New Categories, Products & Home Furniture
+# Master Plan: Complete Website Overhaul — Nav, Hero, Products & Categories
 
-## Current State Analysis
+## Overview
 
-- **56 products** — all chairs (Executive 12, Manager 17, Staff 12, Visitor 15)
-- **Navbar lists 5 dead categories** (Office Desks, Workstations, Office Sofas, Meeting Tables, Reception Desks) — clicking them shows 0 products
-- **No Home Furniture** exists anywhere in the codebase
-- **No product images** exist for non-chair items — will use placeholder images from existing assets
+Restructure the main navigation to match the requested 9-tab layout, redesign the hero slider with new slides for Office Furniture/Home Furniture categories, and add ~40 new products matching the reference images (CEO Tables, Executive Tables, Manager Tables, Meeting Tables, Workstations).
 
 ---
 
-## Task Breakdown (10 Tasks)
+## Task 1 — Restructure Navbar Tabs
 
-### Task 1 — Add Office Furniture Product Data
-Add placeholder products to `src/data/products.ts` for the 5 existing-but-empty Navbar categories:
-- **Office Desks** (6 products): Executive Desk, L-Shape Desk, Standing Desk, Computer Desk, Manager Desk, Director Desk
-- **Workstations** (6 products): 2-Seater, 4-Seater, 6-Seater, Linear, Cubicle, Open Plan
-- **Office Sofas** (4 products): 3-Seater, 2-Seater, Reception Sofa, Lounge Chair
-- **Meeting Tables** (4 products): Conference 8-Seater, Conference 12-Seater, Round Meeting, Boardroom Table
-- **Reception Desks** (4 products): Modern Reception, L-Shape Reception, Curved Reception, Standing Reception
+Replace the current nav structure (Chairs | Desks | Storage | Lounge | Services | Series | Projects | About | Contact) with the exact 9-tab layout requested:
 
-Each product gets: id, name, category, price, placeholder image (reuse existing assets like `desk-executive.jpg`, `workstation.jpg`, `lounge.jpg`, `meeting-room.jpg`, `reception-desk.jpg`), description, features.
+```text
+| Home | Office Furniture ▼ | Home Furniture ▼ | Series | Services ▼ | Projects | About Us | Contact Us | Blog |
+```
 
-### Task 2 — Add Home Furniture Product Data
-Add new product arrays to `src/data/products.ts`:
-- **Bedroom Furniture** (8 products): Bed Sets (2), Bed Side Tables (2), Dressing Tables (2), Mirrors (1), Bench & Settee (1)
-- **Living Room** (8 products): Home Sofa (2), Center & Side Tables (2), Coffee Tables (2), Console (1), TV Unit (1)
-- **Dining** (6 products): Dining Sets (2), Dining Chairs (2), Dining Tables (2)
+**Office Furniture dropdown** (mega-menu with sections):
+- Office Chairs: Executive, Manager, Staff, Visitor
+- Office Tables: CEO Tables, Executive Tables, Manager Tables
+- Workstations
+- Meeting & Conference Tables
+- Office Sofas
+- Reception Desks
+- Storage & Filing
 
-Use existing images as placeholders. Add SEO descriptions and features for each.
+**Home Furniture dropdown**:
+- Bedroom: Bed Sets, Bedside Tables, Dressing Tables, Mirrors, Bench & Settee
+- Living: Home Sofa, Center & Side Tables, Coffee Tables, Console, TV Units
+- Dining: Dining Sets, Dining Chairs, Dining Tables
 
-### Task 3 — Update Product Data Exports & Helpers
-Update `products.ts` bottom section:
-- Export all new arrays (officeDesks, workstations, officeSofas, meetingTables, receptionDesks, bedroomFurniture, livingRoom, diningFurniture)
-- Update `allProducts` to include everything
-- Update `categories` array with all new categories
-- Update `getProductsByCategory()` switch cases
-- Add `homeFurnitureProducts` combined array
-
-### Task 4 — Update Shop Page Sidebar & Filtering
-Update `src/pages/Shop.tsx`:
-- Add new category filters to sidebar with proper counts
-- Group sidebar into "Office Chairs", "Office Furniture", "Home Furniture" sections with subheadings
-- Update `filteredProducts` switch/case for all new category IDs
-- Update price range display dynamically
-
-### Task 5 — Update Navbar Shop Dropdown
-Update `src/components/Navbar.tsx` `shopCategories` array:
-- Group into 3 sections: Office Chairs, Office Furniture, Home Furniture
-- Add all new subcategories with correct `?category=` params
-- Style dropdown with section headers
-
-### Task 6 — Update Homepage Category Grid
-Update `src/pages/Index.tsx` category grid to show the new top-level categories (Office Chairs, Office Desks, Workstations, Meeting Tables, Reception, Storage, Home Bedroom, Home Living, Home Dining).
-
-### Task 7 — Update Shop Page SEO & Content
-Update `src/pages/Shop.tsx`:
-- Expand meta title/description to include "home furniture", "bedroom sets", "dining tables"
-- Update SEO content block with paragraphs about new categories
-- Update FAQs with home furniture questions (delivery, materials, customization for home items)
-
-### Task 8 — Add New Routes (if needed)
-No new routes needed — all filtering happens via `/shop?category=X` query params. Verify `ProductDetail` page handles new product IDs correctly.
-
-### Task 9 — Fix Pending Content Issues
-- Fix Contact page placeholder data (use real Woodex address: LG 89 Zainab Tower, phone: +92 322 4000 768)
-- Fix inconsistent warranty claims across pages (standardize to "Up to 3-Year Warranty")
-- Fix About page "15+ years" → "7+ years"
-
-### Task 10 — End-to-End Testing
-Test all category filters, product detail pages, navbar links, mobile responsiveness, and SEO meta tags.
+Move E-Quotation and Inspirations to the right side (keep existing). Update mobile menu to match.
 
 ---
 
-## Technical Approach
+## Task 2 — Add New Office Table Products
 
-- **No new dependencies** — all changes are data and content
-- **No design/theme changes** — same card styles, sidebar, grid/list views
-- **Placeholder images** — reuse `desk-executive.jpg`, `workstation.jpg`, `lounge.jpg`, `meeting-room.jpg`, `reception-desk.jpg`, `bookshelf.jpg`, `storage.jpg` for new products until real photos are available
-- **~46 new products** added (24 office furniture + 22 home furniture) bringing total from 56 to ~102
-- **Product interface unchanged** — uses existing `Product` type with optional `subcategory` field already defined
+Based on the reference images, add these new product subcategories and items to `products.ts`:
+
+**CEO Tables** (5 products — from reference image 35):
+Ambassador Executive Table, Elegance Executive Office Table, Elite Executive Desk, Imperial Executive Desk, Royal Prestige Executive Table
+Price range: Rs.150,000
+
+**Executive Tables** (10 products — from reference image 36):
+Command, Elite, Impact, Infinity, Legacy, Nexus Table 6, Nova, Signature, Space, Vision Executive Desks
+Price range: Rs.65,000
+
+**Manager Tables** (14 products — from reference image 37):
+Apex, Edge, Elite, Flux, Infinity, Metro, Nova, Orion, Prime, Pulse, Shift Ergonomic, Vertex, Vibe, Woodex Smart Series L-Shape
+Price range: Rs.65,000
+
+Update the existing `officeDesks` array to be split into these 3 subcategories, or add new arrays: `ceoTables`, `executiveTables`, `managerTables`.
+
+---
+
+## Task 3 — Expand Meeting Tables & Workstations
+
+**Meeting Tables** — expand from 4 to ~30 products (reference image 38 shows many):
+Add: Citrus, Jupiter, Cameron, Diamond, Circular, Circle Round, Edge, Innovate, Firestone, Forest, Grand, Imperial Executive, Infinity Executive, Liberty Workstation, Impressive Workstation, Juventus, Luxury, Nexus, Nexus Meeting, Noxx Conference, Noxx Prime Conference, Nexus Meeting 2, Noxx Meeting, Saturn, Sapphire Executive
+Price range: Rs.0 (call for price) to Rs.70,000
+
+**Workstations** — expand from 6 to 11 (reference image 39):
+Add: Evolution, Flow, Horizon, Momentum, Nexus, Nova, Onyx, Quantum, Synergy, Vertex, Vibe
+Price range: Rs.70,000
+
+---
+
+## Task 4 — Redesign Hero Slider
+
+Replace the current 3 slides with 4 new slides matching the reference designs:
+
+1. **Office Chairs** (keep existing office hero image) — "Custom Office Furniture — Designed for Your Space"
+2. **Workstations** (use workstation.jpg) — "Make Your Space Work" / "Premium ergonomic workstations for the modern professional" / CTA: "Explore Workstations"
+3. **Meeting Tables** (use meeting-room.jpg) — "Tables Designed for Equitable Meetings" / "Conference solutions that enable inclusive participation" / CTA: "View Tables"
+4. **Home Furniture** (use hero-sofa.jpg) — "Home Furniture Collection" / "Extend the WOODEX quality to your bedroom, living room, and dining spaces" / CTA: "Shop Home"
+
+---
+
+## Task 5 — Update Shop Sidebar & Category Filters
+
+Add new category filter entries for:
+- CEO Tables, Executive Tables, Manager Tables (replacing single "Office Desks")
+- Expanded product counts for Meeting Tables and Workstations
+
+Update `getProductsByCategory()` and `filteredProducts` switch cases.
+
+---
+
+## Task 6 — Update Homepage Category Grid
+
+Update the category grid to reflect the new subcategories (CEO Tables, Executive Tables, Manager Tables instead of generic "Office Desks").
+
+---
+
+## Technical Notes
+
+- No new dependencies needed
+- No design/theme changes — same Woodex styling throughout
+- All new products reuse existing placeholder images until real photos are uploaded
+- Product interface unchanged — uses existing `Product` type
+- ~60+ new products added, bringing total from ~106 to ~166
 
