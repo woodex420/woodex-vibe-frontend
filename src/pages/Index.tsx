@@ -87,11 +87,11 @@ const faqs = [
 
 const categories = [
   { name: "Office Chairs", desc: "Ergonomic chairs with MoltyFoam cushioning, lumbar support, and alloy steel frames.", image: chairExecutiveImg, link: "/shop?category=executive" },
-  { name: "Office Desks", desc: "Executive, manager, and standing desks in MDF melamine and veneer finishes.", image: deskExecutiveImg, link: "/shop?category=desks" },
+  { name: "CEO Tables", desc: "Flagship executive tables with veneer finish, credenzas, and AV modules for C-suite.", image: deskExecutiveImg, link: "/shop?category=ceo-tables" },
+  { name: "Executive Tables", desc: "Professional desks for directors with cable management and lockable pedestals.", image: deskExecutiveImg, link: "/shop?category=executive-tables" },
+  { name: "Manager Tables", desc: "Mid-level management desks with L-shape options and smart features.", image: deskExecutiveImg, link: "/shop?category=manager-tables" },
   { name: "Workstations", desc: "Modular 2, 4, 6-person clusters with privacy panels and wire management.", image: workstationImg, link: "/shop?category=workstations" },
-  { name: "Meeting Tables", desc: "Conference tables from 8-seat to boardroom size with integrated power and data.", image: meetingRoomImg, link: "/shop?category=meeting" },
-  { name: "Reception Desks", desc: "Custom reception counters designed to reflect your brand identity.", image: receptionDeskImg, link: "/shop?category=reception" },
-  { name: "Storage & Filing", desc: "Filing cabinets, bookshelves, lockers, and credenza units.", image: bookshelfImg, link: "/shop?category=storage" },
+  { name: "Meeting Tables", desc: "Conference tables from 4-seat to boardroom size with integrated power and AV.", image: meetingRoomImg, link: "/shop?category=meeting" },
   { name: "Bedroom Furniture", desc: "Bed sets, dressing tables, mirrors, and bedroom benches for luxurious homes.", image: officeIsometricImg, link: "/shop?category=bedroom" },
   { name: "Living & Dining", desc: "Sofas, coffee tables, TV units, dining sets, and more for modern homes.", image: loungeImg, link: "/shop?category=living" },
 ];

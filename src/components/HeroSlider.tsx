@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Factory, Palette, Truck, ShieldCheck } from "lucide-react";
 
-import heroSofaImg from "@/assets/hero-sofa.jpg";
 import heroOfficeImg from "@/assets/hero-office.jpg";
-import loungeImg from "@/assets/lounge.jpg";
+import workstationImg from "@/assets/workstation.jpg";
+import meetingRoomImg from "@/assets/meeting-room.jpg";
+import heroSofaImg from "@/assets/hero-sofa.jpg";
 
 interface Slide {
   id: number;
@@ -29,25 +30,36 @@ const slides: Slide[] = [
   },
   {
     id: 2,
-    subtitle: "Complete Workspace Solutions",
-    title: "We Don't Just\nSell Furniture —\nWe Build Workspaces",
-    supportingText: "Free site visit. Free 3D layout. Free budget estimation. From a single executive desk to a 500-seat corporate office — Woodex handles everything.",
+    subtitle: "Premium Ergonomic Workstations",
+    title: "Make Your\nSpace Work —\nProductivity by Design",
+    supportingText: "Premium ergonomic workstations for the modern professional. 2, 4, 6-person clusters with acoustic panels, cable management, and integrated power modules.",
     buttons: [
-      { text: "Request Free Consultation", link: "/contact", variant: "primary" },
-      { text: "View Our Projects", link: "/projects", variant: "outline" },
+      { text: "Explore Workstations", link: "/shop?category=workstations", variant: "primary" },
+      { text: "Get E-Quote", link: "/e-quotation", variant: "outline" },
     ],
-    image: heroSofaImg,
+    image: workstationImg,
   },
   {
     id: 3,
-    subtitle: "Introducing the Woodex Lounge Series",
-    title: "Luxury Meets\nFunctionality —\nItalian-Inspired Furniture",
-    supportingText: "Elevate your space with our premium lounge collection — handcrafted sofas, accent chairs, and coffee tables with imported materials and flawless finishing.",
+    subtitle: "Conference & Meeting Solutions",
+    title: "Tables Designed for\nEquitable Meetings —\nEvery Voice Matters",
+    supportingText: "Conference solutions that enable inclusive participation — from 4-seat huddle tables to 20-seat boardroom setups with AV integration, power modules, and cable management.",
     buttons: [
-      { text: "Shop Lounge Series", link: "/shop", variant: "primary" },
+      { text: "View Meeting Tables", link: "/shop?category=meeting", variant: "primary" },
+      { text: "Request Consultation", link: "/contact", variant: "outline" },
+    ],
+    image: meetingRoomImg,
+  },
+  {
+    id: 4,
+    subtitle: "Introducing the Woodex Home Collection",
+    title: "Home Furniture\nCollection — Bedroom,\nLiving & Dining",
+    supportingText: "Extend the WOODEX quality to your home. Premium bedroom sets, living room sofas, coffee tables, TV units, and dining sets — all with factory-direct pricing.",
+    buttons: [
+      { text: "Shop Home Furniture", link: "/shop?category=bedroom", variant: "primary" },
       { text: "Get E-Quote", link: "/e-quotation", variant: "outline" },
     ],
-    image: loungeImg,
+    image: heroSofaImg,
   },
 ];
 

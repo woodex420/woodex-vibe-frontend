@@ -18,6 +18,9 @@ import {
   managerChairs, 
   staffChairs, 
   visitorChairs,
+  ceoTables,
+  executiveTables,
+  managerTables,
   officeDesks,
   workstations,
   officeSofas,
@@ -77,6 +80,9 @@ const Shop = () => {
         case "manager": products = [...managerChairs]; break;
         case "staff": products = [...staffChairs]; break;
         case "visitor": products = [...visitorChairs]; break;
+        case "ceo-tables": products = [...ceoTables]; break;
+        case "executive-tables": products = [...executiveTables]; break;
+        case "manager-tables": products = [...managerTables]; break;
         case "desks": products = [...officeDesks]; break;
         case "workstations": products = [...workstations]; break;
         case "sofas": products = [...officeSofas]; break;
@@ -111,9 +117,17 @@ const Shop = () => {
       ],
     },
     {
+      heading: "Office Tables",
+      filters: [
+        { id: "ceo-tables", name: "CEO Tables", count: ceoTables.length },
+        { id: "executive-tables", name: "Executive Tables", count: executiveTables.length },
+        { id: "manager-tables", name: "Manager Tables", count: managerTables.length },
+        { id: "desks", name: "Office Desks", count: officeDesks.length },
+      ],
+    },
+    {
       heading: "Office Furniture",
       filters: [
-        { id: "desks", name: "Office Desks", count: officeDesks.length },
         { id: "workstations", name: "Workstations", count: workstations.length },
         { id: "sofas", name: "Office Sofas", count: officeSofas.length },
         { id: "meeting", name: "Meeting Tables", count: meetingTables.length },
