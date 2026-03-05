@@ -1,87 +1,103 @@
 
 
-# Plan: Interactive Room Configurator with Runtime Material Masking
+# Master Plan: Complete Website Overhaul — Nav, Hero, Products & Categories
 
-## Current Problem
-The configurator has a single room view with blurry radial gradient overlays that don't visually change the furniture. No room switching, no real masking, no save/share.
+## Overview
 
-## What We'll Build
+Restructure the main navigation to match the requested 9-tab layout, redesign the hero slider with new slides for Office Furniture/Home Furniture categories, and add ~40 new products matching the reference images (CEO Tables, Executive Tables, Manager Tables, Meeting Tables, Workstations).
 
-A **3-room configurator** (Open Plan, Executive, Conference) matching the reference screenshots, with:
-- **SVG polygon masks** over each furniture zone for realistic color/texture application via `mix-blend-mode: multiply`
-- **Runtime visual feedback** — selecting a material instantly tints that furniture zone
-- **Room switching** with unique hotspot layouts per room
-- **Save/Share/Reset** toolbar at bottom
-- **Right-side slide-in panel** matching the reference UI (Product Selection header, category filter tabs, texture swatches)
+---
 
-## Architecture
+## Task 1 — Restructure Navbar Tabs
+
+Replace the current nav structure (Chairs | Desks | Storage | Lounge | Services | Series | Projects | About | Contact) with the exact 9-tab layout requested:
 
 ```text
-InteractiveConfigurator (rewrite)
-├── Room Tabs: Open Plan | Executive | Conference
-├── Scene Container (relative, overflow-hidden)
-│   ├── Base room image (per room)
-│   ├── Mask Overlay layers (one per hotspot)
-│   │   └── <div> with clip-path:polygon(), fill color, mix-blend-mode:multiply
-│   └── Hotspot markers (animated dots)
-├── Material Panel (slide-in from right, 350px)
-│   ├── Header: "PRODUCT SELECTION" + hotspot label
-│   ├── Category tabs: All | Wood | Solid & Laminate | Metal | Fabric
-│   ├── Brightness filter (3 icons)
-│   └── Swatch grid (color squares with labels)
-└── Bottom Bar: Reset | Save Config | Share | Get Quote button
+| Home | Office Furniture ▼ | Home Furniture ▼ | Series | Services ▼ | Projects | About Us | Contact Us | Blog |
 ```
 
-## Room Definitions
+**Office Furniture dropdown** (mega-menu with sections):
+- Office Chairs: Executive, Manager, Staff, Visitor
+- Office Tables: CEO Tables, Executive Tables, Manager Tables
+- Workstations
+- Meeting & Conference Tables
+- Office Sofas
+- Reception Desks
+- Storage & Filing
 
-**Open Plan Office** (5 hotspots):
-- Desk tops → wood mask polygon
-- Chair upholstery → fabric mask
-- Metal frames → frame mask
-- Softboard partitions → fabric mask
-- Drawer units → wood mask
+**Home Furniture dropdown**:
+- Bedroom: Bed Sets, Bedside Tables, Dressing Tables, Mirrors, Bench & Settee
+- Living: Home Sofa, Center & Side Tables, Coffee Tables, Console, TV Units
+- Dining: Dining Sets, Dining Chairs, Dining Tables
 
-**Executive Office** (4 hotspots):
-- Executive desk → wood mask
-- Chair leather → fabric mask
-- Sofa upholstery → fabric mask
-- Wall panel → wood mask
+Move E-Quotation and Inspirations to the right side (keep existing). Update mobile menu to match.
 
-**Conference Room** (4 hotspots):
-- Meeting table → wood mask
-- Chair upholstery → fabric mask
-- Wall accent → wood mask
-- Screen frame → frame mask
+---
 
-## Masking Approach
+## Task 2 — Add New Office Table Products
 
-Each hotspot defines a `maskPath` — a CSS `polygon()` string covering the furniture surface area. When a material is applied:
+Based on the reference images, add these new product subcategories and items to `products.ts`:
 
-1. A `<div>` is rendered with `position: absolute`, sized to fill the scene
-2. `clip-path: polygon(x1% y1%, x2% y2%, ...)` crops it to the furniture zone
-3. `background-color` is set to the selected material color
-4. `mix-blend-mode: multiply` blends it realistically with the base image
-5. Wood textures get a subtle `repeating-linear-gradient` overlay; fabric gets a dot pattern
+**CEO Tables** (5 products — from reference image 35):
+Ambassador Executive Table, Elegance Executive Office Table, Elite Executive Desk, Imperial Executive Desk, Royal Prestige Executive Table
+Price range: Rs.150,000
 
-This replaces the current blurry radial gradient with a precise, realistic tint.
+**Executive Tables** (10 products — from reference image 36):
+Command, Elite, Impact, Infinity, Legacy, Nexus Table 6, Nova, Signature, Space, Vision Executive Desks
+Price range: Rs.65,000
 
-## Save & Share
+**Manager Tables** (14 products — from reference image 37):
+Apex, Edge, Elite, Flux, Infinity, Metro, Nova, Orion, Prime, Pulse, Shift Ergonomic, Vertex, Vibe, Woodex Smart Series L-Shape
+Price range: Rs.65,000
 
-- **Save**: `localStorage.setItem('woodex-config', JSON.stringify({room, materials}))` + toast
-- **Share**: Encode config as base64 URL param, copy to clipboard
-- **Load**: Check URL params and localStorage on mount
+Update the existing `officeDesks` array to be split into these 3 subcategories, or add new arrays: `ceoTables`, `executiveTables`, `managerTables`.
 
-## Files Changed
+---
 
-| File | Change |
-|------|--------|
-| `src/components/InteractiveConfigurator.tsx` | Complete rewrite with room system, mask zones, blend-mode overlays, slide-in panel, save/share, bottom toolbar |
-| Generate 2 room images | Executive office + Conference room scenes (Open Plan already exists) |
+## Task 3 — Expand Meeting Tables & Workstations
 
-## UI Layout (matching reference)
+**Meeting Tables** — expand from 4 to ~30 products (reference image 38 shows many):
+Add: Citrus, Jupiter, Cameron, Diamond, Circular, Circle Round, Edge, Innovate, Firestone, Forest, Grand, Imperial Executive, Infinity Executive, Liberty Workstation, Impressive Workstation, Juventus, Luxury, Nexus, Nexus Meeting, Noxx Conference, Noxx Prime Conference, Nexus Meeting 2, Noxx Meeting, Saturn, Sapphire Executive
+Price range: Rs.0 (call for price) to Rs.70,000
 
-- Room tabs at top left (green active state)
-- Full-width room image with hotspot dots
-- Right panel slides in when hotspot clicked (white bg, close X button)
-- Bottom bar with Reset/Save/Share buttons left-aligned, "Get Quote for This Layout" button right-aligned in green
+**Workstations** — expand from 6 to 11 (reference image 39):
+Add: Evolution, Flow, Horizon, Momentum, Nexus, Nova, Onyx, Quantum, Synergy, Vertex, Vibe
+Price range: Rs.70,000
+
+---
+
+## Task 4 — Redesign Hero Slider
+
+Replace the current 3 slides with 4 new slides matching the reference designs:
+
+1. **Office Chairs** (keep existing office hero image) — "Custom Office Furniture — Designed for Your Space"
+2. **Workstations** (use workstation.jpg) — "Make Your Space Work" / "Premium ergonomic workstations for the modern professional" / CTA: "Explore Workstations"
+3. **Meeting Tables** (use meeting-room.jpg) — "Tables Designed for Equitable Meetings" / "Conference solutions that enable inclusive participation" / CTA: "View Tables"
+4. **Home Furniture** (use hero-sofa.jpg) — "Home Furniture Collection" / "Extend the WOODEX quality to your bedroom, living room, and dining spaces" / CTA: "Shop Home"
+
+---
+
+## Task 5 — Update Shop Sidebar & Category Filters
+
+Add new category filter entries for:
+- CEO Tables, Executive Tables, Manager Tables (replacing single "Office Desks")
+- Expanded product counts for Meeting Tables and Workstations
+
+Update `getProductsByCategory()` and `filteredProducts` switch cases.
+
+---
+
+## Task 6 — Update Homepage Category Grid
+
+Update the category grid to reflect the new subcategories (CEO Tables, Executive Tables, Manager Tables instead of generic "Office Desks").
+
+---
+
+## Technical Notes
+
+- No new dependencies needed
+- No design/theme changes — same Woodex styling throughout
+- All new products reuse existing placeholder images until real photos are uploaded
+- Product interface unchanged — uses existing `Product` type
+- ~60+ new products added, bringing total from ~106 to ~166
 
